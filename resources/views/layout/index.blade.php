@@ -24,23 +24,21 @@
 </head>
 <body>
 	<header class="cd-main-header">
-		<a href="#0" class="cd-logo"><img src="{!! URL::asset('img/gjakova.png') !!}" alt="Logo"></a>
+		<a href="#0" class="cd-logo"><img src="{!! URL::asset('web/images/Gjakova.png') !!}" alt="Logo"></a>
 
 		<div class="cd-search is-hidden">
             @yield('search_box')
-		</div> <!-- cd-search -->
+		</div>
 
 		<a href="#0" class="cd-nav-trigger"><span></span></a>
 
 		<nav class="cd-nav">
 			<ul class="cd-top-nav">
-				<li><a href="">Emri: {!! Auth::user()->name !!} </a> </li>
+				<li><a >Emri: {!! Auth::user()->name !!} </a> </li>
 				<li class="has-children account">
-					<a href="#0">
-						<img src="{!! URL::asset('img/gjakova_mini.png') !!}" alt="avatar">
+					<a href="">
 						Llogaria
 					</a>
-
 					<ul>
 						<li><a href="{!! action('Auth\AuthController@getRregister') !!}">Regjistro Shfrytezues</a></li>
 						<li><a href="{!! action('Auth\AuthController@getLogoutt') !!}">Mbylle llogarine</a></li>
