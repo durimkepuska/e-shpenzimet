@@ -53,21 +53,21 @@ class AuthController extends Controller
         if ($throttles) {
             $this->incrementLoginAttempts($request);
         }
-        return redirect('/home');
-        // return redirect($this->loginPath())
-        //     ->withInput($request->only($this->loginUsername(), 'remember'))
-        //     ->withErrors([
-        //         $this->loginUsername() => $this->getFailedLoginMessage(),
-        //     ]);
+        // return redirect('/home');
+        return redirect($this->loginPath())
+            ->withInput($request->only($this->loginUsername(), 'remember'))
+            ->withErrors([
+                $this->loginUsername() => $this->getFailedLoginMessage(),
+            ]);
     }
-
     public function getLogoutt()
     {
         Auth::logout();
 
-        return redirect('/auth/login');
+        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/auth/login');
 
     }
+
     /**
      * Create a new authentication controller instance.
      *
