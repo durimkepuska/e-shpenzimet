@@ -54,7 +54,7 @@ class AuthController extends Controller
             $this->incrementLoginAttempts($request);
         }
         // return redirect('/home');
-        return redirect($this->loginPath())
+        return redirect('/home')
             ->withInput($request->only($this->loginUsername(), 'remember'))
             ->withErrors([
                 $this->loginUsername() => $this->getFailedLoginMessage(),
@@ -64,7 +64,7 @@ class AuthController extends Controller
     {
         Auth::logout();
 
-        return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/auth/login');
+        return redirect('/auth/login');
 
     }
 
@@ -140,7 +140,7 @@ class AuthController extends Controller
 
         //Auth::login($this->create($request->all()));
         $this->create($request->all());
-        return redirect($this->redirectPath());
+        return redirect('/home');
     }
 
 
