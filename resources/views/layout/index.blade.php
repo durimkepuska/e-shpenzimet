@@ -43,7 +43,7 @@
 
 					<ul>
 						<li><a href="{!! action('Auth\AuthController@getRregister') !!}">Regjistro Shfrytezues</a></li>
-						<li><a href="{!! action('Auth\AuthController@getLogout') !!}">Mbylle llogarine</a></li>
+						<li><a href="{!! action('Auth\AuthController@getLogoutt') !!}">Mbylle llogarine</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -144,7 +144,7 @@
 			</ul>
 			<ul>
 				<li class="cd-label">Mbylle Llogarine</li>
-				<li class="action-btn"><a href="{!! action('Auth\AuthController@getLogout') !!}">Mbylle Llogarine</a></li>
+				<li class="action-btn"><a href="{!! action('Auth\AuthController@getLogoutt') !!}">Mbylle Llogarine</a></li>
 			</ul>
 
 		</nav>
