@@ -44,7 +44,7 @@ class AuthController extends Controller
         $credentials = $this->getCredentials($request);
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
-            return $this->handleUserWasAuthenticated($request, $throttles);
+            return $this->kujdesuPerUserin($request, $throttles);
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
@@ -54,12 +54,26 @@ class AuthController extends Controller
             $this->incrementLoginAttempts($request);
         }
         // return redirect('/home');
-        return redirect('home')
+        return redirect('auth/login')
             ->withInput($request->only($this->loginUsername(), 'remember'))
             ->withErrors([
                 $this->loginUsername() => $this->getFailedLoginMessage(),
             ]);
     }
+
+    protected function kujdesuPerUserin(Request $request, $throttles)
+    {
+        if ($throttles) {
+            $this->clearLoginAttempts($request);
+        }
+
+        if (method_exists($this, 'authenticated')) {
+            return $this->authenticated($request, Auth::user());
+        }
+
+        return redirect('/home');
+    }
+
     public function getLogoutt()
     {
         Auth::logout();

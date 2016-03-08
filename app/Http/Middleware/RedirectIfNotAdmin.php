@@ -18,7 +18,7 @@ class RedirectIfNotAdmin
 
             if (!$request->user()->isAdmin()) {
                 Flash::warning('You do not have that permission!');
-                return redirect('/auth/login');
+                return redirect('auth/login');
             }
 
         return $next($request);
