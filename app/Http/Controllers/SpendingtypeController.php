@@ -54,7 +54,7 @@ class SpendingtypeController extends Controller
   {
     Spendingtype::create($request->all());
     Flash::warning('U regjistrua me sukses!');
-    return redirect('spendingtypes');
+    return Redirect::back();
   }
 
   /**

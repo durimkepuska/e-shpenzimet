@@ -9,6 +9,7 @@
 @section('content')
 
 @include('expenditures.buttons')
+
   <table id="myTable" class="tablesorter table table-hover ">
 
     <thead>
@@ -79,6 +80,7 @@
       @endforeach
     </tbody>
     @include('expenditures.results')
+
 </table>
 {!! $data->render() !!}
 @stop

@@ -1,5 +1,4 @@
-
-<div style="width:500px; text-align:center;  ">
+<div style="width:500px; text-align:left;  ">
 <div class="form-group" >
     <span class="form_font">Furnitori</span>
     {!! Form::select('supplier_id', $supplier , null,  ['class' => 'form-control'] )!!}

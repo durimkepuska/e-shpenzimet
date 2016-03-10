@@ -74,7 +74,7 @@
     }
     .panel_class{
       width:24%;
-      height: 540px;
+      height: 440px;
       float: right;
     }
 
@@ -101,6 +101,9 @@
     background-color: #000;
     min-width: 100%;
     box-shadow: 0px 0px 0px 0px;
+}
+#drop{
+  background-color: #000;
 }
 .dropdown-content a {
     color: #000;
@@ -160,47 +163,6 @@ background-color: #ffffff;
 
 a:hover  {
  text-decoration: none;
-}
-
-#return-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, 0.7);
-    width: 50px;
-    height: 50px;
-    display: block;
-    text-decoration: none;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 35px;
-    display: none;
-    -webkit-transition: all 0.3s linear;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-#return-to-top i {
-    color: #fff;
-    margin: 0;
-    position: relative;
-    left: 16px;
-    top: 13px;
-    font-size: 19px;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-#return-to-top:hover {
-    background: #BA251F;
-}
-#return-to-top:hover i {
-    color: #fff;
-    top: 5px;
 }
 
 .icon-chevron-up:before {
@@ -1011,7 +973,7 @@ section:nth-of-type(6) h2::before {
 }
 @media only screen and (min-width: 768px) {
   section {
-    margin: 3em 0 5em;
+    margin: 0.6em 0 5em;
   }
 }
 @media only screen and (min-width: 3000px) {

@@ -43,7 +43,7 @@
 	<ul class="cd-main-nav third_div">
 		<li class="dropdown">
 			<a class="dropbtn" href="#">E-SHPENZIMET <span class="glyphicon glyphicon-menu-down"></a>
-			<div class="dropdown-content">
+			<div class="dropdown-content" id="drop">
 				<a href="#"> 2013</a>
 				<a href="#"> 2014</a>
 				<a href="#"> 2015</a>
@@ -65,7 +65,7 @@
 		<ul>
 			<li class="cd-box">
 				<div class="panel-heading">E-Shpenzimet gjatë vitit 2016</div>
-				<div id="chart_container" style=" min-width:300px; height: 500px; margin: 0 0"></div>
+				<div id="chart_container" style=" min-width:300px; height: 400px; margin: 0 0"></div>
 			</li>
 			<li>
 				<div class="panel panel-default panel_class">
@@ -102,7 +102,6 @@
 		</div>
 	</div>
 </footer>
-<a href="javascript:"  id="return-to-top"> <i ><span class="glyphicon glyphicon-menu-up"></i></a>
 <script>
 $(function () {
 Highcharts.setOptions({
@@ -113,8 +112,7 @@ lang: {
 });
 $('#chart_container').highcharts({
 chart: {
-	marginRight: 0,
-  type: 'column'
+	type: 'column'
 },
 	legend: {
   align: 'center',
@@ -133,8 +131,8 @@ xAxis: {
   type: 'category'
 },
 tooltip: {
-  headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-  pointFormat: '<span >{point.name}</span>:<br> <b>{point.y:,.2f} EUR</b>'
+  headerFormat: '<span style="font-size:11px"> <b>{point.y:,.2f} EUR</b></span><br>',
+  pointFormat: '<span >{point.name}</span>'
 },
 plotOptions: {
   series: {

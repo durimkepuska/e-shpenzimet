@@ -1,30 +1,30 @@
 @extends('auth_layout.template')
 
 @section('form')
-
-<div class="container">
+<div style="text-align:center;">
+	<img src="{!! URL::asset('web/images/logo.png') !!}" alt="Logo">
+</div><br>
+<div class="container" >
 
     {!! Form::open(['url'=>'/auth/login']) !!}
      {!! csrf_field() !!}
-        <div class="form-group" style="width:400px;">
-             {!! Form::label('email','email:') !!}
+        <div class="form-group" style="width:320px;">
+             {!! Form::label('email','Email:') !!}
              {!! Form::text('email', null, ['class' => 'form-control', 'require' => 'require'])!!}
         </div>
-        <div class="form-group" style="width:300px;">
-              {!! Form::label('password','Password:') !!}<br>
-              {!! Form::password('password', null, ['class' => 'form-control'])!!}
+        <div class="form-group" style="width:320px;">
+              {!! Form::label('password','Fjalëkalimi:') !!}<br>
+              {!! Form::text('password', null, ['class' => 'form-control'])!!}
         </div>
         <div class="form-group">
-
-               <p>{!! Form::checkbox('remember') !!} Remember me </p>
+          <p>{!! Form::checkbox('remember') !!} Më mbajë në mend (30 ditë)</p>
         </div>
         <div class="form-group" style="width:80px;">
-             {!! Form::submit('Login',['class' => 'btn btn-default form-control'])!!}
+             {!! Form::submit('Kyçu',['class' => 'btn btn-default form-control'])!!}
         </div>
 
     {!! Form::close()!!}
-     <a href="{!!url('password/email')!!}">Forgot password</a>
-
+     <a href="{!!url('password/email')!!}">Kam harruar fjalëkalimin!</a>
 </div>
 <div class="form-group" style="width:400px;">
 @include('errors.error_handler')

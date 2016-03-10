@@ -10,11 +10,16 @@
 </head>
 <body>
 <div class="container">
- <h2> <a href="{!! url('/auth/login') !!}">Login</a> </a> or <a href="{!! url('/auth/register') !!}">Register</a>   |  <a href="{!! url('/') !!}">Web</a></h2><hr>
-
+<h2 style="text-align:center;">
+   <a href="{!! url('/auth/login') !!}">Kyçu</a>  |
+   <a href="{!! url('/auth/register') !!}">Regjistrohu</a> |
+   <a href="{!! url('/') !!}">Web Faqja</a>
+</h2>
+<hr>
+<div>
     @yield('form')
 
-
+</div>
 </div>
 </body>
 </html>
