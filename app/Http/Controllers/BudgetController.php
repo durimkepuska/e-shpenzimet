@@ -79,7 +79,7 @@ class BudgetController extends Controller
 
     public function index()
     {
-        $data = Budget::OrderBy('id','dsc')->DepartmentFilter()->paginate(10);
+        $data = Budget::OrderBy('id','dsc')->DepartmentFilter()->paginate(20);
         return view('budget.index', compact('data'));
     }
 

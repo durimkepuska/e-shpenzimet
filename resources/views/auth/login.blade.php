@@ -14,7 +14,7 @@
         </div>
         <div class="form-group" style="width:320px;">
               {!! Form::label('password','Fjalëkalimi:') !!}<br>
-              {!! Form::text('password', null, ['class' => 'form-control'])!!}
+              {!! Form::password('password', null, ['class' => 'form-control'])!!}
         </div>
         <div class="form-group">
           <p>{!! Form::checkbox('remember') !!} Më mbajë në mend (30 ditë)</p>

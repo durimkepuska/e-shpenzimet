@@ -33,27 +33,27 @@ class DatabaseSeeder extends Seeder
        $expenditurestatus = [
              ['id' => 1,'status'=>'Paguar'],
              ['id' => 2,'status'=>'Borxh'],
-             ['id' => 3,'status'=>'Pjeserisht'],
+             ['id' => 3,'status'=>'Pjesërisht e paguar'],
 
        ];
        DB::table('expenditurestatus')->insert($expenditurestatus);
 
        $payment_sources = [
-             ['id' => 1,'payment_source'=>'Buxheti i Kosoves'],
-             ['id' => 2,'payment_source'=>'Te Hyra Vetanake'],
-             ['id' => 3,'payment_source'=>'Donatore'],
+             ['id' => 1,'payment_source'=>'Buxheti i Kosovës'],
+             ['id' => 2,'payment_source'=>'Të Hyra Vetanake'],
+             ['id' => 3,'payment_source'=>'Donatorë'],
 
        ];
        DB::table('payment_sources')->insert($payment_sources);
 
 
        DB::table('spending_categories')->insert([
-          'spending_category' => 'Material Zyrtare',
+          'spending_category' => 'Material Zyrtarë',
        ]);
 
 
        $spendingtypes = [
-             ['id' => 1,'spendingtype'=>'Mallra dhe sherbime'],
+             ['id' => 1,'spendingtype'=>'Mallra dhe shërbime'],
              ['id' => 2,'spendingtype'=>'Kapitale'],
              ['id' => 3,'spendingtype'=>'Komunali'],
        ];
@@ -61,9 +61,9 @@ class DatabaseSeeder extends Seeder
 
        $user_roles = [
               ['id' => 1,'role'=>'Admin'],
-              ['id' => 2,'role'=>'Drejtore'],
-              ['id' => 3,'role'=>'Zyrtare'],
-              ['id' => 4,'role'=>'Kryetare'],
+              ['id' => 2,'role'=>'Drejtorë'],
+              ['id' => 3,'role'=>'Zyrtarë'],
+              ['id' => 4,'role'=>'Ekzekutues'],
         ];
         DB::table('user_roles')->insert($user_roles);
 

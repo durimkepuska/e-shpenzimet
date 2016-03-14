@@ -39,8 +39,11 @@ class ExpenditureController extends Controller
      */
     public function index()
     {
-      $payment_source = Payment_source::lists('payment_source', 'id');
-      $data = Expenditure::DepartmentFilter()->NotHidden()->paginate(10);
+      if(Auth::user()->role_id==4){
+        $data = Expenditure::NotHidden()->paginate(10);
+      } else {
+        $data = Expenditure::DepartmentFilter()->NotHidden()->paginate(10);
+      }
       return view('expenditures.index',compact('data'));
     }
 
@@ -152,7 +155,7 @@ class ExpenditureController extends Controller
 
       $data = Expenditure::findOrFail($id);
 
-      if($data->department_id==Auth::User()->department_id){
+      if($data->department_id==Auth::User()->department_id || Auth::user()->role_id==4){
 
         return true;
       } else {

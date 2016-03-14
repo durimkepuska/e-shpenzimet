@@ -83,6 +83,10 @@ Route::post('usersSearch' , 'UserController@search');
 Route::resource('spending_categories' , 'SpendingCategoryController');
 Route::post('spending_categoriesSearch' , 'SpendingCategoryController@search');
 
+//Zotimet
+Route::resource('zotimet' , 'ZotimetController');
+
+
 //Errors
 Route::get('error', function(){
     return view('errors.404');

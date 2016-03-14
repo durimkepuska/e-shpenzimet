@@ -26,11 +26,11 @@
         </div>
         <div class="form-group" style="width:320px;">
               {!! Form::label('password','Fjalëkalimi:') !!}<br>
-              {!! Form::text('password', null, ['class' => 'form-control'])!!}
+              {!! Form::password('password', null, ['class' => 'form-control'])!!}
         </div>
         <div class="form-group" style="width:320px;">
               {!! Form::label('password_confirmation','Konfirmo Fjalëkalimin:') !!}<br>
-              {!! Form::text('password_confirmation', null, ['class' => 'form-control'])!!}
+              {!! Form::password('password_confirmation', null, ['class' => 'form-control'])!!}
         </div>
 
         <div class="form-group" style="width:80px;">

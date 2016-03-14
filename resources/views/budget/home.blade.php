@@ -15,7 +15,7 @@
 <div class="col-sm-3">
     <div class="panel panel-primary">
         <div class="panel-heading">
-           <h3 class="panel-title">Buxheti i caktuar per:</h3><hr>
+           <h3 class="panel-title">Buxheti fillestarë për kategorinë:</h3><hr>
            {!! $budgets->spendingtype->spendingtype !!}
         </div>
         <div class="panel-body">
@@ -30,7 +30,7 @@
 <div class="col-sm-3">
     <div class="panel panel-danger">
         <div class="panel-heading">
-           <h3 class="panel-title">Shpenzimet per:</h3><hr>
+           <h3 class="panel-title">Shpenzimet për kategorinë:</h3><hr>
             {!! $spending->spendingtype !!}
          </div>
         <div class="panel-body">
@@ -45,7 +45,7 @@
 <div class="col-sm-3">
     <div class="panel panel-info">
         <div class="panel-heading">
-           <h3 class="panel-title">Buxheti aktual per:</h3><hr>
+           <h3 class="panel-title">Buxheti i mbetur për kategorinë:</h3><hr>
            {!! $actual_budgets->spendingtype1 !!}
         </div>
         <div class="panel-body">

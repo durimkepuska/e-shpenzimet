@@ -12,6 +12,7 @@
       <div class="well well-lg">  <p>Pershkrimi: {!! $data->description !!}</p></div>
 
       <div class="well well-lg"  style="line-height:25px;">
+        <p>Drejtoria për: {!! $data->Department->department !!}</p>
 
         <p><strong>Data e shpenzimit: {!! $data->expenditure_date !!}</strong> </p>
 

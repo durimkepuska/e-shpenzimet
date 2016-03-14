@@ -43,13 +43,17 @@ class Expenditure extends Model
     {
        return $this->belongsTo('App\SpendingCategory');
     }
-  
+
 
 
 
     public function scopeDepartmentFilter($query){
+      if(Auth::user()->role_id==4){
+       $query->latest('created_at');
+     } else{
+        $query->latest('created_at')->where('department_id',Auth::user()->department_id);
+     }
 
-       $query->latest('created_at')->where('department_id',Auth::user()->department_id);
     }
 
     public function scopeKeywordMatch($query){

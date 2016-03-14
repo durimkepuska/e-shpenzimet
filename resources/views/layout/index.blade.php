@@ -55,99 +55,54 @@
 				<li class="has-children ">
 					<a href="{!! action('BudgetController@home') !!}">Buxheti</a>
 				</li>
-
-
-
+				<li class="has-children ">
+					<a href="{!! action('ZotimetController@index') !!}">Zotimet</a>
+				</li>
 				<li class="has-children ">
 					<a href="{!! action('ExpenditureController@index') !!}"> Shpenzimet</a>
-					<ul>
-						<li><a href="{!! action('ExpenditureController@create') !!}">Regjistro Shpenzim</a></li>
-						<li><a href="{!! action('ExpenditureController@index') !!}">Shiko Shpenzimet</a></li>
-						<li><a href="">Gjenero Raport</a></li>
-					</ul>
 				</li>
 
 				<li class="has-children ">
 					<a href="{!! action('SupplierController@index') !!}">Furnitorët</a>
-					<ul>
-						<li><a href="#0">Regjistro Furnitorë</a></li>
-						<li><a href="#0">Shiko Furnitorët</a></li>
-						<li><a href="#0">Gjenero Raport</a></li>
-					</ul>
 				</li>
 
 				<li class="has-children ">
-					<a href="{!! action('DepartmentController@index') !!}">Drejtorite</a>
-					<ul>
-						<li><a href="#0">Regjistro Drejtori</a></li>
-						<li><a href="#0">Shiko Drejtorite</a></li>
-						<li><a href="#0">Gjenero raport</a></li>
-					</ul>
+					<a href="{!! action('DepartmentController@index') !!}">Drejtoritë</a>
 				</li>
 
 				<li class="has-children ">
 					<a href="{!! action('SpendingtypeController@index') !!}">Llojet e Shpenzimeve</a>
-					<ul>
-						<li><a href="#0">Regjistro Lloj te Shpenzimeve</a></li>
-						<li><a href="#0">Shikoj llojet e shpenzimeve</a></li>
-						<li><a href="#0">gjenero raport</a></li>
-					</ul>
 				</li>
 
 				<li class="has-children ">
-					<a href="{!! action('SpendingCategoryController@index') !!}">Kategorite e Shpenzimeve</a>
-					<ul>
-						<li><a href="#0">Regjistro Kategori te Shpenzimeve</a></li>
-						<li><a href="#0">Shikoj Kategorite e shpenzimeve</a></li>
-						<li><a href="#0">gjenero raport</a></li>
-					</ul>
+					<a href="{!! action('SpendingCategoryController@index') !!}">Kategoritë e Shpenzimeve</a>
 				</li>
 
 
 				<li class="has-children ">
 					<a href="{!! action('PaymentsourceController@index') !!}">Vijat Buxhetore</a>
-					<ul>
-						<li><a href="#0">Regjistro vije buxhetore</a></li>
-						<li><a href="#0">Shikoj vijat buxhetore</a></li>
-						<li><a href="#0">Gjenero raport</a></li>
-					</ul>
 				</li>
 
 				<li class="has-children ">
 					<a href="{!! action('RoleController@index') !!}">Rolet</a>
-					<ul>
-						<li><a href="#0">Regjistro role te ri</a></li>
-						<li><a href="#0">Shikoj rolet</a></li>
-						<li><a href="#0">Gjenero raport</a></li>
-					</ul>
 				</li>
 
 				<li class="has-children ">
-					<a href="{!! action('UserController@index') !!}">Zyrtaret</a>
-					<ul>
-						<li><a href="#0">Regjistro Zyrtare te ri</a></li>
-						<li><a href="#0">Shikoj Zyrtaret</a></li>
-						<li><a href="#0">Gjenero raport</a></li>
-					</ul>
+					<a href="{!! action('UserController@index') !!}">Zyrtarët</a>
 				</li>
 
 				<li class=" notifications ">
-					<a href="{!! action('ExpenditureController@notifications') !!}">Lajmerimet<span class="count">@include('partials.notifications')</span></a>
+					<a href="{!! action('ExpenditureController@notifications') !!}">Lajmërimet<span class="count">@include('partials.notifications')</span></a>
 				</li>
-
 			</ul>
 			<ul>
-				<li class="cd-label">Web Faqja</li>
-				<li class="action-btn"><a href="{!! action('WebController@index') !!}">Web Faqja</a></li>
+					<li class="action-btn"><a target="_blank" href="{!! action('WebController@index') !!}">Web Faqja</a></li>
 			</ul>
 			<ul>
-				<li class="cd-label">Mbylle Llogarine</li>
-				<li class="action-btn"><a href="{!! action('Auth\AuthController@getLogoutt') !!}">Mbylle Llogarine</a></li>
+				<li class="action-btn"><a href="{!! action('Auth\AuthController@getLogoutt') !!}">Mbylle Llogarinë</a></li>
 			</ul>
-
-		</nav>
-
-		<div class="content-wrapper">
+</nav>
+	<div class="content-wrapper">
 
 			 @yield('content')
 			 @include('partials.flash')
