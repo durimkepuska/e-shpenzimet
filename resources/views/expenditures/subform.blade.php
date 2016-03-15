@@ -2,8 +2,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close pull-left" data-dismiss="modal">&times;</button>
-        <div class="modal-title">
+        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+        <div class="modal-title pull-left">
           {!!$datas->description!!}<br>Borxhi: {!!$datas->value-$datas->paid_value!!} EUR<br>
           Shkruani vlerën e pagesës
         </div>
@@ -13,7 +13,6 @@
         {!! csrf_field() !!}
         <div class="form-group" >
            {!! Form::text('paid_value', null, ['class' => 'form-control','placeholder'=>'*Vlera'])!!}<br>
-           {!! Form::text('paid_date', null, ['class' => 'form-control datepicker','placeholder'=>'*Data e pageses'])!!}<br>
            {!! Form::hidden('id', $datas->id) !!}
            {!! Form::submit('Paguaje',['class' => 'btn btn-primary pull-right'])!!}
            {!! Form::close()!!}

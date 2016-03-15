@@ -35,13 +35,13 @@
         <td class="text-right">
           @if($datas->paid==1)
           <button type="button" class="btn btn-success btn-sm">
-            <span class="glyphicon glyphicon-ok"></span>  Paguar
+            <span class="glyphicon glyphicon-ok"></span>  {!! $datas->status->status !!}
           </button>
 
           @else
           <div class="btn-group">
             <button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-remove"></span>
-              @if($datas->paid==2) Borxh @else Pjeserisht @endif
+              @if($datas->paid==2) {!! $datas->status->status !!} @else {!! $datas->status->status !!} @endif
             </button>
             <button type="button" class="btn btn-danger dropdown-toggle btn-sm" data-toggle="dropdown">
               <span class="caret"></span>

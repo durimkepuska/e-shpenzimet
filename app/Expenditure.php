@@ -11,6 +11,8 @@ class Expenditure extends Model
 
       protected $fillable = ['dept_paid_date','spending_category_id' , 'expenditure_date','description', 'invoice_number', 'spendingtype_id','value','supplier_id','paid','paid_value','payment_source_id','payment_date','department_id'];
 
+
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -28,7 +30,7 @@ class Expenditure extends Model
 
     public function status()
     {
-        return $this->belongsTo('App\Status');
+        return $this->belongsTo('App\Status','paid');
     }
 
     public function spendingtype()
@@ -100,7 +102,16 @@ class Expenditure extends Model
         $query->where('dept_paid_date', date('Y-m-d'));
 
     }
+    public function scopeParaqit_Zotimet($query){
+        $query->where('paid', 4);
+    }
+    public function scopeMos_Paraqit_Zotimet($query){
+        $query->where('paid','!=', 4);
+    }
 
+    public function scopeListoj_te_rejat($query){
+          $query->orderBy('created_at','desc');
+    }
 
     public function scopeRaport($query,$paid, $start_date, $end_date, $supplier_id, $allSuppliers, $spendingtype, $allSpendingtypes, $payment_source, $allPaymentSources, $department_id, $spendingcategory, $allSpendingCategories ){
 
@@ -110,7 +121,7 @@ class Expenditure extends Model
             if(!$allPaymentSources==1){  $query->where('expenditures.payment_source_id' , $payment_source);}
             if(!$allSpendingCategories==1){  $query->where('expenditures.spending_category_id' , $spendingcategory);}
               $query->whereBetween('expenditures.expenditure_date',array($start_date,$end_date));
-              $query->where('expenditures.department_id' , $department_id);
+             if(Auth::user()->role_id==!4){  $query->where('expenditures.department_id' , $department_id); }
               $query->join('departments', 'expenditures.department_id', '=', 'departments.id')
               ->join('suppliers', 'expenditures.supplier_id', '=', 'suppliers.id')
               ->join('spendingtypes', 'expenditures.spendingtype_id', '=', 'spendingtypes.id')

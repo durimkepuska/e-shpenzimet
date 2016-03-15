@@ -18,6 +18,8 @@ use App\Status;
 use Illuminate\Http\Request;
 use App\Http\Requests\ExpendituresRequest;
 use App\Http\Requests\RaportRequest;
+use App\Http\Requests\ZotimetRequest;
+
 use App\Http\Controllers\Controller;
 use Input;
 use Excel;
@@ -32,17 +34,51 @@ class ExpenditureController extends Controller
         //$this->middleware('auth', ['only'=>'index']);
      }
 
+     public function zotimet(){
+
+       if(Auth::user()->role_id==4){
+         $data = Expenditure::NotHidden()->Paraqit_Zotimet()->where('paid',4)->Listoj_te_rejat()->paginate(10);
+       } else {
+         $data = Expenditure::DepartmentFilter()->Paraqit_Zotimet()->NotHidden()->Listoj_te_rejat()->paginate(10);
+       }
+       return view('zotimet.zotimet',compact('data'));
+     }
+     public function zotimet_create(){
+       $spendingtype = Spendingtype::lists('spendingtype', 'id');
+
+       return view('zotimet.zotimet_create', compact('spendingtype'));
+
+     }
+     public function zotimet_store(ZotimetRequest $request)
+     {
+
+        Auth::user()->expenditure()->create($request->all());
+         Flash::warning('U regjistrua me sukses!');
+         return redirect('zotimet');
+     }
+
+     public function zotimet_show($id){
+
+       $data = Expenditure::findOrFail($id);
+        if($this->DeprtmentIsResponsible($id)){
+            return view('zotimet.zotimet_show',compact('data'));
+        } else {
+            Flash::warning('Nuk keni qasje ne shpenzimet e drejtorive te tjera!');
+         return Redirect::back();
+        }
+
+     }
      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
+
       if(Auth::user()->role_id==4){
-        $data = Expenditure::NotHidden()->paginate(10);
+        $data = Expenditure::NotHidden()->Mos_Paraqit_Zotimet()->Listoj_te_rejat()->paginate(10);
       } else {
-        $data = Expenditure::DepartmentFilter()->NotHidden()->paginate(10);
+        $data = Expenditure::DepartmentFilter()->Mos_Paraqit_Zotimet()->NotHidden()->Listoj_te_rejat()->paginate(10);
       }
       return view('expenditures.index',compact('data'));
     }
@@ -180,7 +216,7 @@ class ExpenditureController extends Controller
     public function search()
     {
       $keyword=  Input::get('keyword');
-      $data = Expenditure::DepartmentFilter()->NotHidden()->where('description', 'LIKE', '%'.$keyword.'%')->paginate(100);
+      $data = Expenditure::DepartmentFilter()->NotHidden()->where('invoice_number', 'LIKE', '%'.$keyword.'%')->paginate(100);
       return view('expenditures.index',compact('data'));
     }
 
@@ -209,7 +245,7 @@ class ExpenditureController extends Controller
     public function paysomething()
     {
       $paid_value = Input::get('paid_value');
-      $paid_date = Input::get('paid_date');
+      $paid_date =  date('Y-m-d');
       $id = Input::get('id');
 
       $data = Expenditure::findOrFail($id);
@@ -317,15 +353,49 @@ class ExpenditureController extends Controller
 
 
 
-      Excel::create('duro', function($excel) use($data) {
+            Excel::create($data[0]->Drejtoria, function($excel) use($data) {
 
-           $excel->sheet( 'duro', function($sheet) use($data) {
 
-              $sheet->fromArray($data);
 
-           });
+              $excel->setTitle('e-Shpenzimet, '. $data[0]->Drejtoria);
 
-       })->export($type);
+              $excel->setCreator('KrijonXXL')->setCompany('Komuna e Gjakovës');
+
+              $excel->sheet('Drejtoria IT', function($sheet) use($data) {
+
+                       $sheet->fromArray($data);
+
+                       $sheet->row(1, function($row) {
+
+                           $row->setBackground('#ff4d4d');
+
+                       });
+
+                       $sheet->setAutoSize(true);
+
+                       $sheet->freezeFirstRow();
+
+                       $sheet->setAutoFilter();
+
+                       $sheet->setHeight(1, 20);
+
+                       //$sheet->setAllBorders('thin');
+
+
+
+                       $sheet->setOrientation('landscape');
+
+                       $sheet->setPageMargin(array(
+                           0.25, 0.30, 0.25, 0.30
+                       ));
+
+                       $sheet->appendRow(array(
+                           '','© e-Shpenzimet','2016', 'Drejtoria per:',$data[0]->Drejtoria, 'Komuna e Gjakoves'
+                       ));
+
+               });
+
+            })->export($type);
 
        return redirect('expenditures');
      }

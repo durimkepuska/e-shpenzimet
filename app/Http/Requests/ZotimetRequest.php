@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class ExpendituresRequest extends Request
+class ZotimetRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,11 @@ class ExpendituresRequest extends Request
      */
     public function rules()
     {
-        return [
-          'description'=>'required',
-          'invoice_number'=>'required',
-          'value'=>'required',
+      return [
+        'description'=>'required',
+        'value'=>'required',
+        'expenditure_date'=>'required',
 
-        ];
+      ];
     }
 }

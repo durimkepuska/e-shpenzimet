@@ -7,7 +7,7 @@
 <div class="container">
 <h4>Shkruani email-in në të cilin dëshironi t'ju dërgohet linku për ndryshimin e fjalëkalimit.<br>
 Pas klikimit të butonit "Dërgo" kontrolloni email-in tuaj (Prisni deri në 3 min).<br>
-Klikoni në linkun e dërguar në email-in tuaj për ta ndryshuar fjalëkalimin .</h4>
+Klikoni në linkun e dërguar në email-in tuaj për ta ndryshuar fjalëkalimin.</h4>
     {!! Form::open(['url'=>'password/email']) !!}
 
      {!! csrf_field() !!}

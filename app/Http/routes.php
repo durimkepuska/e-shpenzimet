@@ -84,8 +84,11 @@ Route::resource('spending_categories' , 'SpendingCategoryController');
 Route::post('spending_categoriesSearch' , 'SpendingCategoryController@search');
 
 //Zotimet
-Route::resource('zotimet' , 'ZotimetController');
 
+Route::get('zotimet' , 'ExpenditureController@zotimet');
+Route::get('zotimet/create' , 'ExpenditureController@zotimet_create');
+Route::post('zotimet/store' , 'ExpenditureController@zotimet_store');
+Route::get('zotimet/{id}' , 'ExpenditureController@zotimet_show');
 
 //Errors
 Route::get('error', function(){

@@ -55,9 +55,7 @@
 				<li class="has-children ">
 					<a href="{!! action('BudgetController@home') !!}">Buxheti</a>
 				</li>
-				<li class="has-children ">
-					<a href="{!! action('ZotimetController@index') !!}">Zotimet</a>
-				</li>
+
 				<li class="has-children ">
 					<a href="{!! action('ExpenditureController@index') !!}"> Shpenzimet</a>
 				</li>

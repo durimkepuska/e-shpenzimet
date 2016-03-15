@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
              ['id' => 1,'status'=>'Paguar'],
              ['id' => 2,'status'=>'Borxh'],
              ['id' => 3,'status'=>'Pjesërisht e paguar'],
+             ['id' => 4,'status'=>'Zotim'],
 
        ];
        DB::table('expenditurestatus')->insert($expenditurestatus);

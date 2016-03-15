@@ -54,7 +54,7 @@ class FreskoTeDhenat extends Command
 
       //borxhet totale
       $borxhet_total =  DB::table('expenditures')
-              ->select(DB::raw('SUM(value-paid_value) as total'))
+              ->select(DB::raw('SUM(value-paid_value) as total'))->where('paid','!=',4)
               ->get();
       File::put(storage_path('charts/2016/totals/borxhet_total.js'), $borxhet_total[0]->total);
       //end
@@ -299,6 +299,7 @@ class FreskoTeDhenat extends Command
                 ->join('departments', 'departments.id', '=', 'expenditures.department_id')
                 ->select( DB::raw('CONCAT("borxhet","-",department_id) as drilldown'),'departments.department as name', DB::raw('SUM(value-paid_value) as y'))
                 ->groupBy('expenditures.department_id')
+                ->where('paid','!=',4)
                 ->get();
 
           $borxhet_drejtorite_object = new FreskoTeDhenat();
@@ -318,6 +319,7 @@ class FreskoTeDhenat extends Command
                     ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'expenditures.spendingtype_id')
                     ->select(DB::raw('CONCAT("borxhet","-",department_id,"-",spendingtype_id) as drilldown'), 'spendingtypes.spendingtype as name', DB::raw('SUM(value-paid_value) as y'))
                     ->where('expenditures.department_id',$index)
+                    ->where('paid','!=',4)
                     ->groupBy('expenditures.spendingtype_id')
                     ->get();
 
@@ -363,7 +365,7 @@ class FreskoTeDhenat extends Command
 
         $borxhet_drejtorite_kategorite_nenkategorite_furnitoret = DB::table('expenditures')
                 ->rightjoin('suppliers', 'suppliers.id', '=', 'expenditures.supplier_id')
-                ->select(DB::raw('CONCAT("borxhet","-",department_id,"-",spendingtype_id) as drilldown'), 'suppliers.supplier as name', DB::raw('SUM(value-paid_value) as y'))
+                ->select(DB::raw('CONCAT("borxhettt","-") as drilldown'), 'suppliers.supplier as name', DB::raw('SUM(value-paid_value) as y'))
                 ->where('expenditures.department_id',$index)
                 ->where('expenditures.spendingtype_id',$index1)
                  ->where('expenditures.spending_category_id',$index2)

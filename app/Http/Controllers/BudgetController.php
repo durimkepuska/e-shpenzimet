@@ -71,10 +71,18 @@ class BudgetController extends Controller
                 ->where('expenditures.department_id',Auth::user()->department_id)
                 ->OrderBy('expenditures.id','asc')
                 ->get();
+        $zotimet = DB::table('expenditures')
+                ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'expenditures.spendingtype_id')
+                ->select( 'spendingtypes.spendingtype',DB::raw('SUM(value) as total'))
+                ->groupBy('spendingtypes.spendingtype')
+                ->where('expenditures.department_id',Auth::user()->department_id)
+                ->where('paid',4)
+                ->OrderBy('expenditures.id','asc')
+                ->get();
 
 
 
-        return view('budget.home', compact('budget','spendings','actual_budget'));
+        return view('budget.home', compact('budget','spendings','actual_budget','zotimet'));
     }
 
     public function index()

@@ -16,7 +16,8 @@ class ZotimetController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('expenditures.index');
     }
 
     /**
