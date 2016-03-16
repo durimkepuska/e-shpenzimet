@@ -34,8 +34,6 @@ class DatabaseSeeder extends Seeder
              ['id' => 1,'status'=>'Paguar'],
              ['id' => 2,'status'=>'Borxh'],
              ['id' => 3,'status'=>'Pjesërisht e paguar'],
-             ['id' => 4,'status'=>'Zotim'],
-
        ];
        DB::table('expenditurestatus')->insert($expenditurestatus);
 
@@ -79,7 +77,6 @@ class DatabaseSeeder extends Seeder
         $file_types = [
             ['id' => 1,'type'=>'xls'],
             ['id' => 2,'type'=>'xlsx'],
-            ['id' => 3,'type'=>'pdf'],
             ['id' => 4,'type'=>'csv'],
         ];
         DB::table('filetype')->insert($file_types);
