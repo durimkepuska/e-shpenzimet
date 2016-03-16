@@ -22,7 +22,7 @@
 
 
 
-        <p>Vlera: {!! $data->value !!} EUR</p>
+        <p>Vlera: {!! $data->paid_value !!} EUR</p>
 
 
 

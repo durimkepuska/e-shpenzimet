@@ -25,7 +25,7 @@ class ZotimetRequest extends Request
     {
       return [
         'description'=>'required',
-        'value'=>'required',
+        'paid_value'=>'required',
         'expenditure_date'=>'required',
 
       ];

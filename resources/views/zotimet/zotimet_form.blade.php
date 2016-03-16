@@ -19,7 +19,7 @@
 
 <div class="form-group" >
     <span class="form_font">Vlera e zotimit të mjeteve në euro</span>
-    {!! Form::text('value', null, ['class' => 'form-control','placeholder'=>'*Vlera'])!!}
+    {!! Form::text('paid_value', null, ['class' => 'form-control','placeholder'=>'*Vlera'])!!}
 </div>
 
   {!! Form::hidden('department_id', Auth::user()->department_id, ['class' => 'form-control'])!!}

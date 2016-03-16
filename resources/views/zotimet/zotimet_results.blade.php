@@ -1,9 +1,8 @@
-<?php  $fatura=0; $rows=0; $paguar=0; $borxh=0; ?>
+<?php  $fatura=0; $rows=0;  ?>
   @foreach($data as $datas)
    <?php
-      $fatura = $fatura + $datas->value;
-      $paguar = $paguar + $datas->paid_value;
-      $borxh = $fatura - $paguar;
+      $fatura = $fatura + $datas->paid_value;
+
       $rows = $rows+1;
    ?>
   @endforeach

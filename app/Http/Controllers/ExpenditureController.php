@@ -43,12 +43,14 @@ class ExpenditureController extends Controller
        }
        return view('zotimet.zotimet',compact('data'));
      }
+
      public function zotimet_create(){
        $spendingtype = Spendingtype::lists('spendingtype', 'id');
 
        return view('zotimet.zotimet_create', compact('spendingtype'));
 
      }
+
      public function zotimet_store(ZotimetRequest $request)
      {
 

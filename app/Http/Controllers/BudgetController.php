@@ -68,15 +68,14 @@ class BudgetController extends Controller
                 ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'expenditures.spendingtype_id')
                 ->select( 'spendingtypes.spendingtype',DB::raw('SUM(paid_value) as total'))
                 ->groupBy('spendingtypes.spendingtype')
-                ->where('expenditures.department_id',Auth::user()->department_id)
+                ->where('expenditures.department_id',Auth::user()->department_id)->where('paid','!=',4)
                 ->OrderBy('expenditures.id','asc')
                 ->get();
         $zotimet = DB::table('expenditures')
                 ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'expenditures.spendingtype_id')
-                ->select( 'spendingtypes.spendingtype',DB::raw('SUM(value) as total'))
+                ->select( 'spendingtypes.spendingtype',DB::raw('SUM(paid_value) as total'))
                 ->groupBy('spendingtypes.spendingtype')
-                ->where('expenditures.department_id',Auth::user()->department_id)
-                ->where('paid',4)
+                ->where('expenditures.department_id',Auth::user()->department_id)->where('paid',4)
                 ->OrderBy('expenditures.id','asc')
                 ->get();
 
