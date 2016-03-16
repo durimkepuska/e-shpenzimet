@@ -91,6 +91,7 @@ class FreskoTeDhenat extends Command
 
         //  buxhetin fillestare drejtorite kategorite
         foreach ($department as  $index =>$value) {
+
           $buxheti_fillestare_drejtorite_kategorite =  DB::table('budget')
                   ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'budget.spendingtype_id')
                   ->select(DB::raw('CONCAT("buxheti_fillestare","-",department_id,"-",spendingtype_id) as drilldown'), 'spendingtypes.spendingtype as name', DB::raw('SUM(value) as y'))
@@ -351,7 +352,7 @@ class FreskoTeDhenat extends Command
 
             $borxhet_drejtorite_kategorite_nenkategorite_object = new FreskoTeDhenat();
                     $borxhet_drejtorite_kategorite_nenkategorite_object->id = 'borxhet-'.$index.'-'.$index1;
-                    $borxhet_drejtorite_kategorite_nenkategorite_object->name = 'Këtu janë paraqitur shpenzimet për secilën nënkategori të kategorisë së klikuar gjatë vitit 2016. Kliko mbi shtylla për ti shikuar furnitorët.';
+                    $borxhet_drejtorite_kategorite_nenkategorite_object->name = 'Këtu janë paraqitur borxhet për secilën nënkategori të kategorisë së klikuar gjatë vitit 2016. Kliko mbi shtylla për ti shikuar furnitorët.';
                     $borxhet_drejtorite_kategorite_nenkategorite_object->data = $borxhet_drejtorite_kategorite_nenkategorite;
 
             $borxhet_drejtorite_kategorite_nenkategorite_json = json_encode ($borxhet_drejtorite_kategorite_nenkategorite_object, JSON_NUMERIC_CHECK);
