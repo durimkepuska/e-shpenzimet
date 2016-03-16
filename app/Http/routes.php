@@ -95,9 +95,9 @@ Route::get('error', function(){
     return view('errors.404');
 });
 
-Route::get('api', 'ApiController@index');
-
+//web
 Route::get('/', 'WebController@index');
 Route::post('generateRaport', 'WebController@generateRaport');
 
+//send mail
 Route::resource('email', 'UserController@sendme');

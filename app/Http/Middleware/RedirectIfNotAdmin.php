@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Flash;
+use Redirect;
 class RedirectIfNotAdmin
 {
     /**
@@ -17,8 +18,8 @@ class RedirectIfNotAdmin
     {
 
             if (!$request->user()->isAdmin()) {
-                Flash::warning('You do not have that permission!');
-                return redirect('auth/login');
+                Flash::warning('Fshirja nuk lejohet, kontaktoni personin pergjegjes!');
+                 return Redirect::back();
             }
 
         return $next($request);

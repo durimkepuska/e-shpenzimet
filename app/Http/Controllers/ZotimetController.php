@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class ZotimetController extends Controller
 {
+  public function __construct(){
+
+      $this->middleware('auth');
+
+  }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,7 @@ class ZotimetController extends Controller
      */
     public function index()
     {
-        
+
         return view('expenditures.index');
     }
 

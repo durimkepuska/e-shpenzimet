@@ -13,7 +13,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\Inspire::class,
         \App\Console\Commands\FreskoTeDhenat::class,
     ];
 
@@ -25,13 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
-
-         $schedule->command('fresko:tedhenat')
+      $schedule->command('fresko:tedhenat')
                   ->dailyAt('23:55');
-
-
-
-
     }
 }
