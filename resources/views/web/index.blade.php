@@ -35,12 +35,11 @@
 		<ul>
 			<div class="second_div" >
 				<div class="cd-logo pull-left">
-					<a href="#"><img src="{!! URL::asset('web/images/gjakovaweb.png') !!}" ></a>
+					<a href="#"><img src="{!! URL::asset('web/images/gjakovaweb.png') !!}"></a>
 				</div>
 				<div class="cd-logo1 pull-right">
-					<a href="#"><img src="{!! URL::asset('web/images/kosova.png') !!}" ></a>
+					<a href="#"><img src="{!! URL::asset('web/images/Kosova.png') !!}"></a>
 				</div>
-
 			</div>
 		</ul>
 	</div>
