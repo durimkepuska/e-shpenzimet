@@ -15,7 +15,7 @@
 
         <p>ID: {!! $data->id !!}</strong> </p>
         <p>Email: {!! $data->email !!}</strong> </p>
-        <p>Drejtoria për:  {!! $data->department->department !!}</p>
+        <p>Drejtoria për:  {!! $data->department_id !!}</p>
 
       </div>
 @stop

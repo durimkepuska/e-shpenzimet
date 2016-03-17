@@ -353,10 +353,6 @@ class ExpenditureController extends Controller
       $data = expenditure::Raport($paid, $start_date, $end_date, $supplier_id, $allSuppliers, $spendingtype, $allSpendingtypes, $payment_source, $allPaymentSources, $department_id, $spendingcategory, $allSpendingCategories )
             ->get();
 
-
-
-
-
             Excel::create($data[0]->Drejtoria, function($excel) use($data) {
 
               $excel->setTitle('e-Shpenzimet, '. $data[0]->Drejtoria);
@@ -396,7 +392,7 @@ class ExpenditureController extends Controller
                        }
 
                        $sheet->appendRow(array(
-                           '© e-Shpenzimet 2016','','', '','Gjithsej: ', $sum1 . ' EUR', $sum2 . ' EUR', $sum1-$sum2. ' EUR'
+                           '© e-Shpenzimet 2016','','', '','Gjithsej: ', number_format($sum1,2) . ' EUR', number_format($sum2,2) . ' EUR', number_format($sum1-$sum2,2). ' EUR'
                        ));
 
                        $sheet->appendRow(array(
