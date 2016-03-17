@@ -31,7 +31,7 @@ class ExpenditureController extends Controller
      public function __construct(){
 
        $this->middleware('auth');
-        
+
      }
 
      public function zotimet(){
@@ -355,9 +355,9 @@ class ExpenditureController extends Controller
 
 
 
+
+
             Excel::create($data[0]->Drejtoria, function($excel) use($data) {
-
-
 
               $excel->setTitle('e-Shpenzimet, '. $data[0]->Drejtoria);
 
@@ -379,11 +379,9 @@ class ExpenditureController extends Controller
 
                        $sheet->setAutoFilter();
 
-                       $sheet->setHeight(1, 20);
+                       $sheet->setHeight(1, 30);
 
                        //$sheet->setAllBorders('thin');
-
-
 
                        $sheet->setOrientation('landscape');
 
@@ -391,11 +389,21 @@ class ExpenditureController extends Controller
                            0.25, 0.30, 0.25, 0.30
                        ));
 
+                       $sum1=0;$sum2=0;
+                       foreach ($data as $key => $value) {
+                         $sum1 = $sum1  +  $data[$key]->Vlera_Faturës;
+                         $sum2 = $sum2  +  $data[$key]->Vlera_e_Paguar;
+                       }
+
                        $sheet->appendRow(array(
-                           '','© e-Shpenzimet','2016', 'Drejtoria per:',$data[0]->Drejtoria, 'Komuna e Gjakoves'
+                           '© e-Shpenzimet 2016','','', '','Gjithsej: ', $sum1 . ' EUR', $sum2 . ' EUR', $sum1-$sum2. ' EUR'
                        ));
 
-               });
+                       $sheet->appendRow(array(
+
+                          'Raport prej datës: '.date_format(date_create(Input::get('start_date')), 'd-m-Y')   .' deri me: '.date_format(date_create(Input::get('end_date')), 'd-m-y') ,'','', '',' ', '', '',
+                       ));
+                  });
 
             })->export($type);
 

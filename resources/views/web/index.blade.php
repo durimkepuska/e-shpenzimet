@@ -24,8 +24,8 @@
 					<span style="font-weight: bold;">Qendra Informative:</span>
 					0800 60000, 0800 60001 (pa pagesë)  |  gjakova.ic@rks-gov.net
 					<span class="first_span" style=" float:right; ">
-						<a href="" data-toggle="modal" data-target="#shkrarko">Shkarko të dhënat</a> |
-						<a href="" data-toggle="modal"  data-target="#myModal">Kyçu</a>
+						<a id="shkarko_text" href="" data-toggle="modal" data-target="#shkrarko">Shkarko të dhënat </a> |
+						<a id="login_text" href="" data-toggle="modal"  data-target="#myModal">Kyçu</a>
 					</span>
 				</p>
 			</div>
@@ -34,25 +34,26 @@
 	<div class="container" >
 		<ul>
 			<div class="second_div" >
-				<div class="cd-logo "><a href="#">
-					<img src="{!! URL::asset('web/images/logo.png') !!}" alt="Logo"></a>
+				<div class="cd-logo pull-left">
+					<a href="#"><img src="{!! URL::asset('web/images/gjakovaweb.png') !!}" ></a>
 				</div>
+				<div class="cd-logo1 pull-right">
+					<a href="#"><img src="{!! URL::asset('web/images/kosova.png') !!}" ></a>
+				</div>
+
 			</div>
 		</ul>
 	</div>
 	<ul class="cd-main-nav third_div">
 		<li class="dropdown">
-			<a class="dropbtn" href="#">E-SHPENZIMET <span class="glyphicon glyphicon-menu-down"></a>
+			<a class="dropbtn" href="#">e-Shpenzimet <span class="glyphicon glyphicon-menu-down"></a>
 			<div class="dropdown-content" id="drop">
-				<a href="#"> 2013</a>
-				<a href="#"> 2014</a>
-				<a href="#"> 2015</a>
-				<a href="#"> 2016</a>
+				<a href="">Viti 2016</a>
 			</div>
 		</li>
-		<li><a href="#">E-REKRUTIMI</a></li>
-		<li><a href="#">E-PARTICIPIMI</a></li>
-		<li><a href="#">GJAKOVA PORTAL</a></li>
+		<li><a href="#">e-Rekrutimi</a></li>
+		<li><a href="#">e-Participimi</a></li>
+		<li><a href="http://gjakovaportal.com">Gjakova Portal</a></li>
 	</ul>
 	<a href="#0" class="cd-nav-trigger"><span></span></a>
 </header>
@@ -64,14 +65,14 @@
 	<section id="branding" class="cd-branding">
 		<ul>
 			<li class="cd-box">
-				<div class="panel-heading">E-Shpenzimet gjatë vitit 2016</div>
-				<div id="chart_container" style=" min-width:300px; height: 400px; margin: 0 0"></div>
+				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit 2016</span><br><br>Kliko mbi shtylla për më shumë informata rreth buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
+				<div id="chart_container" style="min-width:300px; height:370px; margin: 5px 0"></div>
 			</li>
 			<li>
 				<div class="panel panel-default panel_class">
-					 <div class="panel-heading">Paneli i informatave</div>
+					 <div class="panel-heading" style="text-align:center;">Paneli i informatave</div>
 					 <div class="panel-body">
-					 	<div id="info_panel" style="text-align:left;  text-justify: inter-word;  line-height: 1.8;"></div>
+					 	<div id="info_panel" style="text-align:left;  text-justify: inter-word;  line-height: 1.6;"></div>
 					 </div>
 				</div>
 			</li>
@@ -92,9 +93,9 @@
 			   {!! HTML::link('http://gjakovaportal.com/al', 'Gjakova Portal') !!}
 			</p>
 			<div class="pull-right">
-				<img class="img_footer3" src="{!! URL::asset('web/images/krijon.png') !!}" alt="Logo">
-				<img class="img_footer1" src="{!! URL::asset('web/images/scok.png') !!}" alt="Logo">
-        <img class="img_footer2" src="{!! URL::asset('web/images/undp.png') !!}" alt="Logo">
+				<a href="http://www.krijonxxl.com"><img class="img_footer3" src="{!! URL::asset('web/images/krijon.png') !!}" alt="Logo"></a>
+				<a href="http://www.ks.undp.org/"><img class="img_footer1" src="{!! URL::asset('web/images/scok.png') !!}" alt="Logo"></a>
+        <a href="https://www.eda.admin.ch/countries/kosovo/en/home.html"><img class="img_footer2" src="{!! URL::asset('web/images/undp.png') !!}" alt="Logo"></a>
 			</div><br><br>
 			<div class="pull-left">
         <a href="https://www.facebook.com/KuvendiKomunalGjakove/">   <img src="{!! URL::asset('web/images/facebook.png') !!}"></a>

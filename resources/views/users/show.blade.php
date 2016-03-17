@@ -15,7 +15,7 @@
 
         <p>ID: {!! $data->id !!}</strong> </p>
         <p>Email: {!! $data->email !!}</strong> </p>
-        <p>Drejtoria:  {!! Auth::user()->find(Auth::user()->department_id)->Department->department !!}</p>
+        <p>Drejtoria për:  {!! $data->department->department !!}</p>
 
       </div>
 @stop

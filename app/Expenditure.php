@@ -4,7 +4,7 @@ namespace App;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Expenditure extends Model
 {
     protected $table = 'expenditures';
@@ -121,7 +121,7 @@ class Expenditure extends Model
             if(!$allPaymentSources==1){  $query->where('expenditures.payment_source_id' , $payment_source);}
             if(!$allSpendingCategories==1){  $query->where('expenditures.spending_category_id' , $spendingcategory);}
               $query->whereBetween('expenditures.expenditure_date',array($start_date,$end_date));
-             if(Auth::user()->role_id==!4){  $query->where('expenditures.department_id' , $department_id); }
+             if(Auth::user()->role_id!==4){ $query->where('expenditures.department_id' , $department_id); }
               $query->join('departments', 'expenditures.department_id', '=', 'departments.id')
               ->join('suppliers', 'expenditures.supplier_id', '=', 'suppliers.id')
               ->join('spendingtypes', 'expenditures.spendingtype_id', '=', 'spendingtypes.id')
@@ -129,18 +129,21 @@ class Expenditure extends Model
               ->join('users', 'expenditures.user_id', '=', 'users.id')
               ->join('expenditurestatus', 'expenditures.paid', '=', 'expenditurestatus.id')
               ->join('spending_categories', 'expenditures.spending_category_id', '=', 'spending_categories.id')
-              ->select('expenditures.id',
-                       'expenditures.description as Pershkrimi',
-                       'expenditures.invoice_number as Numri_Fatures',
-                       'spendingtypes.spendingtype as Lloji_Shpenzimit',
-                       'expenditures.value as Vlera',
-                       'suppliers.supplier as Furnitori',
-                       'departments.department as Drejtoria',
-                       'users.name as Pergjegjesi',
-                       'payment_sources.payment_source as Vija_Buxhetore',
-                       'expenditures.expenditure_date as Data_Shpenzimit',
-                       'expenditurestatus.status as Statusi',
-                       'spending_categories.spending_category as Kategoria');
+              ->select(
+                        'departments.department as Drejtoria',
+                        'spendingtypes.spendingtype as Lloji_Shpenzimit',
+                        'spending_categories.spending_category as Kategoria',
+                        'suppliers.supplier as Furnitori',
+                        'expenditures.invoice_number as Numri_Faturës',
+                        'expenditures.value as Vlera_Faturës',
+                        'expenditures.paid_value as Vlera_e_Paguar',
+                         DB::raw('value-paid_value as Borxhi'),
+                        'expenditurestatus.status as Statusi',
+                        'expenditures.expenditure_date as Data_Shpenzimit',
+                        'expenditures.description as Përshkrimi_Shpenzimit',
+                        'users.name as Përgjegjësi',
+                        'payment_sources.payment_source as Vija_Buxhetore'
+                      );
       }
 
 
