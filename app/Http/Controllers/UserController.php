@@ -121,13 +121,13 @@ class UserController extends Controller
 
   public function sendme()
     {
-        $user = User::findOrFail(1);
+        $user = User::findOrFail(6);
         $pershkrimi = 'shpenzimi x';
         $vlera_fatures = '500 EUR';
         Mail::send('emails.hidden_expenditures', ['user' => $user, 'pershkrimi' => $pershkrimi, 'vlera_fatures' => $vlera_fatures], function ($m) use ($user) {
 
             $m->from('durimkepuska@gmail.com', 'e-Shpenzimet');
-
+              $user = User::findOrFail(6);
             $m->to($user->email, $user->name)->subject('Lajmerim, eshte fshehur nje shpenzim nga: ' . $user->name);
         });
     }

@@ -46,13 +46,10 @@
         </div>
         <div class="form-group">
            <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Fjalëkalimi</label><br>
-           {!! Form::password('password', null, ['class' => ' field','placeholder'=>'Fjalëkalimi'])!!}
+           {!! Form::password('password', null, ['class' => 'form-control','id'=>'pwd','placeholder'=>'Fjalëkalimi']) !!}
         </div><br>
-         {!! Form::submit('Kyçu',['class' => 'btn btn-danger btn-block'])!!}
-         <div class="form-group" >
-             @include('errors.error_handler')
-         </div>
-		  </div>
+         {!! Form::submit('Kyçu',['class' => 'btn btn-primary btn-block'])!!}
+        </div>
 		<div class="modal-footer">
       <p class="pull-left"> <a href="{!!url('password/email')!!}">Kam harruar fjalëkalimin!</a></p>
       <p class="pull-right "> Vetëm për zyrtarët përgjegjës</p>

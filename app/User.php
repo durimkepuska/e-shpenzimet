@@ -59,8 +59,9 @@ class User extends Model implements AuthenticatableContract,
     {
         if( Auth::user()->role_id == 1 ){
             return true;
+        } else {
+          return false;
         }
-        return false;
     }
     public function isDrejtor()
     {
@@ -76,6 +77,7 @@ class User extends Model implements AuthenticatableContract,
         }
         return false;
     }
+
 
 
 }

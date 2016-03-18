@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="{!! URL::asset('web/images/favicon.png') !!}">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- <link rel="icon" type="image/png" href="{!! URL::asset('web/css/bootstrap.min.css') !!}"> -->
 <script src="{!! URL::asset('web/js/jquery-2.1.1.js') !!}"></script>
 <script src="{!! URL::asset('web/js/bootstrap.min.js') !!}"></script>
 <link rel="stylesheet" href="{!! URL::asset('web/css/reset.css') !!}">
@@ -45,7 +46,7 @@
 	</div>
 	<ul class="cd-main-nav third_div">
 		<li class="dropdown">
-			<a class="dropbtn" href="#">e-Shpenzimet <span class="glyphicon glyphicon-menu-down"></a>
+			<a class="dropbtn" >e-Shpenzimet <span class="glyphicon glyphicon-menu-down"></a>
 			<div class="dropdown-content" id="drop">
 				<a href="">Viti 2016</a>
 			</div>
@@ -61,11 +62,12 @@
 	<section id="buttons" class="cd-colors">
 		<div class="cd-box"></div>
 	</section>
+	@include('errors.error_handler')
 	<section id="branding" class="cd-branding">
 		<ul>
 			<li class="cd-box">
 				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit 2016</span><br><br>Kliko mbi shtylla për më shumë informata rreth buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
-				<div id="chart_container" style="min-width:300px; height:370px; margin: 5px 0"></div>
+				<div id="chart_container"></div>
 			</li>
 			<li>
 				<div class="panel panel-default panel_class">

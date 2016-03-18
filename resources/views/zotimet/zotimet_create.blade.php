@@ -16,11 +16,8 @@
      @include('zotimet.zotimet_form')
 
     {!! Form::close()!!}
-    <div class="form-group" style="width:400px;">
-      @include('errors.error_handler')
-      @include('partials.flash')
-      @include('spendingtypes.subform')
 
-    </div>
+@include('spendingtypes.subform')
+
 
 @stop

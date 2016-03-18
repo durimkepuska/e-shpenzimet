@@ -16,9 +16,6 @@
       @include('payment_sources.form')
 
     {!! Form::close()!!}
-    <div class="form-group" style="width:400px;">
-      @include('errors.error_handler')
-      @include('partials.flash')
-    </div>
+    
 
 @stop

@@ -1,9 +1,7 @@
 @extends('auth_layout.template')
 
 @section('form')
-<div style="text-align:center;">
-	<img src="{!! URL::asset('web/images/logo.png') !!}" alt="Logo">
-</div><br>
+
 <div class="container">
   <h4>Shkruani email-in dhe fjalëkalimin e ri.</h4>
 <form method="POST" {!! url('password/reset') !!}>
@@ -29,8 +27,5 @@
 </form>
 
 </div>
-<div class="form-group" style="width:400px;">
-@include('errors.error_handler')
-@include('partials.flash')
-</div>
+
 @stop

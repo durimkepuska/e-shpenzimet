@@ -19,9 +19,5 @@
 
     {!! Form::close()!!}
 
-    <div class="form-group" style="width:400px;">
-      @include('errors.error_handler')
-      
-    </div>
 
 @stop

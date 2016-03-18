@@ -100,4 +100,4 @@ Route::get('/', 'WebController@index');
 Route::post('generateRaport', 'WebController@generateRaport');
 
 //send mail
-Route::resource('email', 'UserController@sendme');
+//Route::get('email', 'UserController@sendme');

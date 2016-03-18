@@ -18,10 +18,9 @@ class RedirectIfNotAdmin
     {
 
             if (!$request->user()->isAdmin()) {
-                Flash::warning('Fshirja nuk lejohet, kontaktoni personin pergjegjes!');
+                Flash::warning('Ky veprim nuk lejohet, kontaktoni personin përgjegjës!');
                  return Redirect::back();
             }
-
-        return $next($request);
+            return $next($request);
     }
 }

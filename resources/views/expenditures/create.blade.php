@@ -16,11 +16,9 @@
      @include('expenditures.form')
 
     {!! Form::close()!!}
-    <div class="form-group" style="width:400px;">
-      @include('errors.error_handler')
-      @include('partials.flash')
-      @include('spending_categories.subform')
-      @include('spendingtypes.subform')
-    </div>
+
+@include('spending_categories.subform')
+@include('spendingtypes.subform')
+
 
 @stop

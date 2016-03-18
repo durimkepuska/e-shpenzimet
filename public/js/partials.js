@@ -1,4 +1,10 @@
-$('#flash_message').delay(3000).fadeOut('slow');
+$(document).ready(function()
+  {
+      $("#myTable").tablesorter();
+  }
+ );
+
+$('#flash_message').delay(4000).fadeOut('slow');
 
 
 $('#myForm').submit(function() {
