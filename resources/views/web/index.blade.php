@@ -22,11 +22,13 @@
 		<div class="first_div" >
 			<div class="container" >
 				<p>
-					<span style="font-weight: bold;">Qendra Informative:</span>
-					0800 60000, 0800 60001 (pa pagesë)  |  gjakova.ic@rks-gov.net
-					<span class="first_span" style=" float:right; ">
-						<a id="shkarko_text" href="" data-toggle="modal" data-target="#shkrarko">Shkarko të dhënat </a> |
-						<a id="login_text" href="" data-toggle="modal"  data-target="#myModal">Kyçu</a>
+					<span class="header_text" >
+							<span style="font-weight: bold;">Qendra Informative:</span>
+							0800 60000, 0800 60001 (pa pagesë) | gjakova.ic@rks-gov.net
+					</span>
+					<span class="first_span" >
+							<a id="shkarko_text" href="" data-toggle="modal" data-target="#shkrarko">Shkarko të dhënat </a> |
+							<a id="login_text" href="" data-toggle="modal"  data-target="#myModal">Kyçu</a>
 					</span>
 				</p>
 			</div>
@@ -66,7 +68,8 @@
 	<section id="branding" class="cd-branding">
 		<ul>
 			<li class="cd-box">
-				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit 2016</span><br><br>Kliko mbi shtylla për më shumë informata rreth buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
+				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit 2016</span>
+					<br><br>Kliko mbi shtylla për më shumë informata rreth buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
 				<div id="chart_container"></div>
 			</li>
 			<li>
@@ -96,20 +99,25 @@
 			<div class="pull-right">
 				<a href="http://www.krijonxxl.com"><img class="img_footer3" src="{!! URL::asset('web/images/krijon.png') !!}" alt="Logo"></a>
 				<a href="http://www.ks.undp.org/"><img class="img_footer1" src="{!! URL::asset('web/images/scok.png') !!}" alt="Logo"></a>
-        <a href="https://www.eda.admin.ch/countries/kosovo/en/home.html"><img class="img_footer2" src="{!! URL::asset('web/images/undp.png') !!}" alt="Logo"></a>
+        <a href="https://www.eda.admin.ch/countries/kosovo/en/home.html"><img class="img_footer2" src="{!! URL::asset('web/images/undp2.png') !!}" alt="Logo"></a>
 			</div><br><br>
-			<div class="pull-left">
-        <a href="https://www.facebook.com/KuvendiKomunalGjakove/">   <img src="{!! URL::asset('web/images/facebook.png') !!}"></a>
+			<div class="pull-left ">
+        <a href="https://www.facebook.com/KuvendiKomunalGjakove/">
+					 <img class="facebook" src="{!! URL::asset('web/images/facebook.png') !!}">
+				</a>
 			</div>
 		</div>
 	</div>
 </footer>
+
 <script>
+
 $(function () {
 Highcharts.setOptions({
 lang: {
 	thousandsSep: ',',
-	numericSymbols: [' mijë', ' milionë']
+	numericSymbols: [' mijë', ' milionë'],
+	drillUpText: '< ktheu'
 }
 });
 $('#chart_container').highcharts({
@@ -147,14 +155,33 @@ series: [{
   id: '',
   name: '---Shpenzimet 2016--- Kliko mbi shtylla për më shumë informata rreth Buxhetit, Shpenzimet dhe Borxheve të drejtorive në Komunën e Gjakovës',
   data: [
-  {name: 'Buxheti fillestar', color: '#8C231F', y: {!! File::get(storage_path('charts/2016/totals/buxheti_total.js')) !!}, drilldown: 'buxheti_fillestare_drejtorite'},
+  {name: 'Buxheti fillestar', color: '#2F4F4F', y: {!! File::get(storage_path('charts/2016/totals/buxheti_total.js')) !!}, drilldown: 'buxheti_fillestare_drejtorite'},
 	{name: 'Shpenzimet', color: '#8C231F', y: {!! File::get(storage_path('charts/2016/totals/shpenzimet_total.js')) !!}, drilldown: 'shpenzimet_drejtorite'},
-	{name: 'Buxheti aktual',color: '#00ff00', y: {!! File::get(storage_path('charts/2016/totals/buxheti_aktual.js')) !!}, drilldown: 'buxheti_aktual_drejtorite'},
-	{name: 'Borxhet',color: '#87CEEB', y: {!! File::get(storage_path('charts/2016/totals/borxhet_total.js')) !!}, drilldown: 'borxhet_drejtorite'}
+	{name: 'Buxheti aktual',color: '#FFD700', y: {!! File::get(storage_path('charts/2016/totals/buxheti_aktual.js')) !!}, drilldown: 'buxheti_aktual_drejtorite'},
+	{name: 'Borxhet',color: '#696969', y: {!! File::get(storage_path('charts/2016/totals/borxhet_total.js')) !!}, drilldown: 'borxhet_drejtorite'}
 ]}],
 drilldown: {
-  series: [
-	{!! File::get(storage_path('charts/2016/all.js')) !!}
+	drillUpButton: {
+relativeTo: '',
+position: {
+	y: -10,
+  x: 0
+},
+theme: {
+	fill: '#A0522D',
+	'stroke-width': 1,
+  stroke: '#A0522D',
+  r: 5,
+  states: {
+  hover: {
+  fill: '#A0522D'
+  },
+  select: {
+  stroke: '#A0522D',
+  fill: '#fff'
+}}}},
+series: [
+{!! File::get(storage_path('charts/2016/all.js')) !!}
 ]}})});
 </script>
 <script src="{!! URL::asset('web/js/other.js') !!}"></script>
