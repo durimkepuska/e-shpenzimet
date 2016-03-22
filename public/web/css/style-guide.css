@@ -38,17 +38,19 @@
     color:white;
     font-size:9px;
   }
-  .img_footer1{
+  .scok{
     width:80px;
     padding-top: 10px;
   }
-  .img_footer2{
+  .undp{
     width:80px;
     padding-top: 10px;
   }
-  .img_footer3{
+  .xxl{
     width:80px;
     padding-top: 10px;
+    padding-bottom: 8px;
+    
 
   }
   .cd-main-nav {
@@ -98,14 +100,17 @@
       color:white;
       font-size:12px;
     }
-    .img_footer1{
+    .scok{
       width: 180px;
     }
-    .img_footer2{
+    .undp{
       width: 180px;
+
     }
-    .img_footer3{
-      width: 180px;
+    .xxl{
+      width: 150px;
+      padding-bottom: 35px;
+      padding-right:  10px;
     }
     .panel_class{
       width:24%;
@@ -164,14 +169,14 @@
 
 
 /*end*/
-.img_footer1{
+.scok{
   height:auto;
 
 }
-.img_footer2{
+.undp{
   height:auto;
 }
-.img_footer3{
+.xxl{
   height:auto;
 }
 

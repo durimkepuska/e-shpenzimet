@@ -97,9 +97,9 @@
 			   {!! HTML::link('http://gjakovaportal.com/al', 'Gjakova Portal') !!}
 			</p>
 			<div class="pull-right">
-				<a href="http://www.krijonxxl.com"><img class="img_footer3" src="{!! URL::asset('web/images/krijon.png') !!}" alt="Logo"></a>
-				<a href="http://www.ks.undp.org/"><img class="img_footer1" src="{!! URL::asset('web/images/scok.png') !!}" alt="Logo"></a>
-        <a href="https://www.eda.admin.ch/countries/kosovo/en/home.html"><img class="img_footer2" src="{!! URL::asset('web/images/undp2.png') !!}" alt="Logo"></a>
+				<a href="http://www.krijonxxl.com"><img class="xxl" src="{!! URL::asset('web/images/xxl.png') !!}" alt="Logo"></a>
+				<a href="http://www.ks.undp.org/"><img class="scok" src="{!! URL::asset('web/images/scok.png') !!}" alt="Logo"></a>
+        <a href="https://www.eda.admin.ch/countries/kosovo/en/home.html"><img class="undp" src="{!! URL::asset('web/images/undp2.png') !!}" alt="Logo"></a>
 			</div><br><br>
 			<div class="pull-left ">
         <a href="https://www.facebook.com/KuvendiKomunalGjakove/">
@@ -157,7 +157,7 @@ series: [{
   data: [
   {name: 'Buxheti fillestar', color: '#2F4F4F', y: {!! File::get(storage_path('charts/2016/totals/buxheti_total.js')) !!}, drilldown: 'buxheti_fillestare_drejtorite'},
 	{name: 'Shpenzimet', color: '#8C231F', y: {!! File::get(storage_path('charts/2016/totals/shpenzimet_total.js')) !!}, drilldown: 'shpenzimet_drejtorite'},
-	{name: 'Buxheti aktual',color: '#FFD700', y: {!! File::get(storage_path('charts/2016/totals/buxheti_aktual.js')) !!}, drilldown: 'buxheti_aktual_drejtorite'},
+	{name: 'Buxheti aktual',color: '#FFCC00', y: {!! File::get(storage_path('charts/2016/totals/buxheti_aktual.js')) !!}, drilldown: 'buxheti_aktual_drejtorite'},
 	{name: 'Borxhet',color: '#696969', y: {!! File::get(storage_path('charts/2016/totals/borxhet_total.js')) !!}, drilldown: 'borxhet_drejtorite'}
 ]}],
 drilldown: {
