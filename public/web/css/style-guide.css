@@ -43,14 +43,15 @@
     padding-top: 10px;
   }
   .undp{
-    width:80px;
+    width:65px;
     padding-top: 10px;
+
   }
   .xxl{
-    width:80px;
+    width:85px;
     padding-top: 10px;
     padding-bottom: 8px;
-    
+
 
   }
   .cd-main-nav {
@@ -73,7 +74,6 @@
   #chart_container{
     min-width:300px; height:370px; margin: 0 0;
   }
-
   .first_div p {
     font-size:13px;
     padding-top:9px;
@@ -104,7 +104,7 @@
       width: 180px;
     }
     .undp{
-      width: 180px;
+      width: 110px;
 
     }
     .xxl{
@@ -317,6 +317,7 @@ header {
   /* logo box style */
   background-color: #ffffff;
   width:110px;
+
 
 }
 

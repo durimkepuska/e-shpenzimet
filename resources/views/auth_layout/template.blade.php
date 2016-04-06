@@ -19,7 +19,7 @@
     <a href="#"><img src="{!! URL::asset('web/images/gjakovaweb.png') !!}"></a>
   </div>
   <div class="cd-logo1 pull-right">
-    <a href="#"><img src="{!! URL::asset('web/images/Kosova.png') !!}"></a>
+
   </div><br><br><br><br><br><br>
 
     @yield('form')

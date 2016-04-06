@@ -41,7 +41,7 @@
 					<a href="#"><img src="{!! URL::asset('web/images/gjakovaweb.png') !!}"></a>
 				</div>
 				<div class="cd-logo1 pull-right">
-					<a href="#"><img src="{!! URL::asset('web/images/Kosova.png') !!}"></a>
+					<!-- <a href="#"><img src="{!! URL::asset('web/images/e-shpenzimet.png') !!}"></a> -->
 				</div>
 			</div>
 		</ul>
@@ -97,21 +97,19 @@
 			   {!! HTML::link('http://gjakovaportal.com/al', 'Gjakova Portal') !!}
 			</p>
 			<div class="pull-right">
-				<a href="http://www.krijonxxl.com"><img class="xxl" src="{!! URL::asset('web/images/xxl.png') !!}" alt="Logo"></a>
-				<a href="http://www.ks.undp.org/"><img class="scok" src="{!! URL::asset('web/images/scok.png') !!}" alt="Logo"></a>
-        <a href="https://www.eda.admin.ch/countries/kosovo/en/home.html"><img class="undp" src="{!! URL::asset('web/images/undp2.png') !!}" alt="Logo"></a>
+				<a href="http://www.krijonxxl.com" target="_blank"><img class="xxl" src="{!! URL::asset('web/images/xxl.png') !!}" alt="Logo"></a>
+				<a href="https://www.eda.admin.ch/countries/kosovo/en/home.html" target="_blank"><img class="scok" src="{!! URL::asset('web/images/scok.png') !!}" alt="Logo"></a>
+        <a href="http://www.ks.undp.org" target="_blank"><img class="undp" src="{!! URL::asset('web/images/undp.png') !!}" alt="Logo"></a>
 			</div><br><br>
 			<div class="pull-left ">
-        <a href="https://www.facebook.com/KuvendiKomunalGjakove/">
+        <a href="https://www.facebook.com/KuvendiKomunalGjakove/" target="_blank">
 					 <img class="facebook" src="{!! URL::asset('web/images/facebook.png') !!}">
 				</a>
 			</div>
 		</div>
 	</div>
 </footer>
-
 <script>
-
 $(function () {
 Highcharts.setOptions({
 lang: {
