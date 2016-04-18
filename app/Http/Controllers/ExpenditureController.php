@@ -218,15 +218,11 @@ class ExpenditureController extends Controller
     public function search()
     {
       $keyword=  Input::get('keyword');
-      $data = Expenditure::DepartmentFilter()->NotHidden()->where('invoice_number', 'LIKE', '%'.$keyword.'%')->paginate(100);
+      $data = Expenditure::DepartmentFilter()->NotHidden()->where('invoice_number', 'LIKE', '%'.$keyword.'%')->paginate(10);
       return view('expenditures.index',compact('data'));
     }
 
-    public function advanceSearch()
-    {
-      $data = Expenditure::DepartmentFilter()->paginate(10);
-      return view('expenditures.index',compact('data'));
-    }
+
 
     public function pay($id)
     {

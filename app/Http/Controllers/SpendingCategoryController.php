@@ -118,7 +118,7 @@ class SpendingCategoryController extends Controller
     public function search()
     {
       $keyword=  Input::get('keyword');
-      $data = SpendingCategory::where('SpendingCategory', 'LIKE', '%'.$keyword.'%')->paginate();
+      $data = SpendingCategory::where('spending_category', 'LIKE', '%'.$keyword.'%')->paginate();
       return view('spending_categories.index',compact('data'));
     }
 }

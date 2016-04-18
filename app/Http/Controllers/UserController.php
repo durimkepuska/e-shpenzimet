@@ -115,7 +115,7 @@ class UserController extends Controller
   public function search()
   {
     $keyword=  Input::get('keyword');
-    $data = User::where('User', 'LIKE', '%'.$keyword.'%')->paginate();
+    $data = User::where('name', 'LIKE', '%'.$keyword.'%')->paginate();
     return view('users.index',compact('data'));
   }
 

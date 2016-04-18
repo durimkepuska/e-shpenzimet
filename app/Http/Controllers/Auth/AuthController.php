@@ -29,7 +29,7 @@ class AuthController extends Controller
     public function postLoginn(Request $request)
     {
         $this->validate($request, [
-            $this->loginUsername() => 'required', 'password' => 'required',
+            $this->loginUsername() => 'required', 'password' => 'required'
         ]);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle

@@ -22,10 +22,9 @@
              </div>
         </div>
         <div class="modal-footer">
-          {!! Form::submit('Shkarko',['class' => 'btn btn-primary pull-left '])!!}
+          {!! Form::submit('Shkarko',['class' => 'btn btn-primary pull-right '])!!}
           {!! Form::close()!!}
-        <button  class="btn btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Anulo</button>
-
+        <button  class="btn btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Anulo</button>
         </div>
     </div>
   </div>
@@ -42,19 +41,24 @@
         {!! csrf_field() !!}
         <div class="form-group">
           <label for="usrname"><span class="glyphicon glyphicon-user"></span> Email</label>
-          {!! Form::text('email', null, ['class' => 'form-control','placeholder'=>'Email'])!!}
+          {!! Form::text('email', null, ['class' => 'form-control','placeholder'=>'Email']) !!}
         </div>
         <div class="form-group">
-           <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Fjalëkalimi</label><br>
-           {!! Form::password('password', null, ['class' => 'form-control','id'=>'pwd','placeholder'=>'Fjalëkalimi']) !!}
-        </div><br>
-         {!! Form::submit('Kyçu',['class' => 'btn btn-primary btn-block'])!!}
+           <label for="psw"><span class="glyphicon glyphicon-eye-close"></span> Fjalëkalimi</label><br>
+           <input type="password" name="password" class="form-control" value="" placeholder="Fjalekalimi">
+           <!-- {!! Form::password('password', null, ['class' => 'form-control','placeholder'=>'Fjalëkalimi']) !!} -->
         </div>
-		<div class="modal-footer">
-      <p class="pull-left"> <a href="{!!url('password/email')!!}">Kam harruar fjalëkalimin!</a></p>
-      <p class="pull-right "> Vetëm për zyrtarët përgjegjës</p>
-      {!! Form::close()!!}
-		</div>
+
+    </div>
+
+    <div class="modal-footer">
+    {!! Form::submit('Kyçu',['class' => 'btn btn-primary pul-right'])!!}
+    {!! Form::close()!!}
+    <button  class="btn btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Anulo</button>
+    <br><br><p class="pull-left"  style="font-size:11px; "> <a href="{!!url('password/email')!!}">Kam harruar fjalëkalimin!</a></p>
+    <p class="pull-right" style="font-size:11px; color:red;"> Vetëm për zyrtarët përgjegjës!</p>
+
+    </div>
 	</div>
 </div>
 </div>

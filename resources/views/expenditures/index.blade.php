@@ -26,8 +26,8 @@
     <tbody>
       @foreach($data as $datas)
       <tr>
-        <td class="text-left">{!! substr($datas->invoice_number, 0, 20) !!}</td>
-        <td class="text-left"><a href="{!! action('ExpenditureController@show', [$datas->id]) !!}">{!! substr($datas->description, 0, 20) !!}... </a></td>
+        <td class="text-left">{!! substr($datas->invoice_number, 0, 15) !!}</td>
+        <td class="text-left"><a href="{!! action('ExpenditureController@show', [$datas->id]) !!}">{!! substr($datas->description, 0, 15) !!}... </a></td>
         <td class="text-right">{!! number_format($datas->value,2); !!}</td>
         <td class="text-right">{!! number_format($datas->paid_value,2) !!}</td>
         <td class="text-right">{!! number_format($datas->value - $datas->paid_value,2)  !!}</td>

@@ -15,50 +15,38 @@
 <script src="{!! URL::asset('web/highcharts/data.js') !!}"></script>
 <script src="{!! URL::asset('web/highcharts/drilldown.js') !!}"></script>
 <title>e-Shpenzimet</title>
+<!--
+	Developed by: KrijonXXL.com
+-->
 </head>
 <body>
-<header>
-	<ul>
-		<div class="first_div" >
-			<div class="container" >
-				<p>
-					<span class="header_text" >
-							<span style="font-weight: bold;">Qendra Informative:</span>
-							0800 60000, 0800 60001 (pa pagesë) | gjakova.ic@rks-gov.net
-					</span>
-					<span class="first_span" >
-							<a id="shkarko_text" href="" data-toggle="modal" data-target="#shkrarko">Shkarko të dhënat </a> |
-							<a id="login_text" href="" data-toggle="modal"  data-target="#myModal">Kyçu</a>
-					</span>
-				</p>
-			</div>
-		</div>
-	</ul>
-	<div class="container" >
-		<ul>
-			<div class="second_div" >
-				<div class="cd-logo pull-left">
-					<a href="#"><img src="{!! URL::asset('web/images/gjakovaweb.png') !!}"></a>
-				</div>
-				<div class="cd-logo1 pull-right">
-					<!-- <a href="#"><img src="{!! URL::asset('web/images/e-shpenzimet.png') !!}"></a> -->
-				</div>
-			</div>
-		</ul>
-	</div>
-	<ul class="cd-main-nav third_div">
-		<li class="dropdown">
-			<a class="dropbtn" >e-Shpenzimet <span class="glyphicon glyphicon-menu-down"></a>
-			<div class="dropdown-content" id="drop">
-				<a href="">Viti 2016</a>
-			</div>
-		</li>
-		<li><a href="#">e-Rekrutimi</a></li>
-		<li><a href="#">e-Participimi</a></li>
-		<li><a href="http://gjakovaportal.com">Gjakova Portal</a></li>
-	</ul>
-	<a href="#0" class="cd-nav-trigger"><span></span></a>
-</header>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand active" href="#">e-Shpenzimet</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Ballina</a></li>
+	        <li class="dropdown">
+	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Viti <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li class="active"><a href="#" >2016</a></li>
+						</ul>
+	        </li>
+				</ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a id="shkarko_text" href="" data-toggle="modal" data-target="#shkrarko"><span class="glyphicon glyphicon-download-alt"></span> Shkarko të dhënat </a></li>
+					<li><a id="login_text" href="" data-toggle="modal"  data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Kyçu në e-Shpenzimi</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
 @include('web.modalForms')
 <main>
 	<section id="buttons" class="cd-colors">
@@ -69,8 +57,8 @@
 		<ul>
 			<li class="cd-box">
 				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit 2016</span>
-					<br><br>Kliko mbi shtylla për më shumë informata rreth buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
-				<div id="chart_container"></div>
+					<br><br>Vizualizimi i buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
+				<div id="chart_container" ></div>
 			</li>
 			<li>
 				<div class="panel panel-default panel_class">
@@ -88,27 +76,7 @@
 		<div class="cd-box"><h1></h1>	<p></p></div>
 	</section>
 </main>
-<footer class="footer">
-	<div class="container" >
-		<div  class="footer_font ">
-			<p class="pull-left">
-				 © 2016 e-Shpenzimet &nbsp;&nbsp;
-				 <a href="" data-toggle="modal" data-target="#shkrarko">Shkarko të dhënat</a> &nbsp;&nbsp;
-			   {!! HTML::link('http://gjakovaportal.com/al', 'Gjakova Portal') !!}
-			</p>
-			<div class="pull-right">
-				<a href="http://www.krijonxxl.com" target="_blank"><img class="xxl" src="{!! URL::asset('web/images/xxl.png') !!}" alt="Logo"></a>
-				<a href="https://www.eda.admin.ch/countries/kosovo/en/home.html" target="_blank"><img class="scok" src="{!! URL::asset('web/images/scok.png') !!}" alt="Logo"></a>
-        <a href="http://www.ks.undp.org" target="_blank"><img class="undp" src="{!! URL::asset('web/images/undp.png') !!}" alt="Logo"></a>
-			</div><br><br>
-			<div class="pull-left ">
-        <a href="https://www.facebook.com/KuvendiKomunalGjakove/" target="_blank">
-					 <img class="facebook" src="{!! URL::asset('web/images/facebook.png') !!}">
-				</a>
-			</div>
-		</div>
-	</div>
-</footer>
+
 <script>
 $(function () {
 Highcharts.setOptions({
@@ -142,6 +110,7 @@ tooltip: {
   headerFormat: '<span style="font-size:11px"> <b>{point.y:,.2f} EUR</b></span><br>',
   pointFormat: '<span >{point.name}</span>'
 },
+
 plotOptions: {
   series: {
   borderWidth:5,
@@ -158,6 +127,7 @@ series: [{
 	{name: 'Buxheti aktual',color: '#FFCC00', y: {!! File::get(storage_path('charts/2016/totals/buxheti_aktual.js')) !!}, drilldown: 'buxheti_aktual_drejtorite'},
 	{name: 'Borxhet',color: '#696969', y: {!! File::get(storage_path('charts/2016/totals/borxhet_total.js')) !!}, drilldown: 'borxhet_drejtorite'}
 ]}],
+
 drilldown: {
 	drillUpButton: {
 relativeTo: '',
@@ -180,7 +150,9 @@ theme: {
 }}}},
 series: [
 {!! File::get(storage_path('charts/2016/all.js')) !!}
-]}})});
+]}
+
+})});
 </script>
 <script src="{!! URL::asset('web/js/other.js') !!}"></script>
 </body>

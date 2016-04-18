@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="{!! URL::asset('web/js/bootstrap.min.js') !!}"></script>
+
+
 </head>
 <body>
 <div class="container">
@@ -15,12 +17,13 @@
 </h2>
 <hr>
 <div>
-  <div class="cd-logo pull-left">
+  <div class="cd-logo pull-left"  >
     <a href="#"><img src="{!! URL::asset('web/images/gjakovaweb.png') !!}"></a>
   </div>
-  <div class="cd-logo1 pull-right">
+    <div style="padding-top:150px;">
 
-  </div><br><br><br><br><br><br>
+    </div>
+
 
     @yield('form')
 

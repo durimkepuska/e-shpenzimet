@@ -42,7 +42,6 @@ Route::get('expendituresPaid' , 'ExpenditureController@paid');
 Route::get('expendituresRaport' , 'ExpenditureController@raport');
 Route::post('expendituresRaport' , 'ExpenditureController@generateRaport');
 Route::post('expendituresSearch' , 'ExpenditureController@search');
-Route::post('expendituresAdvanceSearch' , 'ExpenditureController@advanceSearch');
 
 Route::get('expendituresPay/{id}' , 'ExpenditureController@pay');
 

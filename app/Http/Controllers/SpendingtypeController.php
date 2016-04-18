@@ -113,7 +113,7 @@ class SpendingtypeController extends Controller
   public function search()
   {
     $keyword=  Input::get('keyword');
-    $data = Spendingtype::where('expendityre_type', 'LIKE', '%'.$keyword.'%')->paginate();
+    $data = Spendingtype::where('spendingtype', 'LIKE', '%'.$keyword.'%')->paginate();
     return view('spendingtypes.index',compact('data'));
   }
 }
