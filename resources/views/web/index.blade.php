@@ -48,11 +48,13 @@
 	  </div>
 	</nav>
 @include('web.modalForms')
+
 <main>
 	<section id="buttons" class="cd-colors">
 		<div class="cd-box"></div>
 	</section>
 	@include('errors.error_handler')
+	@include('partials.flash')
 	<section id="branding" class="cd-branding">
 		<ul>
 			<li class="cd-box">

@@ -14,7 +14,7 @@ use Input;
 use Excel;
 use Artisan;
 use DB;
-
+use Flash;
 class WebController extends Controller
 {
 
@@ -57,6 +57,11 @@ class WebController extends Controller
                   'users.name as Përgjegjësi',
                   'payment_sources.payment_source as Vija_Buxhetore')
                  ->get();
+
+                 if(count($data)==0){
+                   Flash::warning('Nuk ka shënime për këtë drejtori!');
+                   return redirect('/');
+                 }
 
          Excel::create($data[0]->Drejtoria, function($excel) use($data) {
 

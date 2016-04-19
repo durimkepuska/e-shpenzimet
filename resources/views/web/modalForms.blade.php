@@ -46,11 +46,8 @@
         <div class="form-group">
            <label for="psw"><span class="glyphicon glyphicon-eye-close"></span> Fjalëkalimi</label><br>
            <input type="password" name="password" class="form-control" value="" placeholder="Fjalekalimi">
-           <!-- {!! Form::password('password', null, ['class' => 'form-control','placeholder'=>'Fjalëkalimi']) !!} -->
         </div>
-
-    </div>
-
+      </div>
     <div class="modal-footer">
     {!! Form::submit('Kyçu',['class' => 'btn btn-primary pul-right'])!!}
     {!! Form::close()!!}
