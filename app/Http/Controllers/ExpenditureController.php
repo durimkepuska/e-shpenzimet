@@ -358,7 +358,7 @@ class ExpenditureController extends Controller
 
             if(count($data)==0){
               Flash::warning('Nuk ka shënime!');
-              return redirect('/');
+               return Redirect::back();
             }
 
             Excel::create($data[0]->Drejtoria, function($excel) use($data) {
