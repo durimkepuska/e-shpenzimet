@@ -29,6 +29,7 @@
         <p>Furnitori: {!! $data->supplier->supplier !!}</p>
 
         <p>Drejtoria: {!! $data->department->department !!}</p>
+        <p>Nen Buxheti: {!! $data->sub_budget->sub_budget !!}</p>
 
         <p>Paguar:
             @if($data->paid==1)

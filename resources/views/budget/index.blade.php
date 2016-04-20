@@ -14,8 +14,10 @@
   <thead>
     <tr>
       <th>Kategoria</th>
+        <th>Shto Buxhet</th>
       <th>Burimi</th>
       <th>Vlera</th>
+
       <th></th>
     </tr>
   </thead>
@@ -24,6 +26,7 @@
     <tr>
 
       <td>{!! $datas->spendingtype->spendingtype !!}</td>
+      <td><a  data-toggle="modal" data-target="#addbudget{!!$datas->id!!}"><span class="glyphicon glyphicon-plus-sign"></span></a></td>
         <td>{!! $datas->payment_source->payment_source !!}</td>
         <td>{!! number_format($datas->value,2); !!} EUR</td>
 
@@ -49,6 +52,7 @@
         </div>
       </td>
     </tr>
+    @include('budget.subform')
     @endforeach
   </tbody>
   @include('budget.results')

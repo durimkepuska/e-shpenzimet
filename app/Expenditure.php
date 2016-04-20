@@ -9,7 +9,7 @@ class Expenditure extends Model
 {
     protected $table = 'expenditures';
 
-      protected $fillable = ['dept_paid_date','spending_category_id' , 'expenditure_date','description', 'invoice_number', 'spendingtype_id','value','supplier_id','paid','paid_value','payment_source_id','payment_date','department_id'];
+      protected $fillable = ['sub_budget_id','dept_paid_date','spending_category_id' , 'expenditure_date','description', 'invoice_number', 'spendingtype_id','value','supplier_id','paid','paid_value','payment_source_id','payment_date','department_id'];
 
 
 
@@ -44,6 +44,10 @@ class Expenditure extends Model
     public function SpendingCategory()
     {
        return $this->belongsTo('App\SpendingCategory');
+    }
+    public function sub_budget()
+    {
+        return $this->belongsTo('App\Sub_budget');
     }
 
 
@@ -113,10 +117,11 @@ class Expenditure extends Model
           $query->orderBy('created_at','desc');
     }
 
-    public function scopeRaport($query,$paid, $start_date, $end_date, $supplier_id, $allSuppliers, $spendingtype, $allSpendingtypes, $payment_source, $allPaymentSources, $department_id, $spendingcategory, $allSpendingCategories ){
+    public function scopeRaport($query,$paid, $start_date, $end_date, $supplier_id, $allSuppliers, $spendingtype, $allSpendingtypes, $payment_source, $allPaymentSources, $department_id, $spendingcategory, $allSpendingCategories, $sub_budget, $allsubbudgets ){
 
             if($paid==1||$paid==2){$query->where('expenditures.paid' , $paid);}
             if(!$allSuppliers==1){  $query->where('expenditures.supplier_id' , $supplier_id);}
+            if(!$allsubbudgets==1){  $query->where('expenditures.sub_budget_id' , $sub_budget);}
             if(!$allSpendingtypes==1){  $query->where('expenditures.spendingtype_id', $spendingtype);}
             if(!$allPaymentSources==1){  $query->where('expenditures.payment_source_id' , $payment_source);}
             if(!$allSpendingCategories==1){  $query->where('expenditures.spending_category_id' , $spendingcategory);}
@@ -124,6 +129,7 @@ class Expenditure extends Model
              if(Auth::user()->role_id!==4){ $query->where('expenditures.department_id' , $department_id); }
               $query->join('departments', 'expenditures.department_id', '=', 'departments.id')
               ->join('suppliers', 'expenditures.supplier_id', '=', 'suppliers.id')
+              ->join('sub_budget', 'expenditures.sub_budget_id', '=', 'sub_budget.id')
               ->join('spendingtypes', 'expenditures.spendingtype_id', '=', 'spendingtypes.id')
               ->join('payment_sources', 'expenditures.payment_source_id', '=', 'payment_sources.id')
               ->join('users', 'expenditures.user_id', '=', 'users.id')
@@ -134,6 +140,7 @@ class Expenditure extends Model
                         'spendingtypes.spendingtype as Lloji_Shpenzimit',
                         'spending_categories.spending_category as Kategoria',
                         'suppliers.supplier as Furnitori',
+                        'sub_budget.sub_budget as Nën_buxheti',
                         'expenditures.invoice_number as Numri_Faturës',
                         'expenditures.value as Vlera_Faturës',
                         'expenditures.paid_value as Vlera_e_Paguar',

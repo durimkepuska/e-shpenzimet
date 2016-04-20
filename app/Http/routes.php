@@ -34,7 +34,11 @@ Route::group(['middleware' => 'guest'], function(){
 //buxheti
 Route::get('home','BudgetController@home');
 Route::resource('budget','BudgetController');
+Route::post('addbudget' , 'BudgetController@addbudget');
 
+//nen buxheti
+Route::resource('sub_budget','SubBudgetController');
+Route::post('sub_budgetSearch' , 'SubBudgetController@search');
 //Shpenzimet
 Route::resource('expenditures' , 'ExpenditureController');
 Route::get('expendituresDepts' , 'ExpenditureController@depts');

@@ -66,6 +66,14 @@
     <hr>
     <div class="form-inline">
       <div class="form-group" >
+           {!! Form::label('sub_budget', 'Nën buxheti:', array('class' => 'mylabel')) !!}
+           {!! Form::select('sub_budget', $sub_budget , null,  ['class' => 'form-control','id'=>'subbudgets'] )!!}
+           &nbsp;&nbsp;&nbsp;&nbsp;Te gjitha nën buxhetet:&nbsp;  {!! Form::radio('allsubbudgets', 1, false, ['class' => 'field','onclick'=>'blockSubbudgets()']) !!}<br><br>
+      </div>
+    </div>
+    <hr>
+    <div class="form-inline">
+      <div class="form-group" >
            {!! Form::label('type', 'Lloji i dokumentit:', array('class' => 'mylabel')) !!}
            {!! Form::select('type', $type , null,  ['class' => 'form-control','id'=>'2'] )!!}
       </div>
@@ -81,7 +89,7 @@
 
 
     {!! Form::close()!!}
-    
+
 
     <script>
     function blockSuppliers() {
@@ -95,6 +103,9 @@
     }
     function blockSpendingCategories() {
         document.getElementById("spendingcategory").disabled = true;
+    }
+    function blockSubbudgets() {
+        document.getElementById("subbudgets").disabled = true;
     }
     </script>
 

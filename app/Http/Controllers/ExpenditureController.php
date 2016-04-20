@@ -8,6 +8,7 @@ use App\Expenditure;
 use App\User;
 use App\Department;
 use App\Supplier;
+use App\Sub_budget;
 use App\Payment_source;
 use App\SpendingCategory;
 use App\Spendingtype;
@@ -19,7 +20,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ExpendituresRequest;
 use App\Http\Requests\RaportRequest;
 use App\Http\Requests\ZotimetRequest;
-
 use App\Http\Controllers\Controller;
 use Input;
 use Excel;
@@ -92,13 +92,14 @@ class ExpenditureController extends Controller
      */
     public function create()
     {
-        $spendingtype = Spendingtype::lists('spendingtype', 'id');
-        $spendingcategory = SpendingCategory::lists('spending_category', 'id');
-        $supplier = Supplier::lists('supplier', 'id');
-        $payment_source = Payment_source::lists('payment_source', 'id');
-        $status = Status::lists('status', 'id','desc');
+        $spendingtype = Spendingtype::orderBy('spendingtype')->lists('spendingtype', 'id');
+        $spendingcategory = SpendingCategory::orderBy('spending_category')->lists('spending_category', 'id');
+        $supplier = Supplier::orderBy('supplier')->lists('supplier', 'id');
+        $payment_source = Payment_source::orderBy('payment_source')->lists('payment_source', 'id');
+        $status = Status::orderBy('status')->lists('status', 'id','desc');
+        $sub_budget = Sub_budget::orderBy('id')->where('department_id',Auth::user()->department_id)->lists('sub_budget', 'id','desc');
 
-        return view('expenditures.create',compact('spendingtype','supplier','payment_source','spendingcategory','status'));
+        return view('expenditures.create',compact('spendingtype','supplier','payment_source','spendingcategory','status','sub_budget'));
     }
 
     /**
@@ -150,7 +151,8 @@ class ExpenditureController extends Controller
         $spendingcategory = SpendingCategory::lists('spending_category', 'id');
         $payment_source = Payment_source::lists('payment_source', 'id');
         $status = Status::lists('status', 'id');
-        return view('expenditures.edit', compact('spendingtype','supplier','payment_source','data','spendingcategory','status'));
+        $sub_budget = Sub_budget::orderBy('sub_budget')->where('department_id',Auth::user()->department_id)->lists('sub_budget', 'id','desc');
+        return view('expenditures.edit', compact('spendingtype','supplier','payment_source','data','spendingcategory','status','sub_budget'));
 
       }
         Flash::warning('Nuk keni qasje ne shpenzimet e drejtorive te tjera!');
@@ -323,12 +325,15 @@ class ExpenditureController extends Controller
       $department = Department::lists('department', 'id');
       $spendingcategory = SpendingCategory::lists('spending_category', 'id');
       $type = Type::lists('type', 'type');
-      return view('expenditures.raport',compact('spendingtype','supplier','payment_source','data','user','department','spendingcategory','type'));
+      $sub_budget = Sub_budget::lists('sub_budget', 'id');
+
+      return view('expenditures.raport',compact('sub_budget','spendingtype','supplier','payment_source','data','user','department','spendingcategory','type'));
     }
 
     public function generateRaport(RaportRequest $request)
     {
-
+      $sub_budget = Input::get('sub_budget');
+      $allsubbudgets = Input::get('allsubbudgets');
       $type = Input::get('type');
       $paid = Input::get('paid');
       $start_date = Input::get('start_date');
@@ -346,7 +351,7 @@ class ExpenditureController extends Controller
 
       //hidden
 
-      $data = expenditure::Raport($paid, $start_date, $end_date, $supplier_id, $allSuppliers, $spendingtype, $allSpendingtypes, $payment_source, $allPaymentSources, $department_id, $spendingcategory, $allSpendingCategories )
+      $data = expenditure::Raport($paid, $start_date, $end_date, $supplier_id, $allSuppliers, $spendingtype, $allSpendingtypes, $payment_source, $allPaymentSources, $department_id, $spendingcategory, $allSpendingCategories, $sub_budget, $allsubbudgets )
             ->get();
 
             Excel::create($data[0]->Drejtoria, function($excel) use($data) {
@@ -388,7 +393,7 @@ class ExpenditureController extends Controller
                        }
 
                        $sheet->appendRow(array(
-                           '© e-Shpenzimet 2016','','', '','Gjithsej: ', number_format($sum1,2) . ' EUR', number_format($sum2,2) . ' EUR', number_format($sum1-$sum2,2). ' EUR'
+                           '© e-Shpenzimet 2016','','', '','', 'Gjithsej: ', number_format($sum1,2) . ' EUR', number_format($sum2,2) . ' EUR', number_format($sum1-$sum2,2). ' EUR'
                        ));
 
                        $sheet->appendRow(array(

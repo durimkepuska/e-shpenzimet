@@ -8,8 +8,6 @@
   <tr>
       <th> </th>
       <th> </th>
-      <th> </th>
-      <th> </th>
       <th>{!! $rows !!} Rreshta</th>
   </tr>
 </thead>

@@ -40,6 +40,9 @@
 				<a href="{!! action('BudgetController@home') !!}">Buxheti</a>
 				</li>
 				<li class="bookmarks">
+				<a href="{!! action('SubBudgetController@index') !!}">Nen Buxheti</a>
+				</li>
+				<li class="bookmarks">
 					<a href="{!! action('ExpenditureController@index') !!}"> Shpenzimet</a>
 				</li>
 				<li class="bookmarks">

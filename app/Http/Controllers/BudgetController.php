@@ -14,6 +14,7 @@ use Redirect;
 use App\Expenditure;
 use DB;
 use Auth;
+use Input;
 class BudgetController extends Controller
 {
 
@@ -170,4 +171,23 @@ class BudgetController extends Controller
       Flash::warning('Eshte fshire me sukses!');
       return Redirect::back();
     }
+
+    public function addbudget()
+    {
+      $value = Input::get('value');
+      $id = Input::get('id');
+
+
+      $budget = Budget::findOrFail($id);
+
+      $query = DB::table('budget')
+       ->where('id', $id)
+       ->update(array('value'=>$budget->value+$value));
+
+      Flash::warning('Buxheti eshte shtuar me sukses!');
+      return Redirect::back();
+    }
+
+
+
 }

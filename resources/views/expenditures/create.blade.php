@@ -19,6 +19,7 @@
 
 @include('spending_categories.subform')
 @include('spendingtypes.subform')
+@include('sub_budget.subform')
 
 
 @stop
