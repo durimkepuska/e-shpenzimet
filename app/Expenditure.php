@@ -129,7 +129,7 @@ class Expenditure extends Model
              if(Auth::user()->role_id!==4){ $query->where('expenditures.department_id' , $department_id); }
               $query->join('departments', 'expenditures.department_id', '=', 'departments.id')
               ->join('suppliers', 'expenditures.supplier_id', '=', 'suppliers.id')
-              ->join('sub_budget', 'expenditures.sub_budget_id', '=', 'sub_budget.id')
+              ->leftjoin('sub_budget', 'expenditures.sub_budget_id', '=', 'sub_budget.id')
               ->join('spendingtypes', 'expenditures.spendingtype_id', '=', 'spendingtypes.id')
               ->join('payment_sources', 'expenditures.payment_source_id', '=', 'payment_sources.id')
               ->join('users', 'expenditures.user_id', '=', 'users.id')
