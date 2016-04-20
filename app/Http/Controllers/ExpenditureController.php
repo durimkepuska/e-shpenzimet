@@ -274,16 +274,16 @@ class ExpenditureController extends Controller
       $data = Expenditure::findOrFail($id);
        if($this->DeprtmentIsResponsible($id)){
 
-         $user = Auth::user();
-
-         $director = User::where('department_id', Auth::user()->department_id)->where('role_id',2)->first();
-
-         Mail::send('emails.hidden_expenditures', ['director'=> $director,'user' => $user, 'data' => $data], function ($m) use ($user) {
-
-             $m->from('eshpenzimet@gmail.com', 'e-Shpenzimet');
-             $director = User::where('department_id', Auth::user()->department_id)->where('role_id',2)->first();
-             $m->to($director->email, $director->name)->subject('Lajmerim, eshte fshehur nje shpenzim nga: ' . $user->name);
-         });
+        //  $user = Auth::user();
+         //
+        //  $director = User::where('department_id', Auth::user()->department_id)->where('role_id',2)->first();
+         //
+        //  Mail::send('emails.hidden_expenditures', ['director'=> $director,'user' => $user, 'data' => $data], function ($m) use ($user) {
+         //
+        //      $m->from('eshpenzimet@gmail.com', 'e-Shpenzimet');
+        //      $director = User::where('department_id', Auth::user()->department_id)->where('role_id',2)->first();
+        //      $m->to($director->email, $director->name)->subject('Lajmerim, eshte fshehur nje shpenzim nga: ' . $user->name);
+        //  });
 
          DB::table('expenditures')
           ->where('id', $id)
@@ -351,8 +351,15 @@ class ExpenditureController extends Controller
 
       //hidden
 
+
+
       $data = expenditure::Raport($paid, $start_date, $end_date, $supplier_id, $allSuppliers, $spendingtype, $allSpendingtypes, $payment_source, $allPaymentSources, $department_id, $spendingcategory, $allSpendingCategories, $sub_budget, $allsubbudgets )
             ->get();
+
+            if(count($data)==0){
+              Flash::warning('Nuk ka shënime!');
+              return redirect('/');
+            }
 
             Excel::create($data[0]->Drejtoria, function($excel) use($data) {
 
