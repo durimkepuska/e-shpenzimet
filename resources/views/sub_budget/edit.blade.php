@@ -10,7 +10,7 @@
 
 @include('sub_budget.buttons')
 
-{!! Form::model($data,['method'=>'PATCH','action' => [SubBudgetController@update', $data->id]]) !!}
+{!! Form::model($data,['method'=>'PATCH','action' => ['SubBudgetController@update', $data->id]]) !!}
 
   <br>  <p>Azhuro nën buxhetin </p><br>
      {!! csrf_field() !!}

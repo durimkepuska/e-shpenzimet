@@ -9,9 +9,8 @@
 
 
 @include('sub_budget.buttons')
-      <div class="well well-lg">  <p>Furnitori: {!! $data->sub_budget !!}</p></div>
+      <div class="well well-lg">  <p>Nen buxheti: {!! $data->sub_budget !!}</p></div>
 
-      <div class="well well-lg" style="line-height:25px;">
 
 
 
