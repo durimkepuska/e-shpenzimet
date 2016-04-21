@@ -84,7 +84,6 @@ $(function () {
 Highcharts.setOptions({
 lang: {
 	thousandsSep: ',',
-	numericSymbols: [' mijë', ' milionë'],
 	drillUpText: '< ktheu'
 }
 });
