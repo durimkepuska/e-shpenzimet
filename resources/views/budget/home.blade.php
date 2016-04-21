@@ -16,7 +16,8 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
            <h3 class="panel-title">Buxheti fillestarë për kategorinë:</h3><hr>
-           {!! $budgets->spendingtype->spendingtype !!}
+           {!! $budgets->spendingtype->spendingtype !!}<br>
+           {!! $budgets->payment_source->payment_source !!}
         </div>
         <div class="panel-body">
           {!! number_format($budgets->value,2); !!} EUR
