@@ -84,6 +84,7 @@ $(function () {
 Highcharts.setOptions({
 lang: {
 	thousandsSep: ',',
+	numericSymbols: [',000', ' ,000,000'],
 	drillUpText: '< ktheu'
 }
 });
