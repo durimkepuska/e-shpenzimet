@@ -1,10 +1,5 @@
 <?php
 
-
-
-
-
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -38,7 +33,7 @@ class SubBudgetController extends Controller
    */
   public function index()
   {
-    $data = Sub_budget::OrderBy('sub_budget','asc')->paginate(10);
+    $data = Sub_budget::OrderBy('sub_budget','asc')->where('department_id',Auth::user()->department_id)->paginate(10);
     return view('sub_budget.index', compact('data'));
   }
 
@@ -60,7 +55,7 @@ class SubBudgetController extends Controller
    */
   public function store(sub_budgetRequest $request)
   {
-    sub_budget::create($request->all());
+    Sub_budget::create($request->all());
     Flash::warning('U regjistrua me sukses!');
 
     return Redirect::back();
@@ -74,7 +69,7 @@ class SubBudgetController extends Controller
    */
   public function show($id)
   {
-    $data = sub_budget::findOrFail($id);
+    $data = Sub_budget::findOrFail($id);
     return view('sub_budget.show',compact('data'));
   }
 
@@ -86,7 +81,7 @@ class SubBudgetController extends Controller
    */
   public function edit($id)
   {
-    $data = sub_budget::findOrFail($id);
+    $data = Sub_budget::findOrFail($id);
     return view('sub_budget.edit',compact('data'));
   }
 
@@ -99,7 +94,7 @@ class SubBudgetController extends Controller
    */
   public function update($id, sub_budgetRequest $request)
   {
-    $sub_budget = sub_budget::findOrFail($id);
+    $sub_budget = Sub_budget::findOrFail($id);
     $sub_budget->update($request->all());
     Flash::warning('U regjistrua me sukses!');
     return redirect('sub_budget');
@@ -113,7 +108,7 @@ class SubBudgetController extends Controller
    */
   public function destroy($id)
   {
-    $sub_budget = sub_budget::findOrFail($id);
+    $sub_budget = Sub_budget::findOrFail($id);
     $sub_budget->delete();
     Flash::warning('Eshte fshire me sukses!');
     return Redirect::back();
@@ -122,7 +117,7 @@ class SubBudgetController extends Controller
   public function search()
   {
     $keyword=  Input::get('keyword');
-    $data = sub_budget::where('sub_budget', 'LIKE', '%'.$keyword.'%')->paginate();
+    $data = Sub_budget::where('sub_budget', 'LIKE', '%'.$keyword.'%')->paginate();
     return view('sub_budget.index',compact('data'));
   }
 }
