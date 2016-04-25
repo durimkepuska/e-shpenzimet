@@ -21,10 +21,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Drejtoria:</td>
-        <td>{!! $data->Department->department !!}</td>
-      </tr>
+
       <tr>
         <td>Drejtoria:</td>
         <td>{!! $data->Department->department !!}</td>
@@ -104,6 +101,10 @@
       <tr>
         <td>Data e regjistrimit:</td>
         <td>{!! $data->created_at !!}</td>
+      </tr>
+      <tr>
+        <td>Nen Buxheti:</td>
+        <td>{!! $data->sub_budget !!}</td>
       </tr>
 
 

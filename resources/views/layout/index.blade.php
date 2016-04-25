@@ -52,10 +52,10 @@
 					<a href="{!! action('DepartmentController@index') !!}">Drejtoritë</a>
 				</li>
 				<li class="bookmarks" >
-					<a href="{!! action('SpendingtypeController@index') !!}">Llojet e Shpenzimeve</a>
+					<a href="{!! action('SpendingtypeController@index') !!}">Kategorite e Shpenz...</a>
 				</li>
 				<li class="bookmarks" >
-					<a href="{!! action('SpendingCategoryController@index') !!}">Kategoritë e Shpenzimeve</a>
+					<a href="{!! action('SpendingCategoryController@index') !!}">Nenkategorite e Shpenz...</a>
 				</li>
 				<li class="bookmarks">
 					<a href="{!! action('PaymentsourceController@index') !!}">Vijat Buxhetore</a>
