@@ -32,7 +32,7 @@ class SubBudgetContainer extends Model
 
   public function sub_budget()
   {
-      return $this->belongsTo('App\sub_budget');
+      return $this->belongsTo('App\Sub_budget');
   }
 
 
