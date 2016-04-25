@@ -21,6 +21,7 @@ class BudgetController extends Controller
     public function __construct(){
 
       $this->middleware('auth');
+      $this->middleware('admin', ['only'=>['destroy']]);
       //$this->middleware('auth', ['only'=>'index']);
     }
     /**
@@ -67,8 +68,9 @@ class BudgetController extends Controller
 
         $spendings = DB::table('expenditures')
                 ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'expenditures.spendingtype_id')
-                ->select( 'spendingtypes.spendingtype',DB::raw('SUM(paid_value) as total'))
-                ->groupBy('spendingtypes.spendingtype')
+                ->rightjoin('payment_sources', 'payment_sources.id', '=', 'expenditures.payment_source_id')
+                ->select( 'spendingtypes.spendingtype','payment_sources.payment_source',DB::raw('SUM(paid_value) as total'))
+                ->groupBy('spendingtypes.spendingtype')->groupBy('expenditures.payment_source_id')
                 ->where('expenditures.department_id',Auth::user()->department_id)->where('paid','!=',4)
                 ->OrderBy('expenditures.id','asc')
                 ->get();
@@ -177,6 +179,10 @@ class BudgetController extends Controller
       $value = Input::get('value');
       $id = Input::get('id');
 
+      if ($value<=0){
+        Flash::warning('Vlera duhet te jete me e madhe se zero.');
+        return Redirect::back();
+      }
 
       $budget = Budget::findOrFail($id);
 

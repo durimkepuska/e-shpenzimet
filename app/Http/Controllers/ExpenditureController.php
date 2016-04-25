@@ -407,6 +407,9 @@ class ExpenditureController extends Controller
 
                           'Raport prej datës: '.date_format(date_create(Input::get('start_date')), 'd-m-Y')   .' deri me: '.date_format(date_create(Input::get('end_date')), 'd-m-y') ,'','', '',' ', '', '',
                        ));
+                       $sheet->appendRow(array(
+                            'Drejtoria per: '.$data[0]->Drejtoria
+                       ));
                   });
 
             })->export($type);

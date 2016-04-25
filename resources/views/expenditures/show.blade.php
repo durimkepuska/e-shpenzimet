@@ -11,50 +11,110 @@
 @include('expenditures.buttons')
       <div class="well well-lg" >  <p>Pershkrimi: {!! $data->description !!}</p></div>
 
-      <div class="well well-lg"  style="line-height:25px;">
-        <p>Drejtoria për: {!! $data->Department->department !!}</p>
 
-        <p><strong>Data e shpenzimit: {!! $data->expenditure_date !!}</strong> </p>
+<table class="table table-hover">
+    <thead>
+      <tr style="background-color:gray;">
+        <th>Titulli</th>
+        <th>Gjendja</th>
 
-        <p>Regjistruar me: {!! $data->created_at !!}</p>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Drejtoria:</td>
+        <td>{!! $data->Department->department !!}</td>
+      </tr>
+      <tr>
+        <td>Drejtoria:</td>
+        <td>{!! $data->Department->department !!}</td>
+      </tr>
+      <tr>
+        <td>Kategoria e shpenzimit:</td>
+        <td>{!! $data->Spendingtype->spendingtype !!}</td>
+      </tr>
+      <tr>
+        <td>nenKategoria e shpenzimit:</td>
+        <td>{!! $data->SpendingCategory->spending_category !!}</td>
+      </tr>
+      <tr>
+        <td>Furnitori:</td>
+        <td>{!! $data->supplier->supplier !!}</td>
+      </tr>
+      <tr>
+        <td>Numri fatures:</td>
+        <td>{!! $data->invoice_number !!}</td>
+      </tr>
+      <tr>
+        <td>Vlera e fatures: </td>
+        <td>{!! $data->value !!} EUR</td>
+      </tr>
+      @if($data->paid==1)
+          <tr style="background-color:green;">
+            <td>Paguar:</td>
+            <td>PO</td>
+          </tr>
+          <tr>
+            <td>Vlera e pageses:</td>
+            <td>{!! $data->paid_value !!} EUR</td>
+          </tr>
+          <tr>
+            <td>Eshte financuar nga:</td>
+            <td>{!! $data->payment_source->payment_source !!}</td>
+          </tr>
+          <tr>
+            <td>Data e pageses:</td>
+            <td>{!! $data->payment_date !!}</td>
+          </tr>
 
-        <p>Numri fatures: {!! $data->invoice_number !!}</p>
 
-        <p>Lloji i shpenzimit: {!! $data->Spendingtype->spendingtype !!}</p>
+        @elseif($data->paid==2)
+        <tr style="background-color:red;">
+          <td>Paguar</td>
+          <td>JO</td>
+        </tr>
+        <tr>
+          <td>Data e pageses se borxhit:</td>
+          <td>{!! $data->dept_paid_date !!} </td>
+        </tr>
+        @else
 
-        <p>Kategoria e shpenzimit: {!! $data->SpendingCategory->spending_category !!}</p>
+        <tr style="background-color:green;">
+          <td>Paguar</td>
+          <td>Pjeserishte</td>
+        </tr>
+        <tr>
+          <td>Vlera e pageses:</td>
+          <td>{!!  $data->paid_value !!} EUR</td>
+        </tr>
+        <tr>
+          <td>Data e pageses se borxhit:</td>
+          <td>{!! $data->dept_paid_date !!} </td>
+        </tr>
+        @endif
+        <tr>
+          <td>Borxhi:</td>
+          <td>{!! $data->value - $data->paid_value !!} EUR</td>
+        </tr>
 
-        <p>Vlera: {!! $data->value !!} EUR</p>
-
-        <p>Furnitori: {!! $data->supplier->supplier !!}</p>
-
-        <p>Drejtoria: {!! $data->department->department !!}</p>
-
-
-        <p>Paguar:
-            @if($data->paid==1)
-              PO
-              <p>Eshte financuar nga: {!! $data->payment_source->payment_source !!}</p>
-              <p>Data e pageses: {!! $data->payment_date !!}</p>
-              <p>Vlera e pageses: {!! $data->paid_value !!} EUR</p>
-            @elseif($data->paid==2)
-              JO
-            @else
-              Pjeserisht:
-              <p>Burimi: {!! $data->payment_source->payment_source !!}</p>
-              <p>Data e pageses: {!! $data->payment_date !!}</p>
-                <p>Data e pageses se borxhit: {!! $data->dept_paid_date !!}</p>
-              <p>Vlera e pageses: {!! $data->paid_value !!} EUR</p>
-            @endif</p>
-        <p>Borxhi: {!! $data->value - $data->paid_value !!} EUR</p>
-
-
-
+      <tr>
+        <td>Data e shpenzimit:</td>
+        <td>{!! $data->expenditure_date !!}</td>
+      </tr>
+      <tr>
+        <td>Data e regjistrimit:</td>
+        <td>{!! $data->created_at !!}</td>
+      </tr>
 
 
 
 
-</div>
+
+
+
+    </tbody>
+  </table>
+
 
 
 

@@ -16,7 +16,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
            <h3 class="panel-title">Buxheti fillestarë për kategorinë:</h3><hr>
-           {!! $budgets->spendingtype->spendingtype !!}<br>
+           {!! $budgets->spendingtype->spendingtype !!} nga:<br>
            {!! $budgets->payment_source->payment_source !!}
         </div>
         <div class="panel-body">
@@ -32,7 +32,8 @@
     <div class="panel panel-danger">
         <div class="panel-heading">
            <h3 class="panel-title">Shpenzimet për kategorinë:</h3><hr>
-            {!! $spending->spendingtype !!}
+            {!! $spending->spendingtype !!} nga:<br>
+            {!! $spending->payment_source !!}
          </div>
         <div class="panel-body">
 

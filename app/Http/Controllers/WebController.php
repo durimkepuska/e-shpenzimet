@@ -51,10 +51,10 @@ class WebController extends Controller
                  'expenditures.value as Vlera_Faturës',
                  'expenditures.paid_value as Vlera_e_Paguar',
                   DB::raw('value-paid_value as Borxhi'),
-                  'expenditurestatus.status as Statusi',
+                  //'expenditurestatus.status as Statusi',
                   'expenditures.expenditure_date as Data_Shpenzimit',
                   'expenditures.description as Përshkrimi_Shpenzimit',
-                  'users.name as Përgjegjësi',
+                  //'users.name as Përgjegjësi',
                   'payment_sources.payment_source as Vija_Buxhetore')
                  ->get();
 

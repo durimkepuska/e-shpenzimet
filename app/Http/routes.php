@@ -39,6 +39,13 @@ Route::post('addbudget' , 'BudgetController@addbudget');
 //nen buxheti
 Route::resource('sub_budget','SubBudgetController');
 Route::post('sub_budgetSearch' , 'SubBudgetController@search');
+
+//sub budget container
+Route::resource('sub_budget_container','SubBudgetContainerController');
+Route::post('addsub_budget' , 'SubBudgetContainerController@addsub_budget');
+Route::get('sub_budget_graph' , 'SubBudgetContainerController@home');
+
+
 //Shpenzimet
 Route::resource('expenditures' , 'ExpenditureController');
 Route::get('expendituresDepts' , 'ExpenditureController@depts');
