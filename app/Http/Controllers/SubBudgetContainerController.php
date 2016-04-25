@@ -14,7 +14,7 @@ use Redirect;
 use App\Expenditure;
 use DB;
 use Auth;
-use App\sub_budget;
+use App\Sub_budget;
 use Input;
 use App\SubBudgetContainer;
 class SubBudgetContainerController extends Controller
@@ -125,8 +125,10 @@ class SubBudgetContainerController extends Controller
     {
       $spendingtype = Spendingtype::lists('spendingtype', 'id');
       $payment_source = Payment_source::lists('payment_source', 'id');
-      $sub_budget = sub_budget::lists('sub_budget', 'id');
+      $sub_budget = Sub_budget::orderBy('id')->where('department_id',Auth::user()->department_id)->lists('sub_budget', 'id','desc');
+
       return view('sub_budget_container.create',compact('spendingtype','payment_source','sub_budget'));
+
     }
 
     /**
@@ -163,7 +165,7 @@ class SubBudgetContainerController extends Controller
     {
       $spendingtype = Spendingtype::lists('spendingtype', 'id');
       $payment_source = Payment_source::lists('payment_source', 'id');
-      $sub_budget = sub_budget::lists('sub_budget', 'id');
+      $sub_budget = Sub_budget::lists('sub_budget', 'id');
 
       $data = SubBudgetContainer::findOrFail($id);
       return view('sub_budget_container.edit',compact('spendingtype','payment_source','data','sub_budget'));
