@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="{!! URL::asset('web/js/bootstrap.min.js') !!}"></script>
+  <script src="{!! URL::asset('web_style/js/bootstrap.min.js') !!}"></script>
 
 
 </head>
@@ -18,7 +18,7 @@
 <hr>
 <div>
   <div class="cd-logo pull-left"  >
-    <a href="#"><img src="{!! URL::asset('web/images/gjakovaweb.png') !!}"></a>
+    <a href="#"><img src="{!! URL::asset('web_style/img/gjakovaweb.png') !!}"></a>
   </div>
     <div style="padding-top:150px;">
 

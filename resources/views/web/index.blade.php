@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="{!! URL::asset('web/images/favicon.png') !!}">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<!-- <link rel="icon" type="image/png" href="{!! URL::asset('web/css/bootstrap.min.css') !!}"> -->
-<script src="{!! URL::asset('web/js/jquery-2.1.1.js') !!}"></script>
-<script src="{!! URL::asset('web/js/bootstrap.min.js') !!}"></script>
-<link rel="stylesheet" href="{!! URL::asset('web/css/reset.css') !!}">
-<link rel="stylesheet" href="{!! URL::asset('web/css/style-guide.css') !!}">
-<script src="{!! URL::asset('web/js/main.js') !!}"></script>
-<script src="{!! URL::asset('web/highcharts/highcharts.js') !!}"></script>
-<script src="{!! URL::asset('web/highcharts/data.js') !!}"></script>
-<script src="{!! URL::asset('web/highcharts/drilldown.js') !!}"></script>
+<link rel="icon" type="image/png" href="{!! URL::asset('web_style/img/favicon.png') !!}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!-- <link rel="stylesheet"  href="{!! URL::asset('web/css/bootstrap.min.css') !!}"> -->
+<script src="{!! URL::asset('web_style/js/jquery-2.1.1.js') !!}"></script>
+<script src="{!! URL::asset('web_style/js/bootstrap.min.js') !!}"></script>
+<link rel="stylesheet" href="{!! URL::asset('web_style/css/reset.css') !!}">
+<link rel="stylesheet" href="{!! URL::asset('web_style/css/style-guide.css') !!}">
+<script src="{!! URL::asset('web_style/js/main.js') !!}"></script>
+<script src="{!! URL::asset('web_style/js/highcharts.js') !!}"></script>
+<script src="{!! URL::asset('web_style/js/data.js') !!}"></script>
+<script src="{!! URL::asset('web_style/js/drilldown.js') !!}"></script>
 <title>e-Shpenzimet</title>
 <!--
 	Developed by: KrijonXXL.com
@@ -152,10 +152,8 @@ theme: {
 }}}},
 series: [
 {!! File::get(storage_path('charts/2016/all.js')) !!}
-]}
-
-})});
+]}})});
 </script>
-<script src="{!! URL::asset('web/js/other.js') !!}"></script>
+<script src="{!! URL::asset('web_style/js/other.js') !!}"></script>
 </body>
 </html>
