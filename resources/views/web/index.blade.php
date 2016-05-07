@@ -16,7 +16,7 @@
 <script src="{!! URL::asset('web_style/js/drilldown.js') !!}"></script>
 <title>e-Shpenzimet</title>
 <!--
-	Developed by: KrijonXXL.com
+	Developed by: KRIJON
 -->
 </head>
 <body>
@@ -84,7 +84,6 @@ $(function () {
 Highcharts.setOptions({
 lang: {
 	thousandsSep: ',',
-	numericSymbols: [',000', ' ,000,000'],
 	drillUpText: '< ktheu'
 }
 });
@@ -115,7 +114,8 @@ tooltip: {
 
 plotOptions: {
   series: {
-  borderWidth:5,
+
+  borderWidth:1,
   dataLabels: {
   enabled: true,
 	format: ' {point.y:,.2f} EUR'
