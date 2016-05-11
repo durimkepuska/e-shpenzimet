@@ -17,7 +17,7 @@
         <p><strong>Data e planifikuar: {!! $data->expenditure_date !!}</strong> </p>
 
         <p>Regjistruar me: {!! $data->created_at !!}</p>
-        <p>Lloji i shpenzimit: {!! $data->Spendingtype->spendingtype !!}</p>
+        <p>Lloji i shpenzimit: {!! $data->Spendingtype !!}</p>
 
 
 
