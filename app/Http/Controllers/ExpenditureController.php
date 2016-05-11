@@ -33,7 +33,15 @@ class ExpenditureController extends Controller
        $this->middleware('auth');
 
      }
+     public function zotimet_edit($id){
 
+         $data = Expenditure::findOrFail($id);
+
+         $spendingtype = Spendingtype::lists('spendingtype', 'id');
+         $payment_source = Payment_source::lists('payment_source', 'id');
+
+         return view('zotimet.zotimet_edit', compact('spendingtype','payment_source','data'));
+     }
      public function zotimet(){
 
        if(Auth::user()->role_id==4){

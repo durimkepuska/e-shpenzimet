@@ -9,7 +9,7 @@
   </div>
   <div class="form-group">
             <span class="form_font">Mjetet janë financuar nga</span>
-            {!! Form::select('payment_source_id', $payment_source , null,  ['class' => 'form-control'] )!!}<span class="pull-right note">Obligueshme</span>
+            {!! Form::select('payment_source_id', $payment_source , null,  ['class' => 'form-control'] )!!}
           </div>
 <div class="form-group">
       <span class="form_font">Përshkrimi i Projektit</span>

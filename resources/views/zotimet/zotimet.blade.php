@@ -47,6 +47,7 @@
             </button>
             <ul class="dropdown-menu" role="menu">
               <li><a href="{!! url('expenditures/'.$datas->id.'/edit' ) !!}"><span class="glyphicon glyphicon-edit"></span> Kalo ne shpenzim</a></li>
+              <li><a href="{!! url('zotimet/'.$datas->id.'/edit' ) !!}"><span class="glyphicon glyphicon-edit"></span> Edito</a></li>
               <li>
                 <a>
                  {!! Form::open(['method' => 'DELETE', 'url' => 'expenditures/'.$datas->id, 'id'=>'myForm']) !!}
