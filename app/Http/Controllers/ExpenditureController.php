@@ -42,6 +42,16 @@ class ExpenditureController extends Controller
 
          return view('zotimet.zotimet_edit', compact('spendingtype','payment_source','data'));
      }
+
+    public function azhurozotim($id, ExpendituresRequest $request){
+
+        $article = Expenditure::findOrFail($id);
+
+        $article->update($request->all());
+        Flash::warning('U regjistrua me sukses!');
+        return redirect('zotimet');
+
+    }
      public function zotimet(){
 
        if(Auth::user()->role_id==4){

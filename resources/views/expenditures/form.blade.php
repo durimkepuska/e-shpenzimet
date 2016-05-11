@@ -43,12 +43,12 @@
 
 <div class="form-group" >
       <span class="form_font">Data e Faturës</span>
-    {!! Form::text('expenditure_date', null, ['class' => 'form-control datepicker','placeholder'=>'Data e shpenzimit'])!!}<span class="pull-right note">Obligueshme</span>
+    {!! Form::text('expenditure_date', null, ['class' => 'form-control datepicker','placeholder'=>'Data e shpenzimit'])!!}<span class="pull-right note">Opcionale</span>
 </div>
 
 <div class="form-group" >
     <span class="form_font">Numri i Faturës</span>
-    {!! Form::text('invoice_number', null, ['class' => 'form-control','placeholder'=>'*Numri i Fatures'])!!}<span class="pull-right note">Obligueshme</span>
+    {!! Form::text('invoice_number', null, ['class' => 'form-control','placeholder'=>'*Numri i Fatures'])!!}<span class="pull-right note">Opcionale</span>
 </div>
 
 <div class="form-group" >
@@ -69,7 +69,7 @@
         </div>
         <div class="form-group" >
           <span class="form_font">Data e pagesës</span>
-          {!! Form::text('payment_date', null, ['class' => 'form-control datepicker','placeholder'=>'Data e pageses'])!!}<span class="pull-right note">Obligueshme</span>
+          {!! Form::text('payment_date', null, ['class' => 'form-control datepicker','placeholder'=>'Data e pageses'])!!}<span class="pull-right note">Opcionale</span>
         </div>
         <div class="form-group" >
               <span class="form_font">Vlera e pagesës në euro</span>

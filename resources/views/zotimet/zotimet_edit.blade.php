@@ -8,9 +8,10 @@
 
 @include('expenditures.modalForms')
 @include('expenditures.buttons')
-{!! Form::model($data,['method'=>'PATCH','action' => ['ExpenditureController@zotimet_store',  $data->id]]) !!}
+{!! Form::model($data,['method'=>'PUT', 'action' => ['ExpenditureController@azhurozotim', $data->id]]) !!}
 
 <br>  <p>Azhuro Zotim </p><br>
+
      {!! csrf_field() !!}
 
 

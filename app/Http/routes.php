@@ -100,7 +100,8 @@ Route::get('zotimet/create' , 'ExpenditureController@zotimet_create');
 Route::post('zotimet/store' , 'ExpenditureController@zotimet_store');
 Route::get('zotimet/{id}' , 'ExpenditureController@zotimet_show');
 Route::get('zotimet/{id}/edit' , 'ExpenditureController@zotimet_edit');
-Route::patch('zotimet/store' , 'ExpenditureController@zotimet_store');
+Route::put('azhurozotim/{id}' , 'ExpenditureController@azhurozotim');
+
 //Errors
 Route::get('error', function(){
     return view('errors.404');

@@ -25,8 +25,7 @@ class ExpendituresRequest extends Request
     {
         return [
           'description'=>'required',
-          'invoice_number'=>'required',
-          'value'=>'required',
+
 
         ];
     }
