@@ -33,38 +33,60 @@ class BudgetController extends Controller
     {
         $departemnt_id = Auth::user()->department_id;
         $budget = Budget::OrderBy('id','asc')->DepartmentFilter()->get();
-        $actual_budget =  DB::select(DB::raw('SELECT
-                      vlera_buxhetit - vlera_shpenzimeve as y,spendingtype1
-                      from
-                      (
-                                  SELECT
-                                          sum(value) as vlera_buxhetit,
-                                          xxl_departments.department as department_name,
-                  												xxl_departments.id as department_id1,
-																					xxl_spendingtypes.spendingtype as spendingtype1
-                                          FROM xxl_budget
-                                          RIGHT JOIN xxl_departments
-                                          ON xxl_budget.department_id=xxl_departments.id
-																					RIGHT JOIN xxl_spendingtypes
-                                          ON xxl_budget.spendingtype_id=xxl_spendingtypes.id
-                                          GROUP BY spendingtype1, department_id1
-                  												ORDER BY spendingtype1
-                      ) as tbl1,
-                      (
-                                          SELECT
-                                          sum(paid_value) as vlera_shpenzimeve,
-                  												xxl_departments.id as department_id2,
-																					xxl_spendingtypes.spendingtype as spendingtype2
-                                          FROM xxl_expenditures
-                  												RIGHT JOIN xxl_departments
-                                          ON xxl_expenditures.department_id=xxl_departments.id
-																					RIGHT JOIN xxl_spendingtypes
-                                          ON xxl_expenditures.spendingtype_id=xxl_spendingtypes.id
-                                          GROUP BY spendingtype2 , department_id2
-                  												ORDER BY spendingtype2
-                      ) as tbl2
-											where department_id1='.$departemnt_id.' and department_id2= '.$departemnt_id.' AND spendingtype1=spendingtype2
-                      GROUP BY  spendingtype1;'));
+        $actual_budget =  DB::select(DB::raw('
+                        SELECT
+                            vlera_buxhetit - vlera_shpenzimeve AS y,
+                            spendingtype1,
+                            payment_source
+                        FROM
+                            (
+                                SELECT
+                                    sum(VALUE) AS vlera_buxhetit,
+                                    xxl_departments.department AS department_name,
+                                    xxl_departments.id AS department_id1,
+                                    xxl_spendingtypes.spendingtype AS spendingtype1,
+                                    xxl_payment_sources.payment_source,
+                                    xxl_budget.payment_source_id AS payment1
+                                FROM
+                                    xxl_budget
+                                RIGHT JOIN xxl_payment_sources ON xxl_budget.payment_source_id = xxl_payment_sources.id
+                                RIGHT JOIN xxl_departments ON xxl_budget.department_id = xxl_departments.id
+                                RIGHT JOIN xxl_spendingtypes ON xxl_budget.spendingtype_id = xxl_spendingtypes.id
+                                GROUP BY
+                                    spendingtype1,
+                                    department_id1,
+                                    payment1
+                                ORDER BY
+                                    spendingtype1
+                            ) AS tbl1,
+                            (
+                                SELECT
+                                    sum(paid_value) AS vlera_shpenzimeve,
+                                    xxl_departments.id AS department_id2,
+                                    xxl_spendingtypes.spendingtype AS spendingtype2,
+                                    xxl_expenditures.payment_source_id AS payment2
+                                FROM
+                                    xxl_expenditures
+                                RIGHT JOIN xxl_payment_sources ON xxl_expenditures.payment_source_id = xxl_payment_sources.id
+                                RIGHT JOIN xxl_departments ON xxl_expenditures.department_id = xxl_departments.id
+                                RIGHT JOIN xxl_spendingtypes ON xxl_expenditures.spendingtype_id = xxl_spendingtypes.id
+                                GROUP BY
+                                    spendingtype2,
+                                    department_id2,
+                                    payment2
+                                ORDER BY
+                                    spendingtype2
+                            ) AS tbl2
+                        WHERE
+                            department_id1 = '.$departemnt_id.'
+                        AND department_id2 = '.$departemnt_id.'
+                        AND spendingtype1 = spendingtype2
+                        AND payment1 = payment2
+                        GROUP BY
+                            spendingtype1,
+                            department_id1,
+                            payment_source
+                      '));
 
         $spendings = DB::table('expenditures')
                 ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'expenditures.spendingtype_id')

@@ -86,7 +86,7 @@ class SubBudgetContainerController extends Controller
                   			sub_budget_id2
                   	) AS tbl2
                   WHERE
-                  	department_id1 = 1 AND department_id2 = 1
+                  	department_id1 = '.$departemnt_id.' AND department_id2 = '.$departemnt_id.'
                   AND spendingtype_id1 = spendingtype_id2
                   AND payment_source_id1 = payment_source_id2
                   AND sub_budget_id1 = sub_budget_id2

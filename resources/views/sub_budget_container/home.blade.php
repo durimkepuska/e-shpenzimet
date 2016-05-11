@@ -15,10 +15,10 @@
 <div class="col-sm-3">
     <div class="panel panel-primary">
         <div class="panel-heading">
-           <h3 class="panel-title">Nen Buxheti fillestarë për:</h3><hr>
+           <h3 class="panel-title">Buxheti fillestarë për:</h3><hr>
            {!! $sub_budgets->sub_budget->sub_budget !!} <br>
-          Kategoria:  {!! $sub_budgets->spendingtype->spendingtype !!} <br>
-          Nga: {!! $sub_budgets->payment_source->payment_source !!}
+           {!! $sub_budgets->spendingtype->spendingtype !!} <br>
+           {!! $sub_budgets->payment_source->payment_source !!}
         </div>
         <div class="panel-body">
           {!! number_format($sub_budgets->value,2); !!} EUR
@@ -27,15 +27,15 @@
     </div>
 </div>
 @endforeach
-<br><br><br><br><br><br><br><br><br><br><hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 @foreach($spendings as $spending)
 <div class="col-sm-3">
     <div class="panel panel-danger">
         <div class="panel-heading">
            <h3 class="panel-title">Shpenzimet për:</h3><hr>
            {!! $spending->sub_budget !!} <br>
-          Kategoria:  {!! $spending->spendingtype !!} <br>
-          Nga:  {!! $spending->payment_source !!}
+           {!! $spending->spendingtype !!} <br>
+           {!! $spending->payment_source !!}
          </div>
         <div class="panel-body">
 
@@ -44,7 +44,7 @@
     </div>
 </div>
 @endforeach
-<br><br><br><br><br><br><br><br><br><br><hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 @foreach($actual_budget as $actual_budgets)
 <div class="col-sm-3">
     <div class="panel panel-info">

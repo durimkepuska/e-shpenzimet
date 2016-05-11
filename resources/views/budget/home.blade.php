@@ -42,7 +42,7 @@
     </div>
 </div>
 @endforeach
-<br><br><br><br><br><br><br><br><br><br><hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 @foreach($zotimet as $zotimets)
 <div class="col-sm-3">
     <div class="panel panel-danger">
@@ -57,13 +57,14 @@
     </div>
 </div>
 @endforeach
-<br><br><br><br><br><br><br><br><br><br><hr>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 @foreach($actual_budget as $actual_budgets)
 <div class="col-sm-3">
     <div class="panel panel-info">
         <div class="panel-heading">
            <h3 class="panel-title">Buxheti i mbetur për kategorinë:</h3><hr>
-           {!! $actual_budgets->spendingtype1 !!}
+           {!! $actual_budgets->spendingtype1 !!}<br>
+           {!! $actual_budgets->payment_source !!}
         </div>
         <div class="panel-body">
 
