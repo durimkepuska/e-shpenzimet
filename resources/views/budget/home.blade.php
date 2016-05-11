@@ -48,7 +48,8 @@
     <div class="panel panel-danger">
         <div class="panel-heading">
            <h3 class="panel-title">Zotimet për kategorinë:</h3><hr>
-            {!! $zotimets->spendingtype !!}
+            {!! $zotimets->spendingtype !!}<br>
+            {!! $zotimets->payment_source !!}
          </div>
         <div class="panel-body">
 

@@ -7,6 +7,10 @@
        <span class="glyphicon glyphicon-plus"></span> Shto Lloj Shpenzimi
        </button>
   </div>
+  <div class="form-group">
+            <span class="form_font">Mjetet janë financuar nga</span>
+            {!! Form::select('payment_source_id', $payment_source , null,  ['class' => 'form-control'] )!!}<span class="pull-right note">Obligueshme</span>
+          </div>
 <div class="form-group">
       <span class="form_font">Përshkrimi i Projektit</span>
     {!! Form::textarea('description', null,  ['class' => 'form-control', 'require' => 'require','placeholder'=>'*Përshkrimi','cols'=>50,'rows'=>3])!!}

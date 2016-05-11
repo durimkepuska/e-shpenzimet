@@ -46,8 +46,9 @@ class ExpenditureController extends Controller
 
      public function zotimet_create(){
        $spendingtype = Spendingtype::lists('spendingtype', 'id');
+         $payment_source = Payment_source::lists('payment_source', 'id');
 
-       return view('zotimet.zotimet_create', compact('spendingtype'));
+       return view('zotimet.zotimet_create', compact('spendingtype','payment_source'));
 
      }
 
