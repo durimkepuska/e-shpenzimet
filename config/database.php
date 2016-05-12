@@ -59,7 +59,7 @@ return [
             'username'  => env('DB_USERNAME', 'forge'),
             'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8',
-			'port'      => '8888',
+			'port'      => '33060',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => 'xxl_',
             'strict'    => false,
