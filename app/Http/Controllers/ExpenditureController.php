@@ -315,6 +315,22 @@ class ExpenditureController extends Controller
        }
     }
 
+    public function unhidde($id)
+    {
+      $data = Expenditure::findOrFail($id);
+       if($this->DeprtmentIsResponsible($id)){
+
+        DB::table('expenditures')
+          ->where('id', $id)
+          ->update(array('hidde' => 0));
+           Flash::warning('U regjistrua me sukses!');
+             return Redirect::back();
+       } else {
+           Flash::warning('Nuk keni qasje ne shpenzimet e drejtorive te tjera!');
+        return Redirect::back();
+       }
+    }
+
     public function hidden()
     {
       $data = Expenditure::DepartmentFilter()->Hidde()->paginate(10);

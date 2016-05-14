@@ -64,7 +64,20 @@
             </button>
             <ul class="dropdown-menu" role="menu">
               <li><a href="{!! url('expenditures/'.$datas->id.'/edit' ) !!}"><span class="glyphicon glyphicon-edit"></span> Edit</a></li>
-              <li><a href="{!! action('ExpenditureController@hidde', [$datas->id]) !!}"><span class="glyphicon glyphicon-eye-close"></span>  Fshihe</a></li>
+              @if($datas->hidde==0)
+                <li>
+                  <a href="{!! action('ExpenditureController@hidde', [$datas->id]) !!}">
+                    <span class="glyphicon   glyphicon-eye-close"></span>  Fshihe
+                  </a>
+                </li>
+              @else
+                <li>
+                  <a href="{!! action('ExpenditureController@unhidde', [$datas->id]) !!}">
+                    <span class="glyphicon   glyphicon-eye-open"></span> Publiko
+                  </a>
+                </li>
+              @endif
+              
               <li>
                 <a>
                  {!! Form::open(['method' => 'DELETE', 'url' => 'expenditures/'.$datas->id, 'id'=>'myForm']) !!}

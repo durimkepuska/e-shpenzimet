@@ -61,6 +61,9 @@ Route::post('paysomething' , 'ExpenditureController@paysomething');
 Route::get('expendituresHidde' , 'ExpenditureController@hidden');
 Route::get('expendituresHidde/{id}' , 'ExpenditureController@hidde');
 
+Route::get('expendituresUnHidde/{id}' , 'ExpenditureController@unhidde');
+
+
 Route::get('expendituresIncompleted' , 'ExpenditureController@incompleted');
 
 Route::get('expendituresNotifications' , 'ExpenditureController@notifications');
