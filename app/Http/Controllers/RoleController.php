@@ -23,7 +23,7 @@ class RoleController extends Controller
   public function __construct(){
 
       $this->middleware('auth');
-     $this->middleware('admin', ['only'=>['destroy','update']]);
+     $this->middleware('admin', ['only'=>['destroy','update','create']]);
   }
 
   /**

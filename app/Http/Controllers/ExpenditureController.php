@@ -452,5 +452,11 @@ class ExpenditureController extends Controller
        return redirect('expenditures');
      }
 
+     public function help(){
+
+        return view('help');
+
+     }
+
 
 }

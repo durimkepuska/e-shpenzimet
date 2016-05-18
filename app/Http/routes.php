@@ -68,6 +68,8 @@ Route::get('expendituresIncompleted' , 'ExpenditureController@incompleted');
 
 Route::get('expendituresNotifications' , 'ExpenditureController@notifications');
 
+Route::get('help' , 'ExpenditureController@help');
+
 //Furnitoret
 Route::resource('suppliers' , 'SupplierController');
 Route::post('suppliersSearch' , 'SupplierController@search');

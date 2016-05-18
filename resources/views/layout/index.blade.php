@@ -29,8 +29,8 @@
 					</a>
 					<ul>
 						<li><a href="{!! action('Auth\AuthController@getRregister') !!}">Regjistro Shfrytëzues</a></li>
+						<li><a href="{!! action('ExpenditureController@help') !!}">Ndihmë</a></li>
 						<li><a href="{!! action('Auth\AuthController@getLogoutt') !!}">Mbylle llogarinë</a></li>
-
 					</ul>
 				</li>
 			</ul>
@@ -83,6 +83,7 @@
 			<ul>
 				<li class="action-btn"><a href="{!! action('Auth\AuthController@getLogoutt') !!}">Mbylle Llogarinë</a></li>
 			</ul>
+			
 </nav>
 	<div class="content-wrapper">
 		@yield('content')
