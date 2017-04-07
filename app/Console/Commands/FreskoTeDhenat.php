@@ -47,14 +47,14 @@ class FreskoTeDhenat extends Command
 
       //shpenzimet totale
       $shpenzimet_total =  DB::table('expenditures')
-              ->select(DB::raw('SUM(paid_value) as total'))->where('paid','!=',4)
+              ->select(DB::raw('SUM(paid_value) as total'))->where('paid','!=',4)->where('YEAR(created_at)',date('Y'))
               ->get();
       File::put(storage_path('charts/2016/totals/shpenzimet_total.js'), $shpenzimet_total[0]->total);
       //end
 
       //borxhet totale
       $borxhet_total =  DB::table('expenditures')
-              ->select(DB::raw('SUM(value-paid_value) as total'))->where('paid','!=',4)
+              ->select(DB::raw('SUM(value-paid_value) as total'))->where('paid','!=',4)->where('YEAR(created_at)',date('Y'))
               ->get();
       File::put(storage_path('charts/2016/totals/borxhet_total.js'), $borxhet_total[0]->total);
       //end
@@ -135,6 +135,7 @@ class FreskoTeDhenat extends Command
                                           FROM xxl_expenditures
                   												RIGHT JOIN xxl_departments
                                           ON xxl_expenditures.department_id=xxl_departments.id
+                                          WHERE YEAR(xxl_expenditures.created_at) = '.date('Y').'
                                           GROUP BY department_id
                   												ORDER BY department_id
                       ) as tbl2
@@ -184,7 +185,7 @@ class FreskoTeDhenat extends Command
                                           ON xxl_expenditures.department_id=xxl_departments.id
                                           RIGHT JOIN xxl_spendingtypes
                                           ON xxl_expenditures.spendingtype_id=xxl_spendingtypes.id
-                                          where xxl_expenditures.paid_value!=4
+                                          where xxl_expenditures.paid_value!=4 and YEAR(xxl_expenditures.created_at) = '.date('Y').'
                                           GROUP BY spendingtype2, department_id2
                       ) as tbl2
 
@@ -206,7 +207,7 @@ class FreskoTeDhenat extends Command
         $shpenzimet_drejtorite =  DB::table('expenditures')
                 ->join('departments', 'departments.id', '=', 'expenditures.department_id')
                 ->select( DB::raw('CONCAT("shpenzimet","-",department_id) as drilldown'),'departments.department as name', DB::raw('SUM(paid_value) as y'))
-                ->where('paid','!=',4)
+                ->where('paid','!=',4)->where('YEAR(expenditures.created_at)',date('Y'))
                 ->groupBy('expenditures.department_id')
                 ->get();
 
@@ -227,7 +228,7 @@ class FreskoTeDhenat extends Command
           $shpenzimet_drejtorite_kategorite =  DB::table('expenditures')
                   ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'expenditures.spendingtype_id')
                   ->select(DB::raw('CONCAT("shpenzimet","-",department_id,"-",spendingtype_id) as drilldown'), 'spendingtypes.spendingtype as name', DB::raw('SUM(paid_value) as y'))
-                  ->where('expenditures.department_id',$index)->where('paid','!=',4)
+                  ->where('expenditures.department_id',$index)->where('paid','!=',4)->where('YEAR(expenditures.created_at)',date('Y'))
                   ->groupBy('expenditures.spendingtype_id')
                   ->get();
 
@@ -252,7 +253,7 @@ class FreskoTeDhenat extends Command
                   ->select(DB::raw('CONCAT("shpenzimet","-",department_id,"-",spendingtype_id,"-",spending_category_id) as drilldown'), 'spending_categories.spending_category as name', DB::raw('SUM(paid_value) as y'))
                   ->where('expenditures.department_id',$index)
                   ->where('expenditures.spendingtype_id',$index1)
-                  ->where('paid','!=',4)
+                  ->where('paid','!=',4)->where('YEAR(expenditures.created_at)',date('Y'))
                   ->groupBy('expenditures.spending_category_id')
                   ->get();
 
@@ -280,7 +281,7 @@ class FreskoTeDhenat extends Command
                   ->select(DB::raw('CONCAT("xx","-",department_id) as drilldown'), 'suppliers.supplier as name', DB::raw('SUM(paid_value) as y'))
                   ->where('expenditures.department_id',$index)
                   ->where('expenditures.spendingtype_id',$index1)
-                   ->where('expenditures.spending_category_id',$index2)
+                   ->where('expenditures.spending_category_id',$index2)->where('YEAR(expenditures.created_at)',date('Y'))
                   ->groupBy('expenditures.supplier_id')
                   ->get();
 
@@ -303,7 +304,7 @@ class FreskoTeDhenat extends Command
                 ->join('departments', 'departments.id', '=', 'expenditures.department_id')
                 ->select( DB::raw('CONCAT("borxhet","-",department_id) as drilldown'),'departments.department as name', DB::raw('SUM(value-paid_value) as y'))
                 ->groupBy('expenditures.department_id')
-                ->where('paid','!=',4)
+                ->where('paid','!=',4)->where('YEAR(expenditures.created_at)',date('Y'))
                 ->get();
 
           $borxhet_drejtorite_object = new FreskoTeDhenat();
@@ -323,7 +324,7 @@ class FreskoTeDhenat extends Command
                     ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'expenditures.spendingtype_id')
                     ->select(DB::raw('CONCAT("borxhet","-",department_id,"-",spendingtype_id) as drilldown'), 'spendingtypes.spendingtype as name', DB::raw('SUM(value-paid_value) as y'))
                     ->where('expenditures.department_id',$index)
-                    ->where('paid','!=',4)
+                    ->where('paid','!=',4)->where('YEAR(expenditures.created_at)',date('Y'))
                     ->groupBy('expenditures.spendingtype_id')
                     ->get();
 
@@ -346,7 +347,7 @@ class FreskoTeDhenat extends Command
                     ->select(DB::raw('CONCAT("borxhet","-",department_id,"-",spendingtype_id,"-",spending_category_id) as drilldown'), 'spending_categories.spending_category as name', DB::raw('SUM(value-paid_value) as y'))
                     ->where('expenditures.department_id',$index)
                     ->where('expenditures.spendingtype_id',$index1)
-                    ->where('paid','!=',4)
+                    ->where('paid','!=',4)->where('YEAR(expenditures.created_at)',date('Y'))
                     ->groupBy('expenditures.spending_category_id')
                     ->get();
 
@@ -373,7 +374,7 @@ class FreskoTeDhenat extends Command
                 ->select(DB::raw('CONCAT("borxhettt","-") as drilldown'), 'suppliers.supplier as name', DB::raw('SUM(value-paid_value) as y'))
                 ->where('expenditures.department_id',$index)
                 ->where('expenditures.spendingtype_id',$index1)
-                 ->where('expenditures.spending_category_id',$index2)
+                 ->where('expenditures.spending_category_id',$index2)->where('YEAR(expenditures.created_at)',date('Y'))
                 ->groupBy('expenditures.supplier_id')
                 ->where('paid','!=',4)
                 ->get();

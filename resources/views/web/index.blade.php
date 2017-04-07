@@ -16,7 +16,7 @@
 <script src="{!! URL::asset('web_style/js/drilldown.js') !!}"></script>
 <title>e-Shpenzimet</title>
 <!--
-	Developed by: KRIJON
+	Developed by: KRIJON 2017
 -->
 </head>
 <body>
@@ -36,7 +36,8 @@
 	        <li class="dropdown">
 	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Viti <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li class="active"><a href="#" >2016</a></li>
+	            <li ><a href="#" >2016</a></li>
+	            <li ><a href="#" >2017</a></li>
 						</ul>
 	        </li>
 				</ul>
@@ -58,7 +59,7 @@
 	<section id="branding" class="cd-branding">
 		<ul>
 			<li class="cd-box">
-				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit 2016</span>
+				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit 2017</span>
 					<br><br>Vizualizimi i buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
 				<div id="chart_container" ></div>
 			</li>
@@ -122,7 +123,7 @@ plotOptions: {
 }}},
 series: [{
   id: '',
-  name: '---Shpenzimet 2016--- Kliko mbi shtylla për më shumë informata rreth Buxhetit, Shpenzimet dhe Borxheve të drejtorive në Komunën e Gjakovës',
+  name: '---Shpenzimet 2017--- Kliko mbi shtylla për më shumë informata rreth Buxhetit, Shpenzimet dhe Borxheve të drejtorive në Komunën e Gjakovës',
   data: [
   {name: 'Buxheti fillestar', color: '#2F4F4F', y: {!! File::get(storage_path('charts/2016/totals/buxheti_total.js')) !!}, drilldown: 'buxheti_fillestare_drejtorite'},
 	{name: 'Shpenzimet', color: '#8C231F', y: {!! File::get(storage_path('charts/2016/totals/shpenzimet_total.js')) !!}, drilldown: 'shpenzimet_drejtorite'},
