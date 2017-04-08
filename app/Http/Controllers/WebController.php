@@ -67,7 +67,7 @@ class WebController extends Controller
 
            $excel->setTitle('e-Shpenzimet, '. $data[0]->Drejtoria);
 
-           $excel->setCreator('KrijonXXL')->setCompany('Komuna e Gjakovës');
+           $excel->setCreator('Krijon')->setCompany('Komuna e Gjakovës');
 
            $excel->sheet('Drejtoria IT', function($sheet) use($data) {
 
@@ -103,7 +103,7 @@ class WebController extends Controller
                         '','','', '','Gjithsej: ', number_format($sum1,2) . ' EUR', number_format($sum2,2) . ' EUR', number_format($sum1-$sum2,2). ' EUR'
                     ));
                     $sheet->appendRow(array(
-                        '© e-Shpenzimet 2016'
+                        '© e-Shpenzimet 2017'
                     ));
 
                     $sheet->appendRow(array(
