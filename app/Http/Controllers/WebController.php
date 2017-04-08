@@ -34,7 +34,7 @@ class WebController extends Controller
       $department_id = Input::get('department');
 
       $data = expenditure::where('expenditures.department_id' , $department_id)
-        ->where('hidde', 0)->where(DB::raw('YEAR(expenditures.created_at) = 2017'))
+        ->where('hidde', 0)->whereYear('expenditures.created_at', '=', date('Y'))
         ->join('departments', 'expenditures.department_id', '=', 'departments.id')
         ->join('suppliers', 'expenditures.supplier_id', '=', 'suppliers.id')
         ->join('spendingtypes', 'expenditures.spendingtype_id', '=', 'spendingtypes.id')
