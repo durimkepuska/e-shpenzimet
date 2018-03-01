@@ -7,7 +7,7 @@ use Auth;
 use DB;
 class Budget extends Model
 {
-  public $timestamps = false;
+  public $timestamps = true;
 
   protected $fillable = ['department_id','spendingtype_id','payment_source_id','value'];
 

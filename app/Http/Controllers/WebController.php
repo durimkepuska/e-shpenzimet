@@ -23,18 +23,19 @@ class WebController extends Controller
       $type = Type::lists('type', 'type');
       $department = Department::orderBy('department')->lists('department', 'id');
 
-      //Artisan::call('fresko:tedhenat');
+      // Artisan::call('fresko:tedhenat');
       return view('web.index',compact('type','department'));
     }
 
     public function generateRaport()
     {
-
+     
       $type = Input::get('type');
+      // $year = Input::get('year');
       $department_id = Input::get('department');
 
       $data = expenditure::where('expenditures.department_id' , $department_id)
-        ->where('hidde', 0)->whereYear('expenditures.created_at', '=', date('Y'))
+        // ->where('hidde', 0)->whereYear('expenditures.created_at', '=', "2016")
         ->join('departments', 'expenditures.department_id', '=', 'departments.id')
         ->join('suppliers', 'expenditures.supplier_id', '=', 'suppliers.id')
         ->join('spendingtypes', 'expenditures.spendingtype_id', '=', 'spendingtypes.id')
@@ -57,7 +58,8 @@ class WebController extends Controller
                   //'users.name as Përgjegjësi',
                   'payment_sources.payment_source as Vija_Buxhetore')
                  ->get();
-
+                 // echo count($data);
+                 // die();
                  if(count($data)==0){
                    Flash::warning('Nuk ka shënime për këtë drejtori!');
                    return redirect('/');
@@ -103,7 +105,7 @@ class WebController extends Controller
                         '','','', '','Gjithsej: ', number_format($sum1,2) . ' EUR', number_format($sum2,2) . ' EUR', number_format($sum1-$sum2,2). ' EUR'
                     ));
                     $sheet->appendRow(array(
-                        '© e-Shpenzimet 2017'
+                        '© e-Shpenzimet'
                     ));
 
                     $sheet->appendRow(array(

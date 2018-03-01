@@ -16,9 +16,17 @@
 <script src="{!! URL::asset('web_style/js/drilldown.js') !!}"></script>
 <title>e-Shpenzimet</title>
 <!--
-	Developed by: KRIJON 2017
+	Developed by: KRIJON 2018
 -->
 </head>
+<?php 
+if(isset($_GET['year'])){
+	$year = $_GET['year'];
+} else {
+	$year = date("Y");
+}
+;
+?>
 <body>
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
@@ -32,12 +40,13 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Ballina</a></li>
+	       
 	        <li class="dropdown">
 	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Viti <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li ><a href="#" >2016</a></li>
-	            <li ><a href="#" >2017</a></li>
+	            <li ><a href="?year=2016" >2016</a></li>
+	            <li ><a href="?year=2017" >2017</a></li>
+	            <li ><a href="?year=2018" >2018</a></li>
 						</ul>
 	        </li>
 				</ul>
@@ -58,19 +67,19 @@
 	@include('partials.flash')
 	<section id="branding" class="cd-branding">
 		<ul>
-			<li class="cd-box">
-				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit 2017</span>
+			<!-- <li class="cd-box"> -->
+				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit {{$year}}</span>
 					<br><br>Vizualizimi i buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
 				<div id="chart_container" ></div>
-			</li>
-			<li>
+			<!-- </li> -->
+		<!-- 	<li>
 				<div class="panel panel-default panel_class">
 					 <div class="panel-heading" style="text-align:center;">Paneli i informatave</div>
 					 <div class="panel-body">
 					 	<div id="info_panel" style="text-align:left;  text-justify: inter-word;  line-height: 1.6;"></div>
 					 </div>
 				</div>
-			</li>
+			</li> -->
 		</ul>
 		<ul>
 		</ul>
@@ -81,6 +90,7 @@
 </main>
 
 <script>
+
 $(function () {
 Highcharts.setOptions({
 lang: {
@@ -123,20 +133,20 @@ plotOptions: {
 }}},
 series: [{
   id: '',
-  name: '---Shpenzimet 2017--- Kliko mbi shtylla për më shumë informata rreth Buxhetit, Shpenzimet dhe Borxheve të drejtorive në Komunën e Gjakovës',
+  name: '---Shpenzimet 2018--- Kliko mbi shtylla për më shumë informata rreth Buxhetit, Shpenzimet dhe Borxheve të drejtorive në Komunën e Gjakovës',
   data: [
-  {name: 'Buxheti fillestar', color: '#2F4F4F', y: {!! File::get(storage_path('charts/2016/totals/buxheti_total.js')) !!}, drilldown: 'buxheti_fillestare_drejtorite'},
-	{name: 'Shpenzimet', color: '#8C231F', y: {!! File::get(storage_path('charts/2016/totals/shpenzimet_total.js')) !!}, drilldown: 'shpenzimet_drejtorite'},
-	{name: 'Buxheti aktual',color: '#FFCC00', y: {!! File::get(storage_path('charts/2016/totals/buxheti_aktual.js')) !!}, drilldown: 'buxheti_aktual_drejtorite'},
-	{name: 'Borxhet',color: '#696969', y: {!! File::get(storage_path('charts/2016/totals/borxhet_total.js')) !!}, drilldown: 'borxhet_drejtorite'}
+  {name: 'Buxheti fillestar', color: '#2F4F4F', y: {!! File::get(storage_path('charts/'.$year.'/totals/buxheti_total.js')) !!}, drilldown: 'buxheti_fillestare_drejtorite'},
+	{name: 'Shpenzimet', color: '#8C231F', y: {!! File::get(storage_path('charts/'.$year.'/totals/shpenzimet_total.js')) !!}, drilldown: 'shpenzimet_drejtorite'},
+	{name: 'Buxheti aktual',color: '#FFCC00', y: {!! File::get(storage_path('charts/'.$year.'/totals/buxheti_aktual.js')) !!}, drilldown: 'buxheti_aktual_drejtorite'},
+	{name: 'Borxhet',color: '#696969', y: {!! File::get(storage_path('charts/'.$year.'/totals/borxhet_total.js')) !!}, drilldown: 'borxhet_drejtorite'}
 ]}],
 
 drilldown: {
 	drillUpButton: {
 relativeTo: '',
 position: {
-	y: -10,
-  x: 0
+	y: 15,
+  x: -15
 },
 theme: {
 	fill: '#A0522D',
@@ -152,7 +162,7 @@ theme: {
   fill: '#fff'
 }}}},
 series: [
-{!! File::get(storage_path('charts/2016/all.js')) !!}
+{!! File::get(storage_path('charts/'.$year.'/all.js')) !!}
 ]}})});
 </script>
 <script src="{!! URL::asset('web_style/js/other.js') !!}"></script>

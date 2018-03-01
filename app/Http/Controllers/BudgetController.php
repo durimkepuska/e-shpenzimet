@@ -136,7 +136,8 @@ class BudgetController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+    
       Budget::create($request->all());
       Flash::warning('U regjistrua me sukses!');
       return Redirect::back();

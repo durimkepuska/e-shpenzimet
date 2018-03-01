@@ -13,3 +13,5 @@
     {!! Form::text('value', null, ['class' => 'form-control', 'require' => 'require','placeholder'=>'Vlera ne Euro'])!!}
 </div>
 {!! Form::hidden('department_id', Auth::user()->department_id, ['class' => 'form-control'])!!}
+
+

@@ -18,6 +18,7 @@
               <div class="form-group" >
                  {!! Form::label('type', 'Lloji i dokumentit:', array('class' => 'mylabel')) !!}
                  {!! Form::select('type', $type , null,  ['class' => 'form-control'] )!!}
+                  {!! Form::hidden('year', $year, ['class' => 'form-control'])!!}
                </div>
              </div>
         </div>
