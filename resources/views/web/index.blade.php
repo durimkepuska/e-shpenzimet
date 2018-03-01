@@ -95,7 +95,7 @@ $(function () {
 Highcharts.setOptions({
 lang: {
 	thousandsSep: ',',
-	drillUpText: '< ktheu'
+	drillUpText: '< prapa'
 }
 });
 $('#chart_container').highcharts({

@@ -73,7 +73,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'Ky :attribute eshte regjistruar njehere.',
+    'unique'               => 'Ky emer eshte regjistruar njehere.',
     'url'                  => 'The :attribute format is invalid.',
 
     /*

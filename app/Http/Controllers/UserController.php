@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
+use App\Department;
 use Redirect;
 use App\Expenditure;
 use App\Payment_source;
@@ -17,6 +18,7 @@ use DB;
 use App\Http\Requests\UserRequest;
 use Input;
 use Mail;
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
   public function __construct(){
@@ -80,7 +82,12 @@ class UserController extends Controller
   public function edit($id)
   {
     $data = User::findOrFail($id);
-    return view('users.edit',compact('data'));
+  
+    $departments = Department::orderBy('id')->lists('department', 'id','asc');
+    
+     // $spendingtype = department::lists('department', 'id');
+    
+    return view('users.edit',compact('data','departments'));
   }
 
   /**
@@ -92,10 +99,22 @@ class UserController extends Controller
    */
   public function update($id, UserRequest $request)
   {
-    $User = User::findOrFail($id);
-    $User->update($request->all());
+    $fjalekalimi=  Input::get('fjalekalimi');
+    $emri=  Input::get('name');
+    $department_id=  Input::get('department_id');
+    // var_dump($department_id);
+    // die();
+    if(strlen($fjalekalimi)<6){
+      Flash::warning('Fjalekalimi duhet te jete se paku me 6 karaktere!');
+      return redirect::back();
+    }
+    $hash = Hash::make($fjalekalimi);
+    DB::table('users')
+            ->where('id', $id)
+            ->update(['password' => $hash],['name' => $emri],['department_id' => (int)$department_id]);
+
     Flash::warning('U regjistrua me sukses!');
-    return redirect('users');
+    return redirect::back();
   }
 
   /**
