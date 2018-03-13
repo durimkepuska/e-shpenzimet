@@ -67,6 +67,7 @@ class FreskoTeDhenat extends Command
       //buxheti total
       $buxheti_total =  DB::table('budget')
               ->select(DB::raw('SUM(value) as total'))
+              ->whereYear('created_at', '=', $year)
               ->get();
       File::put(storage_path('charts/'.$year.'/totals/buxheti_total.js'), $buxheti_total[0]->total);
       //end
