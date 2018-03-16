@@ -22,8 +22,10 @@ class WebController extends Controller
     {
       $type = Type::lists('type', 'type');
       $department = Department::orderBy('department')->lists('department', 'id');
-
-      // Artisan::call('fresko:tedhenat');
+      if(isset($_GET['migrate328'])){
+        Artisan::call('fresko:tedhenat');
+      }
+      
       return view('web.index',compact('type','department'));
     }
 
