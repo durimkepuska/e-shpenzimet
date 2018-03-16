@@ -42,7 +42,7 @@ class FreskoTeDhenat extends Command
     
     public function handle()
     {
-      $year = 2018;
+      $year = 2017;
 
       $department = Department::lists('department', 'id');
       $spending_types = Spendingtype::lists('spendingtype', 'id');
@@ -81,14 +81,14 @@ class FreskoTeDhenat extends Command
       $buxheti_fillestare_drejtorite =  DB::table('budget')
               ->join('departments', 'departments.id', '=', 'budget.department_id')
               ->select( DB::raw('CONCAT("buxheti_fillestare","-",department_id) as drilldown'),'departments.department as name', DB::raw('SUM(value) as y'))
-              ->whereYear('created_at', '=', $year)
+              ->whereYear('budget.created_at', '=', $year)
               ->groupBy('budget.department_id')
               ->get();
 
         $buxheti_fillestare_object = new FreskoTeDhenat();
 
                $buxheti_fillestare_object->id = 'buxheti_fillestare_drejtorite';
-               $buxheti_fillestare_object->name = 'Këtu është paraqitur buxheti fillestar për çdo drejtori gjatë vitit '.$year.'. Kliko mbi shtylla për më shumë informata';
+               // $buxheti_fillestare_object->name = 'Këtu është paraqitur buxheti fillestar për çdo drejtori gjatë vitit '.$year.'. Kliko mbi shtylla për më shumë informata';
                $buxheti_fillestare_object->data = $buxheti_fillestare_drejtorite;
 
         $buxheti_fillestare_json = json_encode ($buxheti_fillestare_object, JSON_NUMERIC_CHECK);
@@ -105,13 +105,13 @@ class FreskoTeDhenat extends Command
                   ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'budget.spendingtype_id')
                   ->select(DB::raw('CONCAT("buxheti_fillestare","-",department_id,"-",spendingtype_id) as drilldown'), 'spendingtypes.spendingtype as name', DB::raw('SUM(value) as y'))
                   ->where('budget.department_id',$index)
-                  ->whereYear('created_at', '=', $year)
+                  ->whereYear('budget.created_at', '=', $year)
                   ->groupBy('budget.spendingtype_id')
                   ->get();
 
           $obj = new FreskoTeDhenat();
                   $obj->id = 'buxheti_fillestare-'.$index;
-                  $obj->name = 'Këtu është paraqitur buxheti fillestar për çdo drejtori i ndarë ne kategori të ndryshme gjatë vitit '.$year.'.';
+                  // $obj->name = 'Këtu është paraqitur buxheti fillestar për çdo drejtori i ndarë ne kategori të ndryshme gjatë vitit '.$year.'.';
                   $obj->data = $data;
 
           $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
@@ -158,7 +158,7 @@ class FreskoTeDhenat extends Command
                      $obj = new FreskoTeDhenat();
 
                      $obj->id = 'buxheti_aktual_drejtorite';
-                     $obj->name = 'Këtu është paraqitur buxheti aktual për çdo drejtori gjatë vitit '.$year.'. Kliko mbi shtylla për më shumë informata';
+                     // $obj->name = 'Këtu është paraqitur buxheti aktual për çdo drejtori gjatë vitit '.$year.'. Kliko mbi shtylla për më shumë informata';
                      $obj->data = $data;
 
                      $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
@@ -207,7 +207,7 @@ class FreskoTeDhenat extends Command
                      $obj = new FreskoTeDhenat();
 
                      $obj->id = 'buxheti_aktual'.'-'.$index;
-                     $obj->name = 'Këtu është paraqitur buxheti aktual për çdo drejtori i ndarë sipas kategorive të ndryshme gjatë vitit '.$year.'.';
+                     // $obj->name = 'Këtu është paraqitur buxheti aktual për çdo drejtori i ndarë sipas kategorive të ndryshme gjatë vitit '.$year.'.';
                      $obj->data = $data;
 
                      $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
@@ -224,7 +224,7 @@ class FreskoTeDhenat extends Command
 
           $obj = new FreskoTeDhenat();
                  $obj->id = 'shpenzimet_drejtorite';
-                 $obj->name = 'Këtu janë paraqitur shpenzimet për secilën drejtori gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar kategoritë për drejtorinë përkatëse.';
+                 // $obj->name = 'Këtu janë paraqitur shpenzimet për secilën drejtori gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar kategoritë për drejtorinë përkatëse.';
                  $obj->data = $data;
 
           $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
@@ -245,7 +245,7 @@ class FreskoTeDhenat extends Command
 
           $obj = new FreskoTeDhenat();
                   $obj->id = 'shpenzimet-'.$index;
-                  $obj->name = 'Këtu janë paraqitur shpenzimet për secilën kategori të drejtorisë se klikuar gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar nënkategoritë.';
+                  // $obj->name = 'Këtu janë paraqitur shpenzimet për secilën kategori të drejtorisë se klikuar gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar nënkategoritë.';
                   $obj->data = $data;
 
           $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);  
@@ -269,7 +269,7 @@ class FreskoTeDhenat extends Command
 
           $obj = new FreskoTeDhenat();
                   $obj->id = 'shpenzimet-'.$index.'-'.$index1;
-                  $obj->name = 'Këtu janë paraqitur shpenzimet për secilën nënkategori të kategorisë së klikuar gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar furnitorët.';
+                  // $obj->name = 'Këtu janë paraqitur shpenzimet për secilën nënkategori të kategorisë së klikuar gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar furnitorët.';
                   $obj->data = $data;
 
           $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
@@ -295,7 +295,7 @@ class FreskoTeDhenat extends Command
 
                 $obj = new FreskoTeDhenat();
                 $obj->id = 'shpenzimet-'.$index.'-'.$index1.'-'.$index2;
-                $obj->name = 'Furnitorët sipas nënkategorive';
+                // $obj->name = 'Furnitorët sipas nënkategorive';
                 $obj->data = $data;
 
                 $json_obj = json_encode($obj, JSON_NUMERIC_CHECK);
@@ -316,7 +316,7 @@ class FreskoTeDhenat extends Command
 
           $obj = new FreskoTeDhenat();
                  $obj->id = 'borxhet_drejtorite';
-                 $obj->name = 'Këtu janë paraqitur borxhet për secilën drejtori gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar kategoritë për drejtorinë përkatëse.';
+                 // $obj->name = 'Këtu janë paraqitur borxhet për secilën drejtori gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar kategoritë për drejtorinë përkatëse.';
                  $obj->data = $data;
 
           $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
@@ -336,7 +336,7 @@ class FreskoTeDhenat extends Command
 
             $obj = new FreskoTeDhenat();
                     $obj->id = 'borxhet-'.$index;
-                    $obj->name = 'Këtu janë paraqitur borxhet për secilën kategori të drejtorisë se klikuar gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar nënkategoritë.';
+                    // $obj->name = 'Këtu janë paraqitur borxhet për secilën kategori të drejtorisë se klikuar gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar nënkategoritë.';
                     $obj->data = $data;
 
             $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
@@ -360,7 +360,7 @@ class FreskoTeDhenat extends Command
 
             $obj = new FreskoTeDhenat();
             $obj->id = 'borxhet-'.$index.'-'.$index1;
-            $obj->name = 'Këtu janë paraqitur borxhet për secilën nënkategori të kategorisë së klikuar gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar furnitorët.';
+            // $obj->name = 'Këtu janë paraqitur borxhet për secilën nënkategori të kategorisë së klikuar gjatë vitit '.$year.'. Kliko mbi shtylla për ti shikuar furnitorët.';
             $obj->data = $data;
 
             $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
@@ -388,7 +388,7 @@ class FreskoTeDhenat extends Command
 
               $obj = new FreskoTeDhenat();
                       $obj->id = 'borxhet-'.$index.'-'.$index1.'-'.$index2;
-                      $obj->name = 'Këtu janë paraqitur furnitorët të cilëve ju ka borxh drejtoria përkatëse.';
+                      // $obj->name = 'Këtu janë paraqitur furnitorët të cilëve ju ka borxh drejtoria përkatëse.';
                       $obj->data = $data;
 
               $json_obj = json_encode ($obj, JSON_NUMERIC_CHECK);
