@@ -81,6 +81,7 @@ class FreskoTeDhenat extends Command
       $buxheti_fillestare_drejtorite =  DB::table('budget')
               ->join('departments', 'departments.id', '=', 'budget.department_id')
               ->select( DB::raw('CONCAT("buxheti_fillestare","-",department_id) as drilldown'),'departments.department as name', DB::raw('SUM(value) as y'))
+              ->whereYear('created_at', '=', $year)
               ->groupBy('budget.department_id')
               ->get();
 
@@ -104,6 +105,7 @@ class FreskoTeDhenat extends Command
                   ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'budget.spendingtype_id')
                   ->select(DB::raw('CONCAT("buxheti_fillestare","-",department_id,"-",spendingtype_id) as drilldown'), 'spendingtypes.spendingtype as name', DB::raw('SUM(value) as y'))
                   ->where('budget.department_id',$index)
+                  ->whereYear('created_at', '=', $year)
                   ->groupBy('budget.spendingtype_id')
                   ->get();
 
@@ -134,6 +136,7 @@ class FreskoTeDhenat extends Command
                                           FROM xxl_budget
                                           RIGHT JOIN xxl_departments
                                           ON xxl_budget.department_id=xxl_departments.id
+                                          WHERE YEAR(xxl_budget.created_at) = '.$year.'
                                           GROUP BY department_id
                   												ORDER BY department_id
                       ) as tbl1,
@@ -180,6 +183,7 @@ class FreskoTeDhenat extends Command
                                           ON xxl_budget.department_id=xxl_departments.id
                                           RIGHT JOIN xxl_spendingtypes
                                           ON xxl_budget.spendingtype_id=xxl_spendingtypes.id
+                                          WHERE YEAR(xxl_budget.created_at) = '.$year.'
                                           GROUP BY spendingtype1, department_id1
 
                                     ) as tbl1,
