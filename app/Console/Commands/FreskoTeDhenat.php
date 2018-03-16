@@ -42,7 +42,7 @@ class FreskoTeDhenat extends Command
     
     public function handle()
     {
-      $year = 2017;
+      $year = 2018;
 
       $department = Department::lists('department', 'id');
       $spending_types = Spendingtype::lists('spendingtype', 'id');
