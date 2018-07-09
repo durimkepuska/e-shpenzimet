@@ -22,7 +22,7 @@
 		<a href="#0" class="cd-nav-trigger"><span></span></a>
 		<nav class="cd-nav">
 			<ul class="cd-top-nav">
-				<li><a >Emri: {!! Auth::user()->name !!} </a> </li>
+				<li><a > Emri: {!! Auth::user()->name !!}  </a> </li>
 				<li class="has-children account">
 					<a href="">
 						Llogaria

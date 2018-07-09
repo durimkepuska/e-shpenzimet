@@ -12,6 +12,10 @@
     {!! Form::label('value', 'Vlera:', array('class' => 'mylabel')) !!}
     {!! Form::text('value', null, ['class' => 'form-control', 'require' => 'require','placeholder'=>'Vlera ne Euro'])!!}
 </div>
+<div class="form-group">
+    {!! Form::label('year', 'Viti:', array('class' => 'mylabel')) !!}
+    {!! Form::text('year', null, ['class' => 'form-control', 'require','placeholder'=>'Viti'])!!}
+</div>
 {!! Form::hidden('department_id', Auth::user()->department_id, ['class' => 'form-control'])!!}
 
 

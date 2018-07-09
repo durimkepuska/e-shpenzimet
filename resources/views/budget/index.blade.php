@@ -18,6 +18,7 @@
       <th>Burimi</th>
       <th>Vlera</th>
 
+      <th>Viti</th>
       <th></th>
     </tr>
   </thead>
@@ -29,6 +30,7 @@
       <td><a  data-toggle="modal" data-target="#addbudget{!!$datas->id!!}"><span class="glyphicon glyphicon-plus-sign"></span></a></td>
         <td>{!! $datas->payment_source->payment_source !!}</td>
         <td>{!! number_format($datas->value,2); !!} EUR</td>
+          <td>{!! $datas->year !!}</td>
 
       <td>
         <div class="btn-group">

@@ -9,7 +9,7 @@ class Budget extends Model
 {
   public $timestamps = true;
 
-  protected $fillable = ['department_id','spendingtype_id','payment_source_id','value'];
+  protected $fillable = ['department_id','spendingtype_id','payment_source_id','value','year'];
 
   protected $table = 'budget';
 

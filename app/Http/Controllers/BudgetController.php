@@ -15,6 +15,7 @@ use App\Expenditure;
 use DB;
 use Auth;
 use Input;
+use App\Http\Requests\BudgetRequest;
 class BudgetController extends Controller
 {
 
@@ -32,7 +33,7 @@ class BudgetController extends Controller
     public function home()
     {
         $departemnt_id = Auth::user()->department_id;
-        $budget = Budget::OrderBy('id','asc')->DepartmentFilter()->WhereYear('created_at', '=', "2018")->get();
+        $budget = Budget::OrderBy('id','asc')->DepartmentFilter()->Where('year', '=', "2018")->get();
         $actual_budget =  DB::select(DB::raw('
                         SELECT
                             vlera_buxhetit - vlera_shpenzimeve AS y,
@@ -53,7 +54,7 @@ class BudgetController extends Controller
                                 RIGHT JOIN xxl_payment_sources ON xxl_budget.payment_source_id = xxl_payment_sources.id
                                 RIGHT JOIN xxl_departments ON xxl_budget.department_id = xxl_departments.id
                                 RIGHT JOIN xxl_spendingtypes ON xxl_budget.spendingtype_id = xxl_spendingtypes.id
-                                where year(xxl_budget.created_at)=2018
+                                where xxl_budget.year=2018
                                 GROUP BY
                                     spendingtype1,
                                     department_id1,
@@ -118,7 +119,8 @@ class BudgetController extends Controller
 
     public function index()
     {
-        $data = Budget::OrderBy('id','dsc')->whereYear('created_at', '=', "2018")->DepartmentFilter()->paginate(20);
+
+        $data = Budget::OrderBy('year','e')->DepartmentFilter()->paginate(200);
         return view('budget.index', compact('data'));
     }
 
@@ -129,6 +131,7 @@ class BudgetController extends Controller
      */
     public function create()
     {
+
       $spendingtype = Spendingtype::lists('spendingtype', 'id');
       $payment_source = Payment_source::lists('payment_source', 'id');
 
@@ -141,7 +144,7 @@ class BudgetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BudgetRequest $request )
     {   
     
       Budget::create($request->all());
@@ -184,6 +187,7 @@ class BudgetController extends Controller
      */
     public function update(Request $request, $id)
     {
+
       $budget = Budget::findOrFail($id);
       $budget->update($request->all());
       Flash::warning('U regjistrua me sukses!');

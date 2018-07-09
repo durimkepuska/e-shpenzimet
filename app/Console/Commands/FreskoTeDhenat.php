@@ -42,7 +42,11 @@ class FreskoTeDhenat extends Command
     
     public function handle()
     {
-      $year = 2018;
+      if(isset($_GET['code'])){
+         $year = $_GET['code'];
+      } else {
+        $year = date('Y');
+      }
 
       $department = Department::lists('department', 'id');
       $spending_types = Spendingtype::lists('spendingtype', 'id');
@@ -67,7 +71,7 @@ class FreskoTeDhenat extends Command
       //buxheti total
       $buxheti_total =  DB::table('budget')
               ->select(DB::raw('SUM(value) as total'))
-              ->whereYear('created_at', '=', $year)
+              ->where('year', '=', $year)
               ->get();
       File::put(storage_path('charts/'.$year.'/totals/buxheti_total.js'), $buxheti_total[0]->total);
       //end
@@ -81,7 +85,7 @@ class FreskoTeDhenat extends Command
       $buxheti_fillestare_drejtorite =  DB::table('budget')
               ->join('departments', 'departments.id', '=', 'budget.department_id')
               ->select( DB::raw('CONCAT("buxheti_fillestare","-",department_id) as drilldown'),'departments.department as name', DB::raw('SUM(value) as y'))
-              ->whereYear('budget.created_at', '=', $year)
+              ->where('budget.year', '=', $year)
               ->groupBy('budget.department_id')
               ->get();
 
@@ -105,7 +109,7 @@ class FreskoTeDhenat extends Command
                   ->rightjoin('spendingtypes', 'spendingtypes.id', '=', 'budget.spendingtype_id')
                   ->select(DB::raw('CONCAT("buxheti_fillestare","-",department_id,"-",spendingtype_id) as drilldown'), 'spendingtypes.spendingtype as name', DB::raw('SUM(value) as y'))
                   ->where('budget.department_id',$index)
-                  ->whereYear('budget.created_at', '=', $year)
+                  ->where('budget.year', '=', $year)
                   ->groupBy('budget.spendingtype_id')
                   ->get();
 
@@ -136,7 +140,7 @@ class FreskoTeDhenat extends Command
                                           FROM xxl_budget
                                           RIGHT JOIN xxl_departments
                                           ON xxl_budget.department_id=xxl_departments.id
-                                          WHERE YEAR(xxl_budget.created_at) = '.$year.'
+                                          WHERE xxl_budget.year = '.$year.'
                                           GROUP BY department_id
                   												ORDER BY department_id
                       ) as tbl1,
@@ -183,7 +187,7 @@ class FreskoTeDhenat extends Command
                                           ON xxl_budget.department_id=xxl_departments.id
                                           RIGHT JOIN xxl_spendingtypes
                                           ON xxl_budget.spendingtype_id=xxl_spendingtypes.id
-                                          WHERE YEAR(xxl_budget.created_at) = '.$year.'
+                                          WHERE xxl_budget.year = '.$year.'
                                           GROUP BY spendingtype1, department_id1
 
                                     ) as tbl1,
