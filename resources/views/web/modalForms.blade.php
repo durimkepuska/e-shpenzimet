@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Gjenero raport sipas drejtorive</h4>
+        <h4 class="modal-title">Gjenero raport të shpenzimeve</h4>
        </div>
        <div class="modal-body">
          {!! Form::open(['method'=>'POST','action' => 'WebController@generateRaport']) !!}
@@ -12,13 +12,16 @@
                <div class="form-group" >
                  {!! Form::label('department', 'Drejtoria:', array('class' => 'mylabel')) !!}
                  {!! Form::select('department', $department , null,  ['class' => 'form-control'] )!!}
+                </div><hr>
+                <div class="form-group" >
+                 {!! Form::label('year', 'Viti:', array('class' => 'mylabel')) !!}
+                 {!! Form::select('year', ['0'=>'Të gjithë','2016'=>2016,'2017'=>2017,'2018'=>2018] , null,  ['class' => 'form-control'] )!!}
                 </div>
              </div><hr>
              <div class="form-inline">
               <div class="form-group" >
                  {!! Form::label('type', 'Lloji i dokumentit:', array('class' => 'mylabel')) !!}
                  {!! Form::select('type', $type , null,  ['class' => 'form-control'] )!!}
-                  {!! Form::hidden('year', $year, ['class' => 'form-control'])!!}
                </div>
              </div>
         </div>

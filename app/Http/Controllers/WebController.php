@@ -34,13 +34,19 @@ class WebController extends Controller
     {
      
       $type = Input::get('type');
-
       $department_id = Input::get('department');
+      $year = Input::get('year');
 
       $data = expenditure::where(function($data) use ($department_id)
       {
           if ($department_id!=0) {
               $data->where('expenditures.department_id' , $department_id);
+          }
+      })
+      ->where(function($data) use ($year)
+      {
+          if ($year!=0) {
+              $data->whereYear('expenditures.created_at' , '=', $year);
           }
       })
       // ->where('hidde', 0)->whereYear('expenditures.created_at', '=', "2016")
@@ -61,7 +67,7 @@ class WebController extends Controller
                'expenditures.paid_value as Vlera_e_Paguar',
                 DB::raw('value-paid_value as Borxhi'),
                 //'expenditurestatus.status as Statusi',
-                'expenditures.expenditure_date as Data_Shpenzimit',
+                'expenditures.expenditure_date as Data_Fatures',
                 'expenditures.description as Përshkrimi_Shpenzimit',
                 //'users.name as Përgjegjësi',
                 'payment_sources.payment_source as Vija_Buxhetore')
@@ -78,13 +84,18 @@ class WebController extends Controller
          } else {
             $file_name= "Të gjitha drejtoritë";
          }
-         Excel::create( $file_name, function($excel) use($data, $file_name) {
+         if($year!=0){
+           $viti="Viti: ".$year;
+         } else {
+           $viti = "Vitet: 2016, 2017, 2018";
+         }
+         Excel::create( $file_name, function($excel) use($data, $file_name, $viti) {
 
            $excel->setTitle('e-Shpenzimet, '. $data[0]->Drejtoria);
 
            $excel->setCreator('Krijon')->setCompany('Komuna e Gjakovës');
 
-           $excel->sheet('Drejtoria IT', function($sheet) use($data, $file_name)  {
+           $excel->sheet('Drejtoria IT', function($sheet) use($data, $file_name, $viti)  {
 
                     $sheet->fromArray($data);
 
@@ -125,7 +136,7 @@ class WebController extends Controller
                         'Komuna e Gjakovës'
                     ));
                     $sheet->appendRow(array(
-                        'Shpenzimet dhe Borxhet për: '. $file_name
+                        'Shpenzimet dhe Borxhet për: '. $file_name.' / ' . $viti
                     ));
 
                     // $sheet->appendRow(array(
