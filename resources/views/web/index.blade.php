@@ -47,6 +47,7 @@ if(isset($_GET['year'])){
 	            <li ><a href="?year=2016" >2016</a></li>
 	            <li ><a href="?year=2017" >2017</a></li>
 	            <li ><a href="?year=2018" >2018</a></li>
+	            <li ><a href="?year=2019" >2019</a></li>
 						</ul>
 	        </li>
 				</ul>
