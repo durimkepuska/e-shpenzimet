@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="{!! URL::asset('web_style/img/favicon.png') !!}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<!-- <link rel="stylesheet"  href="{!! URL::asset('web/css/bootstrap.min.css') !!}"> -->
 <script src="{!! URL::asset('web_style/js/jquery-2.1.1.js') !!}"></script>
 <script src="{!! URL::asset('web_style/js/bootstrap.min.js') !!}"></script>
 <link rel="stylesheet" href="{!! URL::asset('web_style/css/reset.css') !!}">
@@ -16,7 +15,7 @@
 <script src="{!! URL::asset('web_style/js/drilldown.js') !!}"></script>
 <title>e-Shpenzimet</title>
 <!--
-	Developed by: KRIJON 2018
+	Developed by: Durim Kepuska - durimkepuska@gmail.com
 -->
 </head>
 <?php 
@@ -24,6 +23,12 @@ if(isset($_GET['year'])){
 	$year = $_GET['year'];
 } else {
 	$year = date("Y");
+}
+
+if(isset($_GET['chart'])){
+	$chart = $_GET['chart'];
+} else {
+	$chart = "pie";
 }
 ;
 ?>
@@ -42,13 +47,22 @@ if(isset($_GET['year'])){
 	      <ul class="nav navbar-nav">
 	       
 	        <li class="dropdown">
-	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Viti <span class="caret"></span></a>
+	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vitet <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li ><a href="?year=2016" >2016</a></li>
-	            <li ><a href="?year=2017" >2017</a></li>
-	            <li ><a href="?year=2018" >2018</a></li>
-	            <li ><a href="?year=2019" >2019</a></li>
-						</ul>
+	            <li ><a onclick="setGetParameter('year','2016')" >2016</a></li>
+	            <li ><a onclick="setGetParameter('year','2017')" >2017</a></li>
+	            <li ><a onclick="setGetParameter('year','2018')" >2018</a></li>
+	            <li ><a onclick="setGetParameter('year','2019')" >2019</a></li>
+			  </ul>
+	        </li>
+	        <li class="dropdown">
+	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Forma e grafit<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li ><a onclick="setGetParameter('chart','column')" >Shtyllore</a></li>
+	            <li ><a onclick="setGetParameter('chart','pie')" >Rrethore</a></li>
+	            <li ><a onclick="setGetParameter('chart','line')" >Linjore</a></li>
+	            <li ><a onclick="setGetParameter('chart','area')" >Sipëfaqësore</a></li>
+			  </ul>
 	        </li>
 				</ul>
 	      <ul class="nav navbar-nav navbar-right">
@@ -68,19 +82,12 @@ if(isset($_GET['year'])){
 	@include('partials.flash')
 	<section id="branding" class="cd-branding">
 		<ul>
-			<!-- <li class="cd-box"> -->
-				<div class="panel-heading" style="text-align:center;"><span id="main_text">E-Shpenzimet gjatë vitit {{$year}}</span>
-					<br><br>Vizualizimi i buxhetit, shpenzimeve dhe borxheve në Komunën e Gjakovës</div>
-				<div id="chart_container" ></div>
-			<!-- </li> -->
-		<!-- 	<li>
-				<div class="panel panel-default panel_class">
-					 <div class="panel-heading" style="text-align:center;">Paneli i informatave</div>
-					 <div class="panel-body">
-					 	<div id="info_panel" style="text-align:left;  text-justify: inter-word;  line-height: 1.6;"></div>
-					 </div>
+	
+				<div class="panel-heading" style="text-align:center;"><span id="main_text">Komuna e Gjakovës</span>
+					<br><br>Vizualizimi i buxhetit, shpenzimeve dhe borxheve për vitin {{$year}}
 				</div>
-			</li> -->
+				<div id="chart_container" ></div>
+		
 		</ul>
 		<ul>
 		</ul>
@@ -92,16 +99,41 @@ if(isset($_GET['year'])){
 
 <script>
 
+function setGetParameter(paramName, paramValue)
+{
+    var url = window.location.href;
+    var hash = location.hash;
+    url = url.replace(hash, '');
+    if (url.indexOf(paramName + "=") >= 0)
+    {
+        var prefix = url.substring(0, url.indexOf(paramName + "=")); 
+        var suffix = url.substring(url.indexOf(paramName + "="));
+        suffix = suffix.substring(suffix.indexOf("=") + 1);
+        suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
+        url = prefix + paramName + "=" + paramValue + suffix;
+    }
+    else
+    {
+    if (url.indexOf("?") < 0)
+        url += "?" + paramName + "=" + paramValue;
+    else
+        url += "&" + paramName + "=" + paramValue;
+    }
+    window.location.href = url + hash;
+}
+
+
 $(function () {
 Highcharts.setOptions({
 lang: {
 	thousandsSep: ',',
-	drillUpText: '< prapa'
+	drillUpText: '< kthehu'
 }
 });
 $('#chart_container').highcharts({
 chart: {
-	type: 'column'
+	type: "{!!$chart!!}"
+
 },
 	legend: {
   align: 'center',
