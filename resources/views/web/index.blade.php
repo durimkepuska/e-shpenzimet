@@ -28,7 +28,7 @@ if(isset($_GET['year'])){
 if(isset($_GET['chart'])){
 	$chart = $_GET['chart'];
 } else {
-	$chart = "pie";
+	$chart = "column";
 }
 ;
 ?>
@@ -58,7 +58,8 @@ if(isset($_GET['chart'])){
 	        <li class="dropdown">
 	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Forma e grafit<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li ><a onclick="setGetParameter('chart','column')" >Shtyllore</a></li>
+	            <li ><a onclick="setGetParameter('chart','column')" >Vertikale</a></li>
+	            <li ><a onclick="setGetParameter('chart','bar')" >Horizontale</a></li>
 	            <li ><a onclick="setGetParameter('chart','pie')" >Rrethore</a></li>
 	            <li ><a onclick="setGetParameter('chart','line')" >Linjore</a></li>
 	            <li ><a onclick="setGetParameter('chart','area')" >Sipëfaqësore</a></li>
@@ -146,7 +147,7 @@ chart: {
 	}
 },
 title: {
-  text: ''
+  text: 'Kliko mbi të dhëna për më shumë informata'
 },
 xAxis: {
   type: 'category'
@@ -166,7 +167,6 @@ plotOptions: {
 }}},
 series: [{
   id: '',
-  name: '---Shpenzimet 2018--- Kliko mbi shtylla për më shumë informata rreth Buxhetit, Shpenzimet dhe Borxheve të drejtorive në Komunën e Gjakovës',
   data: [
   {name: 'Buxheti fillestar', color: '#2F4F4F', y: {!! File::get(storage_path('charts/'.$year.'/totals/buxheti_total.js')) !!}, drilldown: 'buxheti_fillestare_drejtorite'},
 	{name: 'Shpenzimet', color: '#8C231F', y: {!! File::get(storage_path('charts/'.$year.'/totals/shpenzimet_total.js')) !!}, drilldown: 'shpenzimet_drejtorite'},
@@ -185,7 +185,7 @@ theme: {
 	fill: '#A0522D',
 	'stroke-width': 1,
   stroke: '#A0522D',
-  r: 5,
+  r: 15,
   states: {
   hover: {
   fill: '#A0522D'
