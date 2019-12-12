@@ -154,10 +154,15 @@ xAxis: {
 },
 tooltip: {
   headerFormat: '<span style="font-size:11px"> <b>{point.y:,.2f} EUR</b></span><br>',
-  pointFormat: '<span >{point.name}</span>'
+  pointFormat: '{series.name}: <span >{point.name}</span>'
 },
 
 plotOptions: {
+ pie: {
+          
+           
+            showInLegend: true
+        }
   series: {
 
   borderWidth:1,
