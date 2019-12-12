@@ -162,7 +162,7 @@ plotOptions: {
           
            
             showInLegend: true
-        }
+        },
   series: {
 
   borderWidth:1,
