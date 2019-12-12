@@ -21,7 +21,7 @@
     <tbody>
      
       <tr>
-        <td>Durim Këpuska<br>email: durimkepuska@gmail.com<br>tel: +386 (0) 49 130 121</td>
+        <td>Durim Këpuska<br>email: durimkepuska@gmail.com<br>tel: +383 (0) 49 130 121</td>
         
       </tr>
    
