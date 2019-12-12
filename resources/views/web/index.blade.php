@@ -165,7 +165,7 @@ plotOptions: {
   borderWidth:1,
   dataLabels: {
   enabled: true,
-	format: '{point.name}: {point.y:,.2f} EUR'
+	format: '<b>{point.name}:</b> {point.y:,.2f} EUR'
 }}},
 series: [{
   id: '',
