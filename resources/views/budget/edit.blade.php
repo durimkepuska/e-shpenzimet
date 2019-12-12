@@ -12,7 +12,7 @@
 
 {!! Form::model($data,['method'=>'PATCH','action' => ['BudgetController@update', $data->id]]) !!}
 
-  <br>  <p>Azhuro buxhetin </p><br>
+  <br>  <p>Azhurno buxhetin </p><br>
      {!! csrf_field() !!}
 
       @include('budget.form')
