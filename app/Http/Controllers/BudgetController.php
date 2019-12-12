@@ -32,8 +32,9 @@ class BudgetController extends Controller
      */
     public function home()
     {
+        $year = date('Y');
         $departemnt_id = Auth::user()->department_id;
-        $budget = Budget::OrderBy('id','asc')->DepartmentFilter()->Where('year', '=', "2018")->get();
+        $budget = Budget::OrderBy('id','asc')->DepartmentFilter()->Where('year', '=', $year)->get();
         $actual_budget =  DB::select(DB::raw('
                         SELECT
                             vlera_buxhetit - vlera_shpenzimeve AS y,
@@ -54,7 +55,7 @@ class BudgetController extends Controller
                                 RIGHT JOIN xxl_payment_sources ON xxl_budget.payment_source_id = xxl_payment_sources.id
                                 RIGHT JOIN xxl_departments ON xxl_budget.department_id = xxl_departments.id
                                 RIGHT JOIN xxl_spendingtypes ON xxl_budget.spendingtype_id = xxl_spendingtypes.id
-                                where xxl_budget.year=2018
+                                where xxl_budget.year= '.$year.'
                                 GROUP BY
                                     spendingtype1,
                                     department_id1,
@@ -73,7 +74,7 @@ class BudgetController extends Controller
                                 RIGHT JOIN xxl_payment_sources ON xxl_expenditures.payment_source_id = xxl_payment_sources.id
                                 RIGHT JOIN xxl_departments ON xxl_expenditures.department_id = xxl_departments.id
                                 RIGHT JOIN xxl_spendingtypes ON xxl_expenditures.spendingtype_id = xxl_spendingtypes.id
-                                where year(xxl_expenditures.created_at)=2018
+                                where year(xxl_expenditures.created_at)='.$year.'
                                 GROUP BY
                                     spendingtype2,
                                     department_id2,
@@ -99,7 +100,7 @@ class BudgetController extends Controller
                 ->select( 'spendingtypes.spendingtype','payment_sources.payment_source',DB::raw('SUM(paid_value) as total'))
                 ->groupBy('spendingtypes.spendingtype')->groupBy('expenditures.payment_source_id')
                 ->where('expenditures.department_id',Auth::user()->department_id)->where('paid','!=',4)
-                ->whereYear('expenditures.created_at', '=', "2018")
+                ->whereYear('expenditures.created_at', '=', $year)
                 ->OrderBy('expenditures.id','asc')
                 ->get();
         $zotimet = DB::table('expenditures')
@@ -108,7 +109,7 @@ class BudgetController extends Controller
                 ->select( 'payment_source','spendingtypes.spendingtype',DB::raw('SUM(paid_value) as total'))
                 ->groupBy('spendingtypes.spendingtype')
                 ->where('expenditures.department_id',Auth::user()->department_id)->where('paid',4)
-                ->whereYear('expenditures.created_at', '=', "2018")
+                ->whereYear('expenditures.created_at', '=', $year)
                 ->OrderBy('expenditures.id','asc')
                 ->get();
 
