@@ -15,7 +15,7 @@
                 </div><hr>
                 <div class="form-group" >
                  {!! Form::label('year', 'Viti:', array('class' => 'mylabel')) !!}
-                 {!! Form::select('year', ['0'=>'Të gjithë','2016'=>2016,'2017'=>2017,'2018'=>2018,'2019'=>2019] , null,  ['class' => 'form-control'] )!!}
+                 {!! Form::select('year', ['0'=>'Të gjithë','2016'=>2016,'2017'=>2017,'2018'=>2018,'2019'=>2019,'2020'=>2020] , null,  ['class' => 'form-control'] )!!}
                 </div>
              </div><hr>
              <div class="form-inline">

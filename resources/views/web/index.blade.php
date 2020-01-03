@@ -53,6 +53,7 @@ if(isset($_GET['chart'])){
 	            <li ><a onclick="setGetParameter('year','2017')" >2017</a></li>
 	            <li ><a onclick="setGetParameter('year','2018')" >2018</a></li>
 	            <li ><a onclick="setGetParameter('year','2019')" >2019</a></li>
+	            <li ><a onclick="setGetParameter('year','2020')" >2020</a></li>
 			  </ul>
 	        </li>
 	        <li class="dropdown">

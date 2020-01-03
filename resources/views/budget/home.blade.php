@@ -9,7 +9,7 @@
 @section('content')
 @include('budget.buttons')
 
-<h2 style="text-align:center;">Buxheti per vitin 2019</h2><br><hr>
+<h2 style="text-align:center;">Buxheti per vitin 2020</h2><br><hr>
 <div class="row">
 @foreach($budget as $budgets)
 <div class="col-sm-3">
