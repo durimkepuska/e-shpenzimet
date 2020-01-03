@@ -13,6 +13,30 @@
 <script src="{!! URL::asset('web_style/js/highcharts.js') !!}"></script>
 <script src="{!! URL::asset('web_style/js/data.js') !!}"></script>
 <script src="{!! URL::asset('web_style/js/drilldown.js') !!}"></script>
+<script>
+function setGetParameter(paramName, paramValue)
+{
+    var url = window.location.href;
+    var hash = location.hash;
+    url = url.replace(hash, '');
+    if (url.indexOf(paramName + "=") >= 0)
+    {
+        var prefix = url.substring(0, url.indexOf(paramName + "=")); 
+        var suffix = url.substring(url.indexOf(paramName + "="));
+        suffix = suffix.substring(suffix.indexOf("=") + 1);
+        suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
+        url = prefix + paramName + "=" + paramValue + suffix;
+    }
+    else
+    {
+    if (url.indexOf("?") < 0)
+        url += "?" + paramName + "=" + paramValue;
+    else
+        url += "&" + paramName + "=" + paramValue;
+    }
+    window.location.href = url + hash;
+}
+</script>
 <title>e-Shpenzimet</title>
 <!--
 	Developed by: Durim Kepuska - durimkepuska@gmail.com
@@ -100,30 +124,6 @@ if(isset($_GET['chart'])){
 </main>
 
 <script>
-
-function setGetParameter(paramName, paramValue)
-{
-    var url = window.location.href;
-    var hash = location.hash;
-    url = url.replace(hash, '');
-    if (url.indexOf(paramName + "=") >= 0)
-    {
-        var prefix = url.substring(0, url.indexOf(paramName + "=")); 
-        var suffix = url.substring(url.indexOf(paramName + "="));
-        suffix = suffix.substring(suffix.indexOf("=") + 1);
-        suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
-        url = prefix + paramName + "=" + paramValue + suffix;
-    }
-    else
-    {
-    if (url.indexOf("?") < 0)
-        url += "?" + paramName + "=" + paramValue;
-    else
-        url += "&" + paramName + "=" + paramValue;
-    }
-    window.location.href = url + hash;
-}
-
 
 $(function () {
 Highcharts.setOptions({
