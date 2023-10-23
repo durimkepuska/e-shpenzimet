@@ -87,7 +87,7 @@ class WebController extends Controller
          if($year!=0){
            $viti="Viti: ".$year;
          } else {
-           $viti = "Vitet: 2016, 2017, 2018, 2019, 2020, 2021, 2022";
+           $viti = "Vitet: 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023";
          }
          Excel::create( $file_name, function($excel) use($data, $file_name, $viti) {
 
