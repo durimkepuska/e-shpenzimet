@@ -73,15 +73,8 @@ if(isset($_GET['chart'])){
 	        <li class="dropdown">
 	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vitet <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-		    <li ><a onclick="setGetParameter('year','2015')" >2015</a></li>
-	            <li ><a onclick="setGetParameter('year','2016')" >2016</a></li>
-	            <li ><a onclick="setGetParameter('year','2017')" >2017</a></li>
-	            <li ><a onclick="setGetParameter('year','2018')" >2018</a></li>
-	            <li ><a onclick="setGetParameter('year','2019')" >2019</a></li>
-	            <li ><a onclick="setGetParameter('year','2020')" >2020</a></li>
-		    <li ><a onclick="setGetParameter('year','2021')" >2021</a></li>
-		    <li ><a onclick="setGetParameter('year','2022')" >2022</a></li>
-		    <li ><a onclick="setGetParameter('year','2023')" >2023</a></li>
+
+		    <li ><a onclick="setGetParameter('year','2024')" >2024</a></li>
 			  </ul>
 	        </li>
 	        <li class="dropdown">
